@@ -1,6 +1,6 @@
 # Draft only — do not send
 
-Blockers still open: `secondshift.care` is parked, Refresh/Reimagine Webflow URLs are template shells, and all three links must be verified. After those are cleared, send from Christopher’s GrayBeard address. Use `https://secondshift.care/ie/` if DNS is live; otherwise use `https://chrisgerhardt-dev.github.io/second-shift/ie/`.
+Still blocked: Refresh and Reimagine Webflow URLs are unmodified templates. Verify all three links after those are replaced. `secondshift.care` now serves this GitHub Pages repo (HTTPS). After this PR is on `main`, use `https://secondshift.care/ie/`. Until then the new hub is only on this branch.
 
 ---
 
@@ -8,15 +8,17 @@ Subject: Three options for interimexecs.com
 
 Hi —
 
-We put Clone, Refresh, and Reimagine on one page so you can see the difference without a rebuild pitch.
+We put Clone, Refresh, and Reimagine on one page so you can compare them without a rebuild pitch.
 
-- **Clone** — same WordPress site, lower monthly bill. $750/month care. We handle takeover and testing.
-- **Refresh** — familiar pages, easier to edit, cleaner look. $4,000 + $750/month.
-- **Reimagine** — modern standard, one tuning round. Not a full rebrand. $6,000 + $750/month.
+- **Clone** — same WordPress site, lower monthly bill. $750/month. No redesign fee.
+- **Refresh** — familiar pages, easier to edit, cleaner look. $4,000 once + $750/month.
+- **Reimagine** — modern standard, one consolidated feedback set. Not a full rebrand. $6,000 once + $750/month.
 
-If you buy any of the three, we handle migration and testing before anything goes live. You can try a couple of owner-style edits on the page, then leave the rest for us.
+If you buy any of the three, we handle migration and testing before cutover. Keep Tiny Frog in place until you accept the new site; their contract and fees stay theirs. The $750/month growth desk begins after cutover/acceptance unless we agree otherwise.
 
-[PAGE URL]
+You can try two or three owner-style edits on the page. Anything past that goes to us in writing — we confirm included scope before work starts.
+
+https://secondshift.care/ie/
 
 Christopher Gerhardt  
 Second Shift / GrayBeard LLC  

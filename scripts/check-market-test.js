@@ -41,18 +41,18 @@ if (!cfg) {
   fail("destinations.js did not set window.SECOND_SHIFT_IE_DESTINATIONS");
 } else {
   ok("loaded destinations.js");
-  if (cfg.customDomainReady !== false) {
-    fail("customDomainReady must stay false while secondshift.care is parked");
+  if (cfg.customDomainReady !== true) {
+    fail("customDomainReady should be true now that secondshift.care serves this repo");
   } else {
-    ok("customDomainReady is false (parked domain)");
+    ok("customDomainReady is true (secondshift.care HTTPS)");
   }
   if (cfg.customizeTurns < 2 || cfg.customizeTurns > 3) {
     fail("customizeTurns must be 2 or 3");
   } else {
     ok("customizeTurns capped at " + cfg.customizeTurns);
   }
-  if (!/migration and testing/i.test(cfg.migrationPromise || "")) {
-    fail("migration/testing promise missing from config");
+  if (!/migration and testing/i.test(cfg.migrationPromise || "") || !/Tiny Frog/i.test(cfg.migrationPromise || "")) {
+    fail("migration/testing promise must mention Tiny Frog staying active");
   } else {
     ok("migration/testing promise present");
   }
@@ -67,8 +67,8 @@ if (!cfg) {
   if (stripe.refreshDeposit !== "https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00") {
     fail("Refresh $4k Payment Link mismatch");
   }
-  if (stripe.reimagineDeposit !== "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02") {
-    fail("Reimagine must use the $6k authority Payment Link, not the $4k link");
+  if (stripe.reimagineDeposit !== "https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03") {
+    fail("Reimagine must use the dedicated $6k Payment Link …q03");
   } else {
     ok("Stripe buy links: desk, $4k Refresh, $6k Reimagine");
   }
@@ -162,6 +162,11 @@ if (hub) {
   if (!hub.includes('href="wp-clone/index.html"')) fail("hub fallback Clone link missing");
   if (!hub.includes("https://interimexecs-refresh.webflow.io")) fail("hub fallback Refresh URL missing");
   if (!hub.includes("https://interimexecs-reimagine.webflow.io")) fail("hub fallback Reimagine URL missing");
+  if (!hub.includes("https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03")) fail("hub must use Reimagine Payment Link …q03");
+  if (/parked/i.test(hub)) fail("hub still claims the domain is parked");
+  if (!/We do not claim unlimited support/i.test(hub)) {
+    fail("hub should explicitly refuse unlimited-support / zero-downtime overclaims");
+  }
   if (hub.includes('href="/') || hub.includes('src="/')) fail("hub has root-absolute href/src (breaks GitHub Pages project paths)");
   else ok("hub has no root-absolute asset paths");
 }
@@ -219,6 +224,7 @@ const email = read("market-test/interimexecs-email.md");
 if (email) {
   if (!/do not send/i.test(email)) fail("email draft must say do not send");
   if (!/Clone/.test(email) || !/Refresh/.test(email) || !/Reimagine/.test(email)) fail("email draft must name all three options");
+  if (!/Tiny Frog/.test(email) || !/secondshift\.care\/ie/.test(email)) fail("email draft must mention Tiny Frog and the public /ie/ URL");
   ok("prospect email draft present and marked do-not-send");
 }
 

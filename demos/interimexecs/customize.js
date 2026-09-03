@@ -280,7 +280,7 @@
 
     setTier(rootEl, "clone");
     refreshTurns();
-    addBubble(transcript, "bot", "Pick Clone, Refresh, or Reimagine, then change the site. Two or three edits. After that, a person takes the remaining request.");
+    addBubble(transcript, "bot", "Pick Clone, Refresh, or Reimagine, then change the site. Two or three eligible edits. After that, a person takes the remaining request. Do not send passwords. This is not a live or unlimited AI agent.");
   }
 
   api.init = init;

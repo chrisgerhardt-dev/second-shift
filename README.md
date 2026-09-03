@@ -1,13 +1,13 @@
 # Second Shift
 
-GrayBeard LLC product. Intended domain: `secondshift.care` (still a GoDaddy parked page — do not treat it as this site).
+GrayBeard LLC product. Public site: `https://secondshift.care` (GitHub Pages, HTTPS).
 
 ## Interim Execs market test
 
 Public hub: [`demos/interimexecs/index.html`](demos/interimexecs/index.html)
 
-- GitHub Pages (after this branch is on `main`): https://chrisgerhardt-dev.github.io/second-shift/demos/interimexecs/
-- Short alias: [`ie/index.html`](ie/index.html) → https://chrisgerhardt-dev.github.io/second-shift/ie/
+- After this branch is on `main`: https://secondshift.care/ie/
+- GitHub Pages: https://chrisgerhardt-dev.github.io/second-shift/ie/
 
 Three labeled choices: **Clone**, **Refresh**, **Reimagine** — benefits, preview, buy CTAs, and a customize demo that actually changes the page (2–3 edits, then a human form).
 

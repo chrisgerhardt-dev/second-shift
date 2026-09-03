@@ -8,19 +8,19 @@
  * Flip customDomainReady only after secondshift.care serves this repo.
  */
 window.SECOND_SHIFT_IE_DESTINATIONS = {
-  customDomainReady: false,
+  customDomainReady: true,
   intendedPublicOrigin: "https://secondshift.care",
   githubPagesOrigin: "https://chrisgerhardt-dev.github.io",
   githubPagesPath: "/second-shift/",
   contactEmail: "chris@gograybeard.com",
   formSubmit: "https://formsubmit.co/chris@gograybeard.com",
   customizeTurns: 3,
-  migrationPromise: "If you purchase Clone, Refresh, or Reimagine, we handle migration and testing before cutover.",
+  migrationPromise: "If you purchase Clone, Refresh, or Reimagine, we handle migration and testing before cutover. Keep Tiny Frog active until you accept the new site. Their contract and fees stay theirs.",
 
   stripe: {
     growthDesk: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
     refreshDeposit: "https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00",
-    reimagineDeposit: "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02"
+    reimagineDeposit: "https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03"
   },
 
   choices: {
@@ -30,7 +30,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
       ready: true,
       cta: "Preview Clone",
       price: "$750 / month",
-      priceNote: "Growth desk takeover. No $4,000 rebuild.",
+      priceNote: "No redesign fee. Growth desk begins after cutover/acceptance unless otherwise agreed.",
       summary: "Same WordPress site, lower bill versus the current incumbent (Tiny Frog). Pure cost-savings.",
       security: "WP Engine, least-privilege access, managed updates, backups, uptime and security monitoring, and tested restore as part of care.",
       benefits: [
@@ -56,8 +56,8 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
       href: "https://interimexecs-refresh.webflow.io",
       ready: false,
       cta: "Open current Webflow shell",
-      price: "$4,000 + $750 / month",
-      priceNote: "$4,000 conversion deposit, then the growth desk.",
+      price: "$4,000 once + $750 / month",
+      priceNote: "$4,000 once. $750/month growth desk begins after cutover/acceptance unless otherwise agreed.",
       summary: "Webflow restyle. Modernized but familiar, and owner-editable.",
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
       shellName: "Blurr",
@@ -90,8 +90,8 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
       href: "https://interimexecs-reimagine.webflow.io",
       ready: false,
       cta: "Open current Webflow shell",
-      price: "$6,000 + $750 / month",
-      priceNote: "$6,000 authority deposit, one taste-tuning round, then the desk. Not a full rebrand (that is separate, $10,000+).",
+      price: "$6,000 once + $750 / month",
+      priceNote: "$6,000 once. One tuning round means one consolidated feedback set. $750/month begins after cutover/acceptance unless otherwise agreed. Not a full rebrand (separate, $10,000+).",
       summary: "Premium modern redesign without a full rebrand. One collaborative tuning round.",
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
       shellName: "Notable / NOICELAND blog",
@@ -105,7 +105,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
         "We handle migration and testing before cutover"
       ],
       buy: {
-        href: "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02",
+        href: "https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03",
         label: "Buy Reimagine — $6,000 deposit"
       },
       desk: {
