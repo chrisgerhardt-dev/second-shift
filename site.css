@@ -194,7 +194,7 @@ body.site footer {
 .section-title em { font-style: italic; font-weight: 480; color: var(--accent); }
 .deck { color: var(--muted); max-width: 40rem; margin: 0 0 1.2rem; }
 
-/* Buttons */
+/* Buttons — beat styles.css and body.site .cta so fill text stays ink-on-brass */
 body.site .cta {
   margin-top: 0;
   padding: 0.85rem 1.15rem;
@@ -210,10 +210,16 @@ body.site .cta:hover {
   text-decoration: none;
 }
 .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
-.cta.fill { background: var(--accent); color: var(--bg); }
-.cta.fill:hover { background: transparent; color: var(--accent); }
-.cta.ghost { border-color: var(--line); color: var(--muted); }
-.cta.ghost:hover { color: var(--accent); background: transparent; }
+body.site .cta.fill {
+  background: var(--accent);
+  color: var(--bg);
+}
+body.site .cta.fill:hover {
+  background: transparent;
+  color: var(--accent);
+}
+body.site .cta.ghost { border-color: var(--line); color: var(--muted); }
+body.site .cta.ghost:hover { color: var(--accent); background: transparent; }
 
 /* Hero */
 .hero {
@@ -329,10 +335,10 @@ body.site .cta:hover {
 .invert .deck,
 .invert p { color: var(--paper-muted); }
 .invert strong { color: var(--paper-ink); }
-.invert .cta { border-color: var(--paper-ink); color: var(--paper-ink); }
-.invert .cta:hover { background: var(--paper-ink); color: var(--paper); }
-.invert .cta.fill { background: var(--paper-ink); color: var(--paper); }
-.invert .cta.fill:hover { background: transparent; color: var(--paper-ink); }
+body.site .invert .cta { border-color: var(--paper-ink); color: var(--paper-ink); background: transparent; }
+body.site .invert .cta:hover { background: var(--paper-ink); color: var(--paper); }
+body.site .invert .cta.fill { background: var(--paper-ink); color: var(--paper); }
+body.site .invert .cta.fill:hover { background: transparent; color: var(--paper-ink); }
 .price-monument {
   font-family: var(--display);
   font-weight: 640;
