@@ -12,7 +12,10 @@
   --sans: "Source Sans 3", "Source Sans Pro", "Segoe UI", sans-serif;
   --size-display: clamp(2.5rem, 7vw, 4.5rem);
   --size-sub: 1.25rem;
-  --size-meta: 0.8rem;
+  --size-meta: 0.75rem;
+  --paper: #e7dfd0;
+  --paper-ink: #161310;
+  --paper-muted: #5c5348;
 }
 
 body.site {
@@ -58,7 +61,6 @@ body.site header.mast {
   top: 0;
   z-index: 50;
   background: var(--bg);
-  border-bottom: 1px solid var(--line);
 }
 
 .mast-inner {
@@ -127,8 +129,22 @@ body.site nav a[aria-current="page"] {
   padding: 4.5rem 0;
 }
 
-.block.problem {
-  padding-top: 1.5rem;
+.invert {
+  background: var(--paper);
+  color: var(--paper-ink);
+  padding: 4.5rem 0;
+}
+
+.invert .meta {
+  color: #8a3e22;
+}
+
+.invert p {
+  color: var(--paper-muted);
+}
+
+.invert h2 {
+  color: var(--paper-ink);
 }
 
 .block.close {
@@ -180,7 +196,9 @@ body.site footer.colophon,
 
 .meta {
   color: var(--muted);
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
 }
 
 .fine {
@@ -224,6 +242,7 @@ body.site .cta {
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
+  transition: background-color 0.28s ease, color 0.28s ease;
 }
 
 body.site .cta:hover {
@@ -232,16 +251,26 @@ body.site .cta:hover {
   text-decoration: none;
 }
 
+.invert .cta,
+body.site .invert .cta {
+  background: var(--paper-ink);
+  border-color: var(--paper-ink);
+  color: var(--paper);
+}
+
+body.site .invert .cta:hover {
+  background: transparent;
+  color: var(--paper-ink);
+}
+
 .ladder {
   list-style: none;
-  margin: 1.5rem 0 0;
+  margin: 2rem 0 0;
   padding: 0;
-  border-top: 1px solid var(--line);
 }
 
 .ladder li {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--line);
+  padding: 0 0 2rem;
 }
 
 .ladder p {
@@ -330,7 +359,6 @@ body.site footer.colophon {
   width: min(var(--wide), calc(100% - (var(--gutter) * 2)));
   margin: 0 auto;
   padding: 2rem 0 3.5rem;
-  border-top: 1px solid var(--line);
   color: var(--muted);
 }
 
@@ -352,5 +380,8 @@ body.site footer.colophon p {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  body.site .cta {
+    transition: none;
   }
 }
