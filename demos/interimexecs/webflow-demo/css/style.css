@@ -452,6 +452,54 @@ form.ie-form { display: grid; gap: 0.8rem; }
   .offer .shot { min-height: 160px; }
   .offer .act { padding: 0 1.15rem 1.15rem; }
 }
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: var(--red);
+  z-index: 80;
+  pointer-events: none;
+}
+.chapter {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.reveal-on {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal-on.in { opacity: 1; transform: none; }
+
+.wizard-bar { display: flex; gap: 0.45rem; margin-bottom: 1.2rem; }
+.wizard-bar span {
+  flex: 1;
+  height: 4px;
+  background: var(--line);
+}
+.wizard-bar span.on { background: var(--red); }
+.wiz-step { display: none; }
+.wiz-step.on { display: block; animation: rise 0.35s ease; }
+.wiz-nav { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
+.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; }
+.choice-grid button {
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 0.75rem 0.8rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.choice-grid button:hover,
+.choice-grid button.picked { border-color: var(--red); color: var(--red); }
+
 @media (max-width: 720px) {
   .menu-btn { display: inline-block; }
   .primary-nav {
@@ -473,4 +521,5 @@ form.ie-form { display: grid; gap: 0.8rem; }
     grid-template-columns: 1fr;
   }
   .hero { min-height: 78vh; }
+  .choice-grid { grid-template-columns: 1fr; }
 }
