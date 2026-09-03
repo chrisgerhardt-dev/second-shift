@@ -1,6 +1,6 @@
 # BLOCKED — three-tier draft (do not send)
 
-**Status (2026-09-03):** Do not send this. Blocked until Refresh and Reimagine shells are IE-ready **and** FormSubmit delivery is proven.
+**Status (2026-09-03):** Do not send this. Refresh and Reimagine shells are IE-ready. Still blocked until FormSubmit delivery is proven.
 
 The only authorized prospect note is the Clone-only draft: [`interimexecs-email.md`](interimexecs-email.md). That draft must not be expanded to include the hub, `/ie/`, or `webflow.io` links.
 

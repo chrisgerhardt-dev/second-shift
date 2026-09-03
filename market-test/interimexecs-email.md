@@ -1,6 +1,6 @@
 # Authorized Clone-only draft — confirm before send
 
-**Status (2026-09-03):** A three-tier comparison email is blocked until Refresh/Reimagine shells are IE-ready **and** FormSubmit is proven. This file authorizes only a Clone-only note.
+**Status (2026-09-03):** Refresh and Reimagine shells are IE-ready. A three-tier comparison email is still blocked until FormSubmit is proven. This file authorizes only a Clone-only note.
 
 **Link rule:** the only public URL in this draft is `https://secondshift.care/demos/interimexecs/wp-clone/`. Do not link the hub, `/ie/`, or any `webflow.io` URL.
 

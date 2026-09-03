@@ -6,15 +6,15 @@ Public lander: `index.html`, `care.html`, `work.html`, `contact.html` — story 
 
 ## Interim Execs market test — HOLD (2026-09-03)
 
-Clone is the only authorized public preview: https://secondshift.care/demos/interimexecs/wp-clone/
+Clone, Refresh, and Reimagine shells are IE-ready. The three-tier comparison email is **still blocked** until FormSubmit is proven.
 
-The three-tier hub exists for internal review (`demos/interimexecs/index.html`) but is **not** for prospect email until Refresh/Reimagine shells are IE-ready **and** FormSubmit is proven.
-
-- Destinations and Stripe paths: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js) — do not flip `ready: true` on Refresh/Reimagine yet.
+- Public Clone preview: https://secondshift.care/demos/interimexecs/wp-clone/
+- Hub (internal / not for prospect email): [`demos/interimexecs/index.html`](demos/interimexecs/index.html)
+- Destinations and Stripe paths: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js)
 - Status and blockers: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md)
 - Authorized Clone-only email draft: [`market-test/interimexecs-email.md`](market-test/interimexecs-email.md)
 
-Unready hub cards use Talk first, not live $4k / $6k deposit buttons. Clone $750/mo buy may stay.
+Ready hub cards restore Buy CTAs (Refresh $4k, Reimagine $6k, desk $750). Talk first stays only if a tier is later marked unready.
 
 ## Checks
 
