@@ -2,20 +2,17 @@
 
 GrayBeard LLC product. Public site: `https://secondshift.care` (GitHub Pages, HTTPS).
 
-## Interim Execs market test
+## Interim Execs market test — HOLD (2026-09-03)
 
-Public hub: [`demos/interimexecs/index.html`](demos/interimexecs/index.html)
+Clone is the only authorized public preview: https://secondshift.care/demos/interimexecs/wp-clone/
 
-- After this branch is on `main`: https://secondshift.care/ie/
-- GitHub Pages: https://chrisgerhardt-dev.github.io/second-shift/ie/
+The three-tier hub exists for internal review (`demos/interimexecs/index.html`) but is **not** for prospect email until Refresh/Reimagine shells are IE-ready **and** FormSubmit is proven.
 
-Three labeled choices: **Clone**, **Refresh**, **Reimagine** — benefits, preview, buy CTAs, and a customize demo that actually changes the page (2–3 edits, then a human form).
+- Destinations and Stripe paths: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js) — do not flip `ready: true` on Refresh/Reimagine yet.
+- Status and blockers: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md)
+- Authorized Clone-only email draft: [`market-test/interimexecs-email.md`](market-test/interimexecs-email.md)
 
-Destinations, Stripe links, and the send-gate live in one file: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js).
-
-Prospect email draft (do not send): [`market-test/interimexecs-email.md`](market-test/interimexecs-email.md)
-
-**Do not email Interim Execs yet.** Remaining blockers: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md).
+Unready hub cards use Talk first, not live $4k / $6k deposit buttons. Clone $750/mo buy may stay.
 
 ## Checks
 

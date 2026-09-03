@@ -5,6 +5,8 @@
  * No build step. Works on GitHub Pages project paths.
  *
  * Flip choice.ready when that public URL is actually Interim Execs content.
+ * Do not flip ready:true on Refresh/Reimagine while the live URLs are still templates.
+ * Unready choices must not expose $4k/$6k deposit buy buttons in the hub UI.
  * Flip customDomainReady only after secondshift.care serves this repo.
  */
 window.SECOND_SHIFT_IE_DESTINATIONS = {
@@ -15,6 +17,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
   contactEmail: "chris@gograybeard.com",
   formSubmit: "https://formsubmit.co/chris@gograybeard.com",
   customizeTurns: 3,
+  talkFirstLabel: "Talk first",
   migrationPromise: "If you purchase Clone, Refresh, or Reimagine, we handle migration and testing before cutover. Keep Tiny Frog active until you accept the new site. Their contract and fees stay theirs.",
 
   stripe: {
@@ -74,6 +77,10 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
         href: "https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00",
         label: "Buy Refresh — $4,000 deposit"
       },
+      talk: {
+        href: "mailto:chris@gograybeard.com?subject=Second%20Shift%20Refresh%20%E2%80%94%20talk%20first",
+        label: "Talk first"
+      },
       desk: {
         href: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
         label: "$750/mo desk, ongoing after cutover"
@@ -107,6 +114,10 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
       buy: {
         href: "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02",
         label: "Buy Reimagine — $6,000 deposit"
+      },
+      talk: {
+        href: "mailto:chris@gograybeard.com?subject=Second%20Shift%20Reimagine%20%E2%80%94%20talk%20first",
+        label: "Talk first"
       },
       desk: {
         href: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
