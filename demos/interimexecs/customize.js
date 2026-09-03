@@ -123,11 +123,10 @@
 
   var STORAGE_KEY = "ss-ie-customize-state";
 
-  function loadState() {
+  function parseState(raw) {
+    if (!raw) return null;
     try {
-      var raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return null;
-      var parsed = JSON.parse(raw);
+      var parsed = typeof raw === "string" ? JSON.parse(raw) : raw;
       if (!parsed || typeof parsed.used !== "number") return null;
       return parsed;
     } catch (err) {
@@ -135,15 +134,49 @@
     }
   }
 
-  function saveState(state) {
+  function loadState() {
+    var fromStore = null;
+    try { fromStore = parseState(localStorage.getItem(STORAGE_KEY)); } catch (err) { /* ignore */ }
+    if (fromStore) return fromStore;
+    try { fromStore = parseState(sessionStorage.getItem(STORAGE_KEY)); } catch (err) { /* ignore */ }
+    if (fromStore) return fromStore;
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch (err) { /* ignore quota / private mode */ }
+      var cookie = document.cookie.split("; ").find(function (row) { return row.indexOf(STORAGE_KEY + "=") === 0; });
+      if (cookie) fromStore = parseState(decodeURIComponent(cookie.slice(STORAGE_KEY.length + 1)));
+    } catch (err) { /* ignore */ }
+    if (fromStore) return fromStore;
+    try {
+      var usedParam = new URL(location.href).searchParams.get("demoUsed");
+      if (usedParam) {
+        var n = parseInt(usedParam, 10);
+        if (n > 0) return { used: n, history: [], tier: "clone", fromQuery: true };
+      }
+    } catch (err) { /* ignore */ }
+    return null;
+  }
+
+  function saveState(state) {
+    var json = JSON.stringify(state);
+    try { localStorage.setItem(STORAGE_KEY, json); } catch (err) { /* ignore */ }
+    try { sessionStorage.setItem(STORAGE_KEY, json); } catch (err) { /* ignore */ }
+    try {
+      document.cookie = STORAGE_KEY + "=" + encodeURIComponent(json) + ";path=/;max-age=86400;SameSite=Lax";
+    } catch (err) { /* ignore */ }
+    try {
+      var url = new URL(location.href);
+      url.searchParams.set("demoUsed", String(state.used));
+      history.replaceState(null, "", url.pathname + url.search + url.hash);
+    } catch (err) { /* ignore */ }
   }
 
   function clearState() {
+    try { localStorage.removeItem(STORAGE_KEY); } catch (err) { /* ignore */ }
+    try { sessionStorage.removeItem(STORAGE_KEY); } catch (err) { /* ignore */ }
+    try { document.cookie = STORAGE_KEY + "=;path=/;max-age=0"; } catch (err) { /* ignore */ }
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      var url = new URL(location.href);
+      url.searchParams.delete("demoUsed");
+      history.replaceState(null, "", url.pathname + url.search + url.hash);
     } catch (err) { /* ignore */ }
   }
 
@@ -212,6 +245,7 @@
     }
 
     function refreshTurns() {
+      rootEl.setAttribute("data-used", String(used));
       if (!turns) return;
       if (used >= max) turns.textContent = "Demo edits used. A person takes it from here.";
       else turns.textContent = remaining() + " of " + max + " demo edits left.";
@@ -320,15 +354,18 @@
 
     var startTier = (saved && saved.tier) || "clone";
     setTier(rootEl, startTier);
-    if (saved && saved.used > 0 && Array.isArray(saved.history)) {
-      saved.history.forEach(function (item) {
-        if (!item || !item.edit) return;
-        addBubble(transcript, "user", item.text || describe(item.edit));
-        applyEdit(item.edit, stage);
-        addBubble(transcript, "bot", describe(item.edit) + " Restored after reload. Demo only — not a live person.");
-        used += 1;
-        history.push(item);
-      });
+    if (saved && saved.used > 0) {
+      if (Array.isArray(saved.history)) {
+        saved.history.forEach(function (item) {
+          if (!item || !item.edit) return;
+          addBubble(transcript, "user", item.text || describe(item.edit));
+          applyEdit(item.edit, stage);
+          addBubble(transcript, "bot", describe(item.edit) + " Restored after reload. Demo only — not a live person.");
+          used += 1;
+          history.push(item);
+        });
+      }
+      if (used < saved.used) used = saved.used;
       if (used > max) used = max;
       addBubble(transcript, "bot", used >= max
         ? "These demo edits were already used in this browser. Reload does not add free turns. Use “Reset demo edits” only if you want to practice again."
