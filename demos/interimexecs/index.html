@@ -6,11 +6,26 @@
   <title>Interim Execs demos — Second Shift</title>
   <link rel="stylesheet" href="../../styles.css" />
   <style>
-    .pair { display: grid; gap: 1.25rem; margin-top: 2rem; }
+    main { max-width: none; }
+    header, main, footer { width: min(880px, calc(100% - 2.5rem)); }
+    .lead-card {
+      border: 1px solid var(--accent);
+      padding: 1.4rem 1.25rem 1.3rem;
+      margin: 1.75rem 0 1.25rem;
+    }
+    .lead-card h2 { margin: 0.2rem 0 0.55rem; font-size: 1.55rem; }
+    .pair { display: grid; gap: 1.1rem; }
     @media (min-width: 720px) { .pair { grid-template-columns: 1fr 1fr; } }
-    .choice { border: 1px solid var(--line); padding: 1.2rem 1.15rem; }
-    .choice h2 { margin-top: 0; font-size: 1.35rem; }
-    .choice p { margin: 0 0 1rem; }
+    .choice { border: 1px solid var(--line); padding: 1.15rem 1.1rem; }
+    .choice h2, .lead-card h2 { margin-top: 0; }
+    .label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+    .price { margin: 0 0 0.7rem; color: var(--accent); font-size: 1.15rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 0.9rem; }
+    .cta { margin-top: 0; }
+    .ghost { border-color: var(--line); color: var(--muted); }
+    .ghost:hover { background: transparent; color: var(--accent); }
+    .tier-sec { margin: 0.75rem 0 0; font-size: 0.92rem; color: var(--muted); }
+    .tier-sec strong { color: var(--text); font-weight: 600; }
   </style>
 </head>
 <body>
@@ -24,18 +39,45 @@
   </header>
   <main>
     <h1>Interim Execs case-study demos</h1>
-    <p>GrayBeard LLC dba Second Shift. Interim Execs (interimexecs.com) is an authorized test client. Tiny Frog currently designs and maintains their WordPress site on WP Engine. Christopher is fractional CTO there.</p>
-    <p class="muted">Two surfaces. The marketing lander at the repo root is unchanged. Dummy staging forms only — no live mail to Interim Execs.</p>
+    <p>Authorized test client. Three Second Shift options — not a live cutover, and Interim Execs has not purchased.</p>
+    <p><strong>Core promise:</strong> remove the “this company looks dated” penalty. The bar is a site that looks good and never stands out in a bad way.</p>
+    <p><strong>Secure by default.</strong> Sensible baseline controls on every tier — practical hosting and care, not compliance audits or breach-proof guarantees.</p>
+    <p class="muted">Same brand and public copy on every surface. Dummy forms never email Interim Execs.</p>
+
+    <article class="lead-card">
+      <p class="label">Premium Reimagine</p>
+      <h2>Modern standard, tuned to taste.</h2>
+      <p class="price">$6,000 + $750 / month · one collaborative tuning round</p>
+      <p>Full upgrade to current design, navigation, forms, flow, imagery, and scroll best practices — without pretending to build the best website ever.</p>
+      <p class="tier-sec"><strong>Security:</strong> Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.</p>
+      <div class="actions">
+        <a class="cta" href="webflow-demo/index.html">Open Premium Reimagine</a>
+        <a class="cta ghost" href="mailto:chrisgerhardt@gmail.com?subject=Second%20Shift%20Premium%20Reimagine">Ask Second Shift</a>
+      </div>
+    </article>
+
     <div class="pair">
       <article class="choice">
-        <h2>WordPress clone</h2>
-        <p>Faithful public-site clone: home, about, services, how it works, contact, blog listing. Same nav, red/black bands, and public copy. Installable theme is in <code>theme/</code>.</p>
-        <a class="cta" href="wp-clone/index.html">Open the clone</a>
+        <p class="label">Refresh</p>
+        <h2>Lower friction, better look, owner-editable.</h2>
+        <p class="price">$4,000 + $750 / month</p>
+        <p>Cost plus improvement: normal content changes no longer require technical people. Same familiar pages and copy, with cleaner type, whitespace, and navigation.</p>
+        <p class="tier-sec"><strong>Security:</strong> Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.</p>
+        <div class="actions">
+          <a class="cta" href="webflow-refresh/index.html">Open Refresh</a>
+          <a class="cta ghost" href="mailto:chrisgerhardt@gmail.com?subject=Second%20Shift%20Refresh">Ask Second Shift</a>
+        </div>
       </article>
       <article class="choice">
-        <h2>Reimagined demo</h2>
-        <p>New information architecture, not a reskin. Situation-first. Conversion is “engage an interim exec.” Designer/collection feel. Not claimed as a Webflow-hosted site.</p>
-        <a class="cta" href="webflow-demo/index.html">Open the reimagined demo</a>
+        <p class="label">Clone</p>
+        <h2>Same site, lower bill.</h2>
+        <p class="price">$750 / month</p>
+        <p>Pure cost-savings play versus the current incumbent. Faithful staging clone of the public site — continuity without a redesign.</p>
+        <p class="tier-sec"><strong>Security:</strong> WP Engine, least-privilege access, managed updates, backups, uptime and security monitoring, and tested restore as part of care.</p>
+        <div class="actions">
+          <a class="cta" href="wp-clone/index.html">Open the clone</a>
+          <a class="cta ghost" href="mailto:chrisgerhardt@gmail.com?subject=Second%20Shift%20Clone">Ask Second Shift</a>
+        </div>
       </article>
     </div>
   </main>
