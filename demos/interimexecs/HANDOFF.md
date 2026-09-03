@@ -1,15 +1,15 @@
 # Interim Execs market test — do not email yet
 
-Christopher: review only. Do not email Interim Execs, spend money, or merge until the remaining blockers are cleared and you have verified all three links.
+**QA ship gate on production is FAIL for a known reason:** https://secondshift.care/demos/interimexecs/ is still the older three-card hub on `main`. This PR is not merged. The agent will not merge it. Until a human merges, production will keep showing: no Stripe CTAs, no customize chat, `destinations.js` 404, `/ie/` 404.
 
 ## Preview
 
-- Intended after this PR is on `main`: https://secondshift.care/ie/
-- Also: https://secondshift.care/demos/interimexecs/
-- GitHub Pages: https://chrisgerhardt-dev.github.io/second-shift/demos/interimexecs/
-- Clone (already on `main`): https://secondshift.care/demos/interimexecs/wp-clone/
-
-`secondshift.care` HTTPS is live and serving this repo. Production still has the **older** three-card hub until a human merges this PR. `/ie/` 404s and `destinations.js` 404s on production until then.
+| URL | After human merge | Today on production |
+| --- | --- | --- |
+| https://secondshift.care/ie/ | New hub | 404 |
+| https://secondshift.care/demos/interimexecs/ | New hub | Old three-card demo |
+| https://secondshift.care/demos/interimexecs/wp-clone/ | Clone | Clone (already live) |
+| https://chrisgerhardt-dev.github.io/second-shift/ | 301 to apex via Pages CNAME + `pages-redirect.js` | Old tree |
 
 Prospect email draft (do not send): [`../../market-test/interimexecs-email.md`](../../market-test/interimexecs-email.md)
 
@@ -17,30 +17,37 @@ Prospect email draft (do not send): [`../../market-test/interimexecs-email.md`](
 
 Edit only [`destinations.js`](destinations.js). Flip `ready` to `true` on Refresh/Reimagine after each Webflow site is actually Interim Execs content.
 
-Live Stripe Payment Links in that file:
+QA Stripe URLs in that file:
 
 | Option | Buy path |
 | --- | --- |
-| Clone | $750/mo growth desk `…q01` |
-| Refresh | $4,000 once `…q00` (desk is ongoing after cutover) |
-| Reimagine | $6,000 once `…q03` (dedicated Reimagine Payment Link) |
+| Clone / desk | https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01 |
+| Refresh $4,000 | https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00 |
+| Reimagine $6,000 | https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02 |
 
-## Remaining blockers before any email
+## QA must-haves on this branch (not yet on production)
 
-1. **Replace the two Webflow template shells with Interim Execs content.**
-   - Refresh (`https://interimexecs-refresh.webflow.io`) is still the free **Blurr** launch-page template.
-   - Reimagine (`https://interimexecs-reimagine.webflow.io`) is still the free **Notable/NOICELAND** blog template.
-   - In-repo IE-specific drafts live at `webflow-refresh/` and `webflow-demo/` (internal preview only).
-2. **Verify all three links** from the hub after the work above: Clone (repo), Refresh (Webflow), Reimagine (Webflow). Confirm each shows Interim Execs — not a stock template.
-3. **Mailbox.** `hello@secondshift.care` does not exist yet. Customize handoff uses FormSubmit + mailto to `chris@gograybeard.com`. FormSubmit must be confirmed once on that inbox before the form delivers.
-4. **Merge this PR** (human decision) so `https://secondshift.care/ie/` exists. Do not merge from the agent.
+1. Hub: Clone / Refresh / Reimagine + preview + buy + customize studio
+2. Chat mutates the page 2–3 times, then human form (name, email, tier, remaining request) to `chris@gograybeard.com`. Not a live agent.
+3. Webflow dests still Blurr / Notable — honest shell warnings; in-repo IE drafts as internal previews
+4. Relative assets; `/ie/` and `/demos/interimexecs/` both work; `CNAME` + `pages-redirect.js` send github.io to `secondshift.care`
+5. Reload does not silently refill turns; only labeled **Reset demo edits**
+6. Migration/testing; Tiny Frog stays until acceptance; secure-by-default without overclaims
+7. No merge from the agent
 
-The hub shows **Do not email Interim Execs yet** until Refresh and Reimagine are marked ready.
+## Remaining send-blockers
+
+1. **Human merge of this PR** so production is no longer the old hub.
+2. **Replace the two Webflow template shells** with Interim Execs content.
+   - https://interimexecs-refresh.webflow.io (Blurr)
+   - https://interimexecs-reimagine.webflow.io (Notable/NOICELAND)
+3. **Verify all three destination links** after that.
+4. **Mailbox:** confirm FormSubmit on `chris@gograybeard.com` (`hello@secondshift.care` does not exist yet).
 
 ## Cleared
 
-- `secondshift.care` DNS is off parking and serves this GitHub Pages site over HTTPS.
+- `secondshift.care` HTTPS serves this GitHub Pages repo.
 
 ## Out of scope here
 
-No email send. No further DNS change. No new paid Stripe/Webflow/domain spend. No merge of this PR from the agent.
+No email send. No DNS change. No paid spend. No merge of this PR from the agent.

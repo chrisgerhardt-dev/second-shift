@@ -67,8 +67,8 @@ if (!cfg) {
   if (stripe.refreshDeposit !== "https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00") {
     fail("Refresh $4k Payment Link mismatch");
   }
-  if (stripe.reimagineDeposit !== "https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03") {
-    fail("Reimagine must use the $6k Payment Link …q03");
+  if (stripe.reimagineDeposit !== "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02") {
+    fail("Reimagine must use the $6k Payment Link …q02");
   } else {
     ok("Stripe buy links: desk, $4k Refresh, $6k Reimagine");
   }
@@ -164,7 +164,7 @@ if (hub) {
   if (!hub.includes('href="wp-clone/index.html"')) fail("hub fallback Clone link missing");
   if (!hub.includes("https://interimexecs-refresh.webflow.io")) fail("hub fallback Refresh URL missing");
   if (!hub.includes("https://interimexecs-reimagine.webflow.io")) fail("hub fallback Reimagine URL missing");
-  if (!hub.includes("https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03")) fail("hub must use Reimagine Payment Link …q03");
+  if (!hub.includes("https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02")) fail("hub must use Reimagine Payment Link …q02");
   if (!hub.includes("data-demo-reset") || !/Reload does not add free turns/i.test(hub)) {
     fail("hub must persist demo turns and only reset when labeled");
   }
@@ -225,7 +225,7 @@ if (redirect && /secondshift\.care/.test(redirect) && /chrisgerhardt-dev\.github
 
 const handoff = read("demos/interimexecs/HANDOFF.md");
 if (handoff) {
-  ["secondshift.care", "interimexecs-refresh.webflow.io", "interimexecs-reimagine.webflow.io", "Verify", "chris@gograybeard.com"].forEach((needle) => {
+  ["secondshift.care", "interimexecs-refresh.webflow.io", "interimexecs-reimagine.webflow.io", "Verify", "chris@gograybeard.com", "older three-card"].forEach((needle) => {
     if (!handoff.toLowerCase().includes(needle.toLowerCase())) fail("HANDOFF.md missing required note: " + needle);
   });
   ok("HANDOFF.md documents DNS, Webflow shells, verify-links, and mailbox");
@@ -268,7 +268,9 @@ if (email) {
 });
 ok("Second Shift lander files preserved");
 
-if (fs.existsSync(path.join(root, "CNAME"))) fail("CNAME present — do not point a parked domain from the repo");
+const cname = read("CNAME");
+if (!cname || cname.trim() !== "secondshift.care") fail("CNAME must be secondshift.care so github.io can 301 to apex");
+else ok("CNAME is secondshift.care");
 
 ["demos/interimexecs/webflow-refresh/index.html", "demos/interimexecs/webflow-demo/index.html"].forEach((rel) => {
   if (!fs.existsSync(path.join(root, rel))) fail("missing preserved internal preview " + rel);
