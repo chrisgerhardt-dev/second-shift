@@ -1,27 +1,21 @@
-# Draft only — do not send
+# Authorized Clone-only draft — confirm before send
 
-Still blocked: Refresh and Reimagine Webflow URLs are unmodified templates. Verify all three links after those are replaced. `secondshift.care` HTTPS is live and serves this repo. After this PR is on `main`, use `https://secondshift.care/ie/`. Until then the new hub is only on this branch.
+**Status (2026-09-03):** A three-tier comparison email is blocked until Refresh/Reimagine shells are IE-ready **and** FormSubmit is proven. This file authorizes only a Clone-only note.
+
+**Link rule:** the only public URL in this draft is `https://secondshift.care/demos/interimexecs/wp-clone/`. Do not link the hub, `/ie/`, or any `webflow.io` URL.
 
 ---
 
-Subject: Three options for interimexecs.com
+Subject: A lower-cost path for interimexecs.com
 
 Hi —
 
-We put Clone, Refresh, and Reimagine on one page so you can compare them without a rebuild pitch.
+We staged a faithful Clone of the public WordPress site. Same site, lower monthly bill. $750/month growth desk. No redesign fee.
 
-- **Clone** — same WordPress site, lower monthly bill. $750/month. No redesign fee.
-- **Refresh** — familiar pages, easier to edit, cleaner look. $4,000 once + $750/month ongoing.
-- **Reimagine** — modern standard. One tuning round is one consolidated feedback set — not a full rebrand. $6,000 once + $750/month ongoing.
+If you buy Clone, we handle migration and testing before cutover. Keep Tiny Frog in place until you accept the new site; their contract and fees stay theirs. Secure-by-default here means a standard security baseline, not a hack-proof guarantee.
 
-The $750/month growth desk begins after cutover/acceptance unless we agree otherwise.
+https://secondshift.care/demos/interimexecs/wp-clone/
 
-If you buy any of the three, we handle migration and testing before cutover. Keep Tiny Frog in place until you accept the new site; their contract and fees stay theirs. Secure-by-default here means a standard security baseline, not a hack-proof guarantee.
-
-You can try two or three owner-style edits on the page (any tier). That demo is not a live or unlimited AI agent — do not send passwords. Anything past those edits goes to us in writing; we confirm included scope before work starts.
-
-https://secondshift.care/ie/
-
-Christopher Gerhardt  
-Second Shift / GrayBeard LLC  
+Christopher Gerhardt
+Second Shift / GrayBeard LLC
 chris@gograybeard.com

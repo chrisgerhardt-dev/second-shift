@@ -90,6 +90,7 @@ if (!cfg) {
     if (/^https?:\/\//i.test(clone.href)) fail("clone must not be an external URL");
     if (!clone.benefits || clone.benefits.length < 4) fail("clone benefits missing");
     if (!clone.buy || clone.buy.href !== stripe.growthDesk) fail("clone buy must be the $750/mo desk");
+    else ok("clone $750/mo desk buy may stay");
   }
 
   const refresh = cfg.choices && cfg.choices.refresh;
@@ -99,6 +100,9 @@ if (!cfg) {
     else ok("refresh points at interimexecs-refresh.webflow.io");
     if (refresh.ready !== false) fail("refresh.ready must be false while Blurr is still live");
     else ok("refresh is flagged not IE-ready");
+    if (!refresh.talk || !/mailto:chris@gograybeard\.com/.test(refresh.talk.href || "")) {
+      fail("refresh must have a Talk first mailto while not IE-ready");
+    }
   }
 
   const reimagine = cfg.choices && cfg.choices.reimagine;
@@ -108,6 +112,9 @@ if (!cfg) {
     else ok("reimagine points at interimexecs-reimagine.webflow.io");
     if (reimagine.ready !== false) fail("reimagine.ready must be false while Notable/NOICELAND is still live");
     else ok("reimagine is flagged not IE-ready");
+    if (!reimagine.talk || !/mailto:chris@gograybeard\.com/.test(reimagine.talk.href || "")) {
+      fail("reimagine must have a Talk first mailto while not IE-ready");
+    }
   }
 }
 
@@ -124,6 +131,26 @@ if (parsed[2][0] && parsed[2][0].visible !== false) fail("hide quotes should set
 ok("customize parser maps headline, CTA, and hide-section");
 if (!customize.STORAGE_KEY) fail("customize.js must persist turns (STORAGE_KEY)");
 else ok("customize turns persist in localStorage");
+if (typeof customize.blockedReason !== "function") fail("customize.js must export blockedReason");
+else {
+  [
+    ["send the password please", "password"],
+    ["here is the login", "login"],
+    ["open wp-admin", "wp-admin"],
+    ["paste the api key", "api"],
+    ["ssh into the box", "ssh"],
+    ["add a guarantee", "guarantee"],
+    ["please fire Tiny Frog", "Tiny Frog"],
+    ["replace Tiny Frog now", "Tiny Frog"],
+    ["make the price $4,000", "pric"]
+  ].forEach(function (pair) {
+    if (!customize.blockedReason(pair[0])) fail("blockedReason missed " + pair[1]);
+  });
+  if (customize.blockedReason("Headline: Who is in your corner this quarter?")) {
+    fail("blockedReason must allow a normal headline edit");
+  }
+  ok("customize blocks password/login/secrets/guarantee/Tiny Frog/fake pricing");
+}
 
 const hub = read("demos/interimexecs/index.html");
 if (hub) {
@@ -138,8 +165,29 @@ if (hub) {
   else ok("hub send-gate copy present");
   if (!/migration and testing/i.test(hub)) fail("hub missing migration/testing promise");
   else ok("hub states we handle migration and testing");
-  if (!hub.includes("js-buy") || !hub.includes("buy.stripe.com")) fail("hub missing buy CTAs");
-  else ok("hub has Stripe buy CTAs");
+  function cardHtml(key) {
+    const re = new RegExp('<article[^>]*data-choice="' + key + '"[\\s\\S]*?</article>');
+    const match = hub.match(re);
+    return match ? match[0] : "";
+  }
+  const cloneCard = cardHtml("clone");
+  const refreshCard = cardHtml("refresh");
+  const reimagineCard = cardHtml("reimagine");
+  if (!cloneCard.includes("buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01")) fail("clone card may keep the $750/mo desk buy");
+  else ok("clone card keeps $750/mo desk buy");
+  if (/buy\.stripe\.com/.test(refreshCard)) fail("refresh card must not expose live Stripe while not IE-ready");
+  if (/buy\.stripe\.com/.test(reimagineCard)) fail("reimagine card must not expose live Stripe while not IE-ready");
+  if (!/Talk first/.test(refreshCard) || !/mailto:chris@gograybeard\.com/.test(refreshCard)) {
+    fail("refresh card must use Talk first / mailto while not IE-ready");
+  }
+  if (!/Talk first/.test(reimagineCard) || !/mailto:chris@gograybeard\.com/.test(reimagineCard)) {
+    fail("reimagine card must use Talk first / mailto while not IE-ready");
+  }
+  ok("unready tiers use Talk first instead of $4k/$6k deposit buy buttons");
+  if (!hub.includes("js-buy")) fail("hub missing buy/talk CTA hooks");
+  if (hub.includes("Buy Refresh — $4,000 deposit") || hub.includes("Buy Reimagine — $6,000 deposit")) {
+    fail("hub must not show live $4k/$6k deposit buy labels while shells are unready");
+  }
   if (!hub.includes('data-tier="clone"') || !hub.includes('data-tier="refresh"') || !hub.includes('data-tier="reimagine"')) {
     fail("customize tier selector must include all three options");
   } else {
@@ -164,9 +212,21 @@ if (hub) {
   if (!hub.includes('href="wp-clone/index.html"')) fail("hub fallback Clone link missing");
   if (!hub.includes("https://interimexecs-refresh.webflow.io")) fail("hub fallback Refresh URL missing");
   if (!hub.includes("https://interimexecs-reimagine.webflow.io")) fail("hub fallback Reimagine URL missing");
-  if (!hub.includes("https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02")) fail("hub must use Reimagine Payment Link …q02");
+  if (hub.includes("https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02")) {
+    fail("hub HTML must not expose the Reimagine $6k Payment Link while not IE-ready");
+  }
   if (!hub.includes("data-demo-reset") || !/Reload does not add free turns/i.test(hub)) {
     fail("hub must persist demo turns and only reset when labeled");
+  }
+  if (!/DEMO EDIT/.test(hub) || !hub.includes("data-demo-watermark")) {
+    fail("customize canvas must have a persistent DEMO EDIT watermark");
+  } else {
+    ok("customize canvas has DEMO EDIT watermark");
+  }
+  if (!/Not a live agent/i.test(hub) || !/Do not send passwords/i.test(hub)) {
+    fail("hub must keep the not-a-live-agent / no-passwords banner");
+  } else {
+    ok("hub keeps not-a-live-agent / no-passwords banner");
   }
   if (/parked/i.test(hub)) fail("hub still claims the domain is parked");
   if (!/We do not claim unlimited support/i.test(hub)) {
@@ -192,6 +252,9 @@ clonePages.forEach((page) => {
   if (!html) return;
   if (!/InterimExecs|interim executive|RED Team/i.test(html)) fail(rel + " does not look like Interim Execs content");
   if (html.includes('href="/') || html.includes('src="/')) fail(rel + " has root-absolute href/src (breaks project Pages)");
+  if (html.includes('href="../index.html"') || html.includes("/ie/") || /webflow\.io/.test(html)) {
+    fail(rel + " must not link the three-tier hub, /ie/, or webflow.io");
+  }
   const internals = html.match(/href="([^"]+\.html)"/g) || [];
   internals.forEach((raw) => {
     const href = raw.slice(6, -1);
@@ -225,28 +288,25 @@ if (redirect && /secondshift\.care/.test(redirect) && /chrisgerhardt-dev\.github
 
 const handoff = read("demos/interimexecs/HANDOFF.md");
 if (handoff) {
-  ["secondshift.care", "interimexecs-refresh.webflow.io", "interimexecs-reimagine.webflow.io", "Verify", "chris@gograybeard.com", "older three-card"].forEach((needle) => {
+  ["2026-09-03", "secondshift.care", "interimexecs-refresh.webflow.io", "interimexecs-reimagine.webflow.io", "Verify", "chris@gograybeard.com", "still Blurr", "FormSubmit", "Clone-only", "Talk first", "three-tier email is blocked"].forEach((needle) => {
     if (!handoff.toLowerCase().includes(needle.toLowerCase())) fail("HANDOFF.md missing required note: " + needle);
   });
-  ok("HANDOFF.md documents DNS, Webflow shells, verify-links, and mailbox");
+  ok("HANDOFF.md documents dated HOLD, Webflow shells, FormSubmit, and Clone-only email");
 }
 
 const email = read("market-test/interimexecs-email.md");
 if (email) {
-  if (!/do not send/i.test(email)) fail("email draft must say do not send");
-  if (!/Clone/.test(email) || !/Refresh/.test(email) || !/Reimagine/.test(email)) fail("email draft must name all three options");
-  if (!/Tiny Frog/.test(email) || !/secondshift\.care\/ie/.test(email)) fail("email draft must mention Tiny Frog and the public /ie/ URL");
-  [
-    ["$750/month", email],
-    ["$4,000 once", email],
-    ["$6,000 once", email],
-    ["cutover/acceptance", email],
-    ["standard security baseline", email],
-    ["consolidated feedback set", email],
-    ["not a live or unlimited AI agent", email]
-  ].forEach(function (pair) {
-    if (pair[1].indexOf(pair[0]) === -1) fail("email draft missing required copy: " + pair[0]);
-  });
+  if (!/blocked/i.test(email) && !/confirm before send/i.test(email)) fail("authorized email must stay gated");
+  if (!email.includes("https://secondshift.care/demos/interimexecs/wp-clone/")) {
+    fail("authorized email must link only the public Clone URL");
+  }
+  if (/secondshift\.care\/ie\//.test(email)) fail("authorized email must not link /ie/");
+  if (/https?:\/\/\S*webflow\.io/i.test(email)) fail("authorized email must not link webflow.io");
+  if (/secondshift\.care\/demos\/interimexecs\/(?!wp-clone\/)/.test(email)) {
+    fail("authorized email must not link the three-tier hub");
+  }
+  if (!/Tiny Frog/.test(email) || !/\$750\/month/.test(email)) fail("authorized email must mention Clone pricing and Tiny Frog");
+  if (/\$4,000/.test(email) || /\$6,000/.test(email)) fail("authorized Clone-only email must not pitch Refresh/Reimagine prices");
   [
     "No redesign fee",
     "$4,000 once + $750 / month",
@@ -260,7 +320,37 @@ if (email) {
   ].forEach(function (needle) {
     if (hub && hub.indexOf(needle) === -1) fail("hub missing required conversion copy: " + needle);
   });
-  ok("prospect email draft present and marked do-not-send");
+  ok("authorized email is Clone-only and avoids hub /ie/ webflow.io links");
+}
+
+const blockedEmail = read("market-test/interimexecs-email-three-tier-blocked.md");
+if (blockedEmail) {
+  if (!/BLOCKED/i.test(blockedEmail) || !/do not send/i.test(blockedEmail)) {
+    fail("three-tier email file must stay marked blocked");
+  } else {
+    ok("three-tier email draft is buried and blocked");
+  }
+} else {
+  fail("missing buried three-tier email file");
+}
+
+const thanks = read("demos/interimexecs/customize-thanks.html");
+if (thanks) {
+  if (/Received by Second Shift/i.test(thanks)) fail("thanks page must not claim a proven receipt");
+  if (!/form submission request/i.test(thanks) || !/one business day/i.test(thanks) || !/chris@gograybeard\.com/.test(thanks)) {
+    fail("thanks page must soften to a form-submission request plus one-business-day mailto");
+  } else {
+    ok("thanks page does not claim an unproven receipt");
+  }
+}
+
+const home = read("index.html");
+if (home) {
+  if (/demos\/interimexecs\/index\.html/.test(home) || /Clone, Refresh, Reimagine/.test(home)) {
+    fail("homepage must not advertise the unfinished three-tier comparison");
+  } else {
+    ok("homepage does not push the unfinished three-tier hub");
+  }
 }
 
 ["index.html", "care.html", "work.html", "contact.html", "styles.css"].forEach((f) => {
