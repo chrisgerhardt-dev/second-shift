@@ -4,64 +4,100 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact — Second Shift</title>
-  <meta name="description" content="Send the live URL to chris@gograybeard.com. GrayBeard LLC DBA Second Shift. Tennessee." />
+  <meta name="description" content="Send the live URL. We’ll say Clone, Refresh, or Reimagine. GrayBeard LLC · Tennessee." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="site.css?v=2" />
+  <link rel="stylesheet" href="site.css" />
   <script src="pages-redirect.js"></script>
 </head>
 <body class="site">
   <a class="skip" href="#main">Skip to content</a>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="orbits" aria-hidden="true"></div>
 
   <header class="mast">
-    <a class="wordmark" href="index.html">Second <em>Shift</em></a>
-    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav id="site-nav" aria-label="Primary">
-      <a href="care.html">Care</a>
-      <a href="work.html">Work</a>
-      <a href="contact.html" aria-current="page">Contact</a>
-    </nav>
+    <div class="mast-inner">
+      <a class="brand" href="index.html">Second Shift</a>
+      <nav aria-label="Primary">
+        <a href="work.html">Work</a>
+        <a href="care.html">Care</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
     <section class="hero">
       <div class="wrap">
-        <p class="kicker">Start · no form theater</p>
-        <h1 class="display">
-          <span class="impression" data-shift="Send the live URL.">Send the live URL.</span>
-          <span>We’ll say Clone, Refresh, or <em>Reimagine.</em></span>
-        </h1>
-        <p class="lede">Christopher Gerhardt. GrayBeard LLC, doing business as Second Shift. Tennessee. One inbox. No chatbot. No “book a discovery call” maze.</p>
-        <p><a class="mailto" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20—%20live%20URL">chris@gograybeard.com</a></p>
-        <div class="cta-row" style="margin-top:1.6rem">
-          <a class="cta fill" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20—%20live%20URL">Write the email</a>
-          <a class="cta ghost" href="care.html">Read the ladder first</a>
-        </div>
+        <h1>Send the live URL. We’ll say Clone, Refresh, or Reimagine.</h1>
+        <p class="lede">The public address customers see. What’s broken. Who you are. No chatbot.</p>
+        <p class="notice" id="sent" hidden>We have the form. We’ll reply about the next step.</p>
       </div>
     </section>
 
-    <section class="sheet marks-bottom">
-      <div class="wrap-narrow" data-reveal>
-        <p class="num">What to include</p>
-        <h2 class="section-title">The address. What’s broken. Who you are.</h2>
-        <ul class="list-plain">
-          <li>The public URL — the one customers see, not a staging login.</li>
-          <li>Whether you want the site left alone (Clone) or a modern owner-editable rebuild (Refresh / Reimagine).</li>
-          <li>What you already pay the incumbent. We will not compete Clone with a $16 Squarespace plan.</li>
-        </ul>
-        <p class="fine" style="margin-top:1.4rem">If you buy, we handle migration and testing before cutover. Secure-by-default is a baseline, not a promise that nothing bad can happen. <a href="mailto:hello@secondshift.care">hello@secondshift.care</a> does not exist yet — use the address above.</p>
+    <section class="block">
+      <div class="wrap">
+        <form class="intake" action="https://formsubmit.co/hello@secondshift.care" method="POST">
+          <input type="hidden" name="_subject" value="Second Shift — live URL" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://secondshift.care/contact.html?sent=1" />
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+
+          <p class="field">
+            <label for="url">Live URL</label>
+            <input id="url" name="url" type="url" inputmode="url" autocomplete="url" required placeholder="https://" />
+          </p>
+
+          <p class="field">
+            <label for="need">Clone vs rebuild</label>
+            <select id="need" name="need" required>
+              <option value="" disabled selected>Choose one</option>
+              <option value="clone">Keep the current site (Clone)</option>
+              <option value="rebuild">Rebuild it (Refresh or Reimagine)</option>
+              <option value="unsure">Not sure</option>
+            </select>
+          </p>
+
+          <p class="field">
+            <label for="broken">What’s broken</label>
+            <textarea id="broken" name="broken" rows="5" required placeholder="What customers see. What you want fixed."></textarea>
+          </p>
+
+          <p class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </p>
+
+          <p class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </p>
+
+          <p class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" required />
+          </p>
+
+          <p class="field">
+            <label for="pay">What you pay now <span class="opt">(optional)</span></label>
+            <input id="pay" name="pay" type="text" />
+          </p>
+
+          <p class="actions">
+            <button class="cta" type="submit">Send the URL</button>
+          </p>
+        </form>
       </div>
     </section>
   </main>
 
-  <footer class="colophon wrap">
-    <p>Second Shift · GrayBeard LLC · Tennessee<br />DBA · chris@gograybeard.com</p>
-    <p><a href="index.html">Back to the lander</a></p>
+  <footer class="colophon">
+    <p>Second Shift · GrayBeard LLC · Tennessee</p>
   </footer>
-  <script src="site.js"></script>
+  <script>
+    if (/[?&]sent=1(?:&|$)/.test(location.search)) {
+      var n = document.getElementById("sent");
+      if (n) n.hidden = false;
+    }
+  </script>
 </body>
 </html>
