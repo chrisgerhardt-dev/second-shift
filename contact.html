@@ -6,6 +6,9 @@
   <title>Contact — Second Shift</title>
   <meta name="description" content="Send the live URL. We’ll say Clone, Refresh, or Reimagine. GrayBeard LLC · Tennessee." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,560&display=swap" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="site.css" />
   <script src="pages-redirect.js"></script>
@@ -25,15 +28,15 @@
   </header>
 
   <main id="main">
-    <section class="hero">
+    <section class="hero compact">
       <div class="wrap">
         <h1>Send the live URL. We’ll say Clone, Refresh, or Reimagine.</h1>
-        <p class="lede">The address customers see — even if Contact 404s, the lock is broken, or the homepage still has lorem ipsum. What’s broken. Who you are. No chatbot.</p>
+        <p class="lede">The public address. What’s broken. Who you are.</p>
         <p class="notice" id="sent" hidden>We have the form. We’ll reply about the next step.</p>
       </div>
     </section>
 
-    <section class="block">
+    <section class="block close">
       <div class="wrap">
         <form class="intake" action="https://formsubmit.co/hello@secondshift.care" method="POST">
           <input type="hidden" name="_subject" value="Second Shift — live URL" />
@@ -59,7 +62,7 @@
 
           <p class="field">
             <label for="broken">What’s broken</label>
-            <textarea id="broken" name="broken" rows="5" required placeholder="404s, a broken lock, a 2018 footer, a retainer that does not ship — what customers see."></textarea>
+            <textarea id="broken" name="broken" rows="5" required></textarea>
           </p>
 
           <p class="field">
