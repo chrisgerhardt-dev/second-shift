@@ -76,7 +76,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
       },
       desk: {
         href: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
-        label: "Add $750/mo desk"
+        label: "$750/mo desk, ongoing after cutover"
       },
       editorNote: "After purchase, you edit in the Webflow Editor. This demo shows how that feels.",
       canvas: {
@@ -110,7 +110,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
       },
       desk: {
         href: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
-        label: "Add $750/mo desk"
+        label: "$750/mo desk, ongoing after cutover"
       },
       editorNote: "After purchase, you edit in the Webflow Editor. This demo shows how that feels.",
       canvas: {

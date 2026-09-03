@@ -236,6 +236,30 @@ if (email) {
   if (!/do not send/i.test(email)) fail("email draft must say do not send");
   if (!/Clone/.test(email) || !/Refresh/.test(email) || !/Reimagine/.test(email)) fail("email draft must name all three options");
   if (!/Tiny Frog/.test(email) || !/secondshift\.care\/ie/.test(email)) fail("email draft must mention Tiny Frog and the public /ie/ URL");
+  [
+    ["$750/month", email],
+    ["$4,000 once", email],
+    ["$6,000 once", email],
+    ["cutover/acceptance", email],
+    ["standard security baseline", email],
+    ["consolidated feedback set", email],
+    ["not a live or unlimited AI agent", email]
+  ].forEach(function (pair) {
+    if (pair[1].indexOf(pair[0]) === -1) fail("email draft missing required copy: " + pair[0]);
+  });
+  [
+    "No redesign fee",
+    "$4,000 once + $750 / month",
+    "$6,000 once + $750 / month",
+    "begins after cutover/acceptance",
+    "standard security baseline",
+    "Included scope is confirmed in writing",
+    "one consolidated feedback set",
+    "not a live or unlimited AI agent",
+    "We do not claim unlimited support"
+  ].forEach(function (needle) {
+    if (hub && hub.indexOf(needle) === -1) fail("hub missing required conversion copy: " + needle);
+  });
   ok("prospect email draft present and marked do-not-send");
 }
 
