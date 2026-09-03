@@ -8,8 +8,11 @@
   <!-- Relative on purpose: works under /second-shift/ie/ on GitHub Pages. -->
   <link rel="canonical" href="../demos/interimexecs/index.html" />
   <meta http-equiv="refresh" content="0; url=../demos/interimexecs/index.html" />
+  <script src="../pages-redirect.js"></script>
   <script>
-    location.replace("../demos/interimexecs/index.html");
+    if (location.hostname !== "chrisgerhardt-dev.github.io") {
+      location.replace("../demos/interimexecs/index.html");
+    }
   </script>
 </head>
 <body>

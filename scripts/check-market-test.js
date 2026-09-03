@@ -67,8 +67,8 @@ if (!cfg) {
   if (stripe.refreshDeposit !== "https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00") {
     fail("Refresh $4k Payment Link mismatch");
   }
-  if (stripe.reimagineDeposit !== "https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03") {
-    fail("Reimagine must use the dedicated $6k Payment Link …q03");
+  if (stripe.reimagineDeposit !== "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02") {
+    fail("Reimagine must use the $6k Payment Link …q02");
   } else {
     ok("Stripe buy links: desk, $4k Refresh, $6k Reimagine");
   }
@@ -122,6 +122,8 @@ parsed.forEach(function (pair) {
 });
 if (parsed[2][0] && parsed[2][0].visible !== false) fail("hide quotes should set visible false");
 ok("customize parser maps headline, CTA, and hide-section");
+if (!customize.STORAGE_KEY) fail("customize.js must persist turns (STORAGE_KEY)");
+else ok("customize turns persist in localStorage");
 
 const hub = read("demos/interimexecs/index.html");
 if (hub) {
@@ -162,7 +164,10 @@ if (hub) {
   if (!hub.includes('href="wp-clone/index.html"')) fail("hub fallback Clone link missing");
   if (!hub.includes("https://interimexecs-refresh.webflow.io")) fail("hub fallback Refresh URL missing");
   if (!hub.includes("https://interimexecs-reimagine.webflow.io")) fail("hub fallback Reimagine URL missing");
-  if (!hub.includes("https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03")) fail("hub must use Reimagine Payment Link …q03");
+  if (!hub.includes("https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02")) fail("hub must use Reimagine Payment Link …q02");
+  if (!hub.includes("data-demo-reset") || !/Reload does not add free turns/i.test(hub)) {
+    fail("hub must persist demo turns and only reset when labeled");
+  }
   if (/parked/i.test(hub)) fail("hub still claims the domain is parked");
   if (!/We do not claim unlimited support/i.test(hub)) {
     fail("hub should explicitly refuse unlimited-support / zero-downtime overclaims");
@@ -211,6 +216,12 @@ if (alias) {
 
 if (!fs.existsSync(path.join(root, ".nojekyll"))) fail("missing .nojekyll (GitHub Pages should not run Jekyll)");
 else ok(".nojekyll present");
+const redirect = read("pages-redirect.js");
+if (redirect && /secondshift\.care/.test(redirect) && /chrisgerhardt-dev\.github\.io/.test(redirect)) {
+  ok("github.io traffic is sent to secondshift.care");
+} else {
+  fail("pages-redirect.js must send github.io to the apex");
+}
 
 const handoff = read("demos/interimexecs/HANDOFF.md");
 if (handoff) {

@@ -121,11 +121,38 @@
     return null;
   }
 
+  var STORAGE_KEY = "ss-ie-customize-state";
+
+  function loadState() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed.used !== "number") return null;
+      return parsed;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function saveState(state) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (err) { /* ignore quota / private mode */ }
+  }
+
+  function clearState() {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (err) { /* ignore */ }
+  }
+
   var api = {
     parseCustomize: parseCustomize,
     describe: describe,
     applyEdit: applyEdit,
-    MAX_DEFAULT: MAX_DEFAULT
+    MAX_DEFAULT: MAX_DEFAULT,
+    STORAGE_KEY: STORAGE_KEY
   };
 
   function $(sel, rootEl) {
@@ -169,6 +196,8 @@
     if (max < 2) max = 2;
     if (max > 3) max = 3;
     var used = 0;
+    var history = [];
+    var saved = loadState();
     var transcript = $(".transcript", rootEl);
     var chips = $(".chips", rootEl);
     var form = $("form", rootEl);
@@ -219,6 +248,8 @@
         return;
       }
       used += 1;
+      history.push({ text: text, edit: edit });
+      saveState({ used: used, history: history, tier: selectedTier(rootEl) });
       addBubble(transcript, "bot", describe(edit) + " Watch the site on the left. Demo only — not a live person.");
       refreshTurns();
       if (used >= max) escalate();
@@ -227,6 +258,7 @@
     rootEl.querySelectorAll(".tier-switch button").forEach(function (btn) {
       btn.addEventListener("click", function () {
         setTier(rootEl, btn.getAttribute("data-tier"));
+        if (used > 0) saveState({ used: used, history: history, tier: btn.getAttribute("data-tier") });
       });
     });
 
@@ -278,9 +310,39 @@
       syncMailto();
     }
 
-    setTier(rootEl, "clone");
-    refreshTurns();
-    addBubble(transcript, "bot", "Pick Clone, Refresh, or Reimagine, then change the site. Two or three eligible edits. After that, a person takes the remaining request. Do not send passwords. This is not a live or unlimited AI agent.");
+    var resetBtn = $("[data-demo-reset]", rootEl);
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        clearState();
+        location.reload();
+      });
+    }
+
+    var startTier = (saved && saved.tier) || "clone";
+    setTier(rootEl, startTier);
+    if (saved && saved.used > 0 && Array.isArray(saved.history)) {
+      saved.history.forEach(function (item) {
+        if (!item || !item.edit) return;
+        addBubble(transcript, "user", item.text || describe(item.edit));
+        applyEdit(item.edit, stage);
+        addBubble(transcript, "bot", describe(item.edit) + " Restored after reload. Demo only — not a live person.");
+        used += 1;
+        history.push(item);
+      });
+      if (used > max) used = max;
+      addBubble(transcript, "bot", used >= max
+        ? "These demo edits were already used in this browser. Reload does not add free turns. Use “Reset demo edits” only if you want to practice again."
+        : "Pick Clone, Refresh, or Reimagine. Remaining demo edits stay counted after reload.");
+      if (used >= max) {
+        lockChat();
+        refreshTurns();
+      } else {
+        refreshTurns();
+      }
+    } else {
+      refreshTurns();
+      addBubble(transcript, "bot", "Pick Clone, Refresh, or Reimagine, then change the site. Two or three eligible edits. After that, a person takes the remaining request. Do not send passwords. This is not a live or unlimited AI agent.");
+    }
   }
 
   api.init = init;

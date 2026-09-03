@@ -9,7 +9,7 @@ Christopher: review only. Do not email Interim Execs, spend money, or merge unti
 - GitHub Pages: https://chrisgerhardt-dev.github.io/second-shift/demos/interimexecs/
 - Clone (already on `main`): https://secondshift.care/demos/interimexecs/wp-clone/
 
-`secondshift.care` HTTPS is live and serving this repo. `/ie/` 404s until this branch merges.
+`secondshift.care` HTTPS is live and serving this repo. Production still has the **older** three-card hub until a human merges this PR. `/ie/` 404s and `destinations.js` 404s on production until then.
 
 Prospect email draft (do not send): [`../../market-test/interimexecs-email.md`](../../market-test/interimexecs-email.md)
 
