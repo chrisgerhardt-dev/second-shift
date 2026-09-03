@@ -20,7 +20,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
   stripe: {
     growthDesk: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
     refreshDeposit: "https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00",
-    reimagineDeposit: "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02"
+    reimagineDeposit: "https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03"
   },
 
   choices: {
@@ -105,7 +105,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
         "We handle migration and testing before cutover"
       ],
       buy: {
-        href: "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02",
+        href: "https://buy.stripe.com/28EbJ20FWd3taDFgRU6Vq03",
         label: "Buy Reimagine — $6,000 deposit"
       },
       desk: {

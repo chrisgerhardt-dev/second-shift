@@ -23,7 +23,7 @@ Live Stripe Payment Links in that file:
 | --- | --- |
 | Clone | $750/mo growth desk `…q01` |
 | Refresh | $4,000 once `…q00` (desk is ongoing after cutover) |
-| Reimagine | $6,000 once `…q02` (authority Payment Link) |
+| Reimagine | $6,000 once `…q03` (dedicated Reimagine Payment Link) |
 
 ## Remaining blockers before any email
 
