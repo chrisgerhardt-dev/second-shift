@@ -83,12 +83,17 @@ body.site footer {
   width: min(1180px, calc(100% - 2.4rem));
   margin: 0 auto;
 }
-.wrap-narrow { width: min(760px, calc(100% - 2.4rem)); }
+.wrap-narrow {
+  width: min(760px, calc(100% - 2.4rem));
+  margin: 0 auto;
+}
 
 /* Masthead */
 ::selection { background: #c4653a; color: #f3eee4; }
 
-.mast {
+/* Beat body.site header { width:auto; margin:0; padding:0 } so the sticky
+   bar keeps the same side gutter as .wrap (wordmark / Contact stay inset). */
+body.site header.mast {
   position: sticky;
   top: 0;
   z-index: 40;
@@ -99,7 +104,7 @@ body.site footer {
   width: min(1180px, calc(100% - 2.4rem));
   margin: 0 auto;
   padding: 1.1rem 0 1rem;
-  background: linear-gradient(180deg, rgba(12, 11, 9, 0.96) 70%, rgba(12, 11, 9, 0));
+  background: var(--bg);
 }
 .wordmark {
   font-family: var(--display);
@@ -135,7 +140,9 @@ body.site footer {
   color: var(--accent);
   background: transparent;
   border: 1px solid var(--line);
-  padding: 0.45rem 0.7rem;
+  padding: 0.7rem 0.95rem;
+  min-height: 44px;
+  min-width: 44px;
   cursor: pointer;
 }
 
@@ -411,10 +418,12 @@ body.site .invert .cta.fill:hover { background: transparent; color: var(--paper-
 }
 .mailto:hover { color: var(--ink); text-decoration: none; }
 
-/* Footer */
-.colophon {
+/* Footer — same wrap inset; beat body.site footer { width:auto; margin:0 } */
+body.site footer.colophon {
   position: relative;
   z-index: 1;
+  width: min(1180px, calc(100% - 2.4rem));
+  margin: 0 auto;
   border-top: 1px solid var(--line);
   padding: 2.2rem 0 3rem;
   display: grid;
@@ -472,9 +481,9 @@ body.site .invert .cta.fill:hover { background: transparent; color: var(--paper-
   #site-nav {
     display: none;
     position: absolute;
-    top: 3.6rem;
-    right: 1.2rem;
-    left: 1.2rem;
+    top: 100%;
+    right: 0;
+    left: 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
