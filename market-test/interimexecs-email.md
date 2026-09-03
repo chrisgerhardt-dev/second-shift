@@ -1,6 +1,6 @@
 # Draft only — do not send
 
-Still blocked: Refresh and Reimagine Webflow URLs are unmodified templates. Verify all three links after those are replaced. `secondshift.care` HTTPS is live and serves this repo. After this PR is on `main`, use `https://secondshift.care/ie/`. Until then the new hub is only on this branch.
+Still blocked: Refresh and Reimagine Webflow URLs are unmodified templates. Verify all three links after those are replaced. The live hub is https://secondshift.care/ie/ (also https://secondshift.care/demos/interimexecs/). FormSubmit to chris@gograybeard.com is still unconfirmed.
 
 ---
 

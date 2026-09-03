@@ -225,7 +225,7 @@ if (redirect && /secondshift\.care/.test(redirect) && /chrisgerhardt-dev\.github
 
 const handoff = read("demos/interimexecs/HANDOFF.md");
 if (handoff) {
-  ["secondshift.care", "interimexecs-refresh.webflow.io", "interimexecs-reimagine.webflow.io", "Verify", "chris@gograybeard.com", "older three-card"].forEach((needle) => {
+  ["secondshift.care", "interimexecs-refresh.webflow.io", "interimexecs-reimagine.webflow.io", "Verify", "chris@gograybeard.com", "still Blurr", "unconfirmed"].forEach((needle) => {
     if (!handoff.toLowerCase().includes(needle.toLowerCase())) fail("HANDOFF.md missing required note: " + needle);
   });
   ok("HANDOFF.md documents DNS, Webflow shells, verify-links, and mailbox");

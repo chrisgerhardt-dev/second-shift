@@ -6,8 +6,8 @@ GrayBeard LLC product. Public site: `https://secondshift.care` (GitHub Pages, HT
 
 Public hub: [`demos/interimexecs/index.html`](demos/interimexecs/index.html)
 
-- After this branch is on `main`: https://secondshift.care/ie/
-- GitHub Pages: https://chrisgerhardt-dev.github.io/second-shift/ie/
+- Live hub: https://secondshift.care/ie/
+- Also: https://secondshift.care/demos/interimexecs/
 
 Three labeled choices: **Clone**, **Refresh**, **Reimagine** — benefits, preview, buy CTAs, and a customize demo that actually changes the page (2–3 edits, then a human form).
 
