@@ -160,10 +160,6 @@ body.site nav a[aria-current="page"] {
   padding-bottom: 7rem;
 }
 
-.cta-row.mid {
-  margin-top: 2.25rem;
-}
-
 body.site h1 {
   font-family: var(--display);
   font-optical-sizing: auto;
