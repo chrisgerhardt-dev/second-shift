@@ -3,48 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Request an interim exec — InterimExecs</title>
+  <title>Engage an Executive — InterimExecs</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="demo-banner">Second Shift reimagined demo. Staging form — nothing is emailed to Interim Execs. <a href="../index.html">All Interim Execs demos</a></div>
-  <header class="wrap top">
-    <a class="brand" href="index.html">InterimExecs <small>Engage an interim</small></a>
-    <button class="menu-btn" type="button">Menu</button>
-    <nav>
-      <a href="index.html">Start</a>
-      <a href="situations.html">When to engage</a>
-      <a href="match.html">How matching works</a>
-      <a href="insights.html">Insights</a>
-      <a href="about.html">About</a>
-      <a class="engage-link" href="engage.html" aria-current="page">Request an exec</a>
-    </nav>
+  <div class="demo-banner">Staging form — nothing is emailed to Interim Execs. Not hosted on Webflow. <a href="../index.html">All demos</a></div>
+  <header class="site-head">
+    <div class="wrap bar">
+      <a class="brand" href="index.html"><span class="brand-mark">IE</span> InterimExecs</a>
+      <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="situations.html">Situations</a>
+        <a href="match.html">Approach</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a class="cta-nav" href="engage.html" aria-current="page">Engage an Executive</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="wrap hero">
-    <p class="cms-tag">Collection · Engage (primary conversion)</p>
-    <h1>Request an interim or fractional executive.</h1>
-    <p class="deck">Call 847-849-2800 or text 847-562-5267. Or use this staging form. Search services are free to companies.</p>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="kicker">Confidential discussion</p>
+      <h1>Engage an interim or fractional executive.</h1>
+      <p class="deck">Call 847-849-2800 or text 847-562-5267. Search services are free to companies.</p>
+    </div>
   </section>
 
-  <section class="wrap band">
-    <div class="grid-2">
+  <section class="band">
+    <div class="wrap split">
       <div>
-        <p class="note">Staging form only. This demo does not email Interim Execs, open a live CRM ticket, or post to WordPress.</p>
-        <!-- Form fields are client-editable CMS items in a real designer tool. -->
+        <p class="note"><strong>Staging form only.</strong> This demo does not email Interim Execs, open a live CRM ticket, or post to WordPress.</p>
         <form class="ie-form" action="#" method="post">
           <label class="honeypot">Website<input name="website" tabindex="-1" autocomplete="off"></label>
           <div>
-            <label for="need">What do you need?</label>
+            <label for="need">Situation</label>
             <select id="need" name="need">
               <option value="">Choose a situation</option>
-              <option value="gap">Leadership gap (CEO / CFO / COO / other)</option>
+              <option value="gap">Leadership gap</option>
               <option value="growth">Business expansion</option>
               <option value="turnaround">Struggling business / turnaround</option>
               <option value="fractional">Fractional / part-time executive</option>
               <option value="pe">Private equity portfolio company</option>
               <option value="project">Project execution</option>
               <option value="roadmap">Operational roadmap</option>
+            </select>
+          </div>
+          <div>
+            <label for="role">Executive function</label>
+            <select id="role" name="role">
+              <option value="">Any / not sure</option>
+              <option value="CEO">CEO</option>
+              <option value="CFO">CFO</option>
+              <option value="COO">COO</option>
+              <option value="CIO">CIO</option>
+              <option value="CTO">CTO</option>
+              <option value="CMO">CMO</option>
+              <option value="CSO">CSO</option>
             </select>
           </div>
           <div>
@@ -76,7 +91,7 @@
         </form>
         <div class="ok">Recorded in this demo only. No message went to Interim Execs.</div>
       </div>
-      <aside class="card">
+      <aside class="aside">
         <h2>What happens next</h2>
         <p>A confidential discussion. Then a 270 Evaluation. If InterimExecs believes a match can be made, you review candidates and a statement of work.</p>
         <p>You are not looking for a babysitter or someone just to keep the seat warm.</p>
@@ -85,7 +100,11 @@
     </div>
   </section>
 
-  <footer class="site"><div class="wrap"><p>Reimagined static demo for Second Shift / GrayBeard LLC. Not a Webflow-hosted site.</p></div></footer>
+  <footer class="site-foot">
+    <div class="wrap">
+      <p>Reimagined static demo for Second Shift / GrayBeard LLC. Not a Webflow-hosted site.</p>
+    </div>
+  </footer>
   <script src="js/site.js"></script>
 </body>
 </html>
