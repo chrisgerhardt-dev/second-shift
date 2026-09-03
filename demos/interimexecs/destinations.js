@@ -98,6 +98,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
       href: "https://interimexecs-reimagine.webflow.io",
       ready: true,
       cta: "Preview Reimagine",
+      // Fresh cache-bust check: homepage byline is Interim Execs; /team-members/reta-torphy 404.
       price: "$6,000 once + $750 / month",
       priceNote: "$6,000 once. One tuning round means one consolidated feedback set. $750/month begins after cutover/acceptance unless otherwise agreed. Not a full rebrand (separate, $10,000+).",
       summary: "Premium modern redesign without a full rebrand. One collaborative tuning round.",

@@ -1,6 +1,11 @@
 # Interim Execs market test — HOLD (2026-09-03)
 
-**Status (2026-09-03):** Production serves this repo (PR #5, PR #7). Clone, Refresh, and Reimagine shells are **IE-ready**. Live verify: Refresh title + Interim Execs demo footer (no Blurr); Reimagine byline Interim Execs, slug `interim-execs`, Reta Torphy gone. FormSubmit to `chris@gograybeard.com` is **unconfirmed**.
+**Status (2026-09-03):** Production serves this repo (PR #5, PR #7). Clone, Refresh, and Reimagine shells are **IE-ready**. FormSubmit to `chris@gograybeard.com` is **unconfirmed**.
+
+**Fresh live check (cache-bust curl + WebFetch, 2026-09-03):**
+- Refresh `https://interimexecs-refresh.webflow.io` — title Interim Execs, no Blurr. **ready: true**
+- Reimagine homepage — visible byline **By Interim Execs**, author href `/team-members/interim-execs`, `Reta Torphy` / `reta-torphy` **absent**, `/team-members/reta-torphy` **404**. **ready: true** (would have stayed false if the fake byline persisted)
+- Residual only: `/about` still has template “this is noiceland” lorem (not a homepage byline). Featured post slug is still `japan-house-opens`.
 
 **Three-tier email is blocked** until FormSubmit delivery is proven. Do not send the three-option comparison until that mailbox check passes.
 
