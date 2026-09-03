@@ -8,7 +8,7 @@
   if (!cfg || !cfg.choices) return;
 
   var order = ["clone", "refresh", "reimagine"];
-  var sendReady = !!cfg.customDomainReady;
+  var sendReady = !!cfg.customDomainReady && !!cfg.formSubmitProven;
 
   var promise = document.querySelector("[data-migration]");
   if (promise && cfg.migrationPromise) promise.textContent = cfg.migrationPromise;
