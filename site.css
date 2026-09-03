@@ -4,9 +4,9 @@
    Fonts load from the four marketing HTML files (preconnect + stylesheet). */
 
 :root {
-  --gutter: clamp(1.5rem, 5vw, 2.5rem);
+  --gutter: clamp(1.5rem, 5vw, 3rem);
   --measure: 36rem;
-  --wide: 48rem;
+  --wide: 56rem;
   --tap: 44px;
   --display: "Source Serif 4", "Source Serif Pro", "Iowan Old Style", Georgia, serif;
   --sans: "Source Sans 3", "Source Sans Pro", "Segoe UI", sans-serif;
@@ -17,6 +17,10 @@
   --paper: #e7dfd0;
   --paper-ink: #161310;
   --paper-muted: #5c5348;
+}
+
+html:has(body.site) {
+  scroll-padding-top: 5rem;
 }
 
 body.site {
@@ -113,12 +117,16 @@ body.site nav a[aria-current="page"] {
   text-decoration: none;
 }
 
-/* First screen: one display line owns the viewport. */
+/* First screen: one display line owns the viewport. Air above, job below. */
 .hero {
-  min-height: calc(100svh - 4.25rem);
+  min-height: calc(100svh - 4.5rem);
   display: flex;
-  align-items: center;
-  padding: 4.5rem 0 5.5rem;
+  align-items: flex-end;
+  padding: 7rem 0 5.5rem;
+}
+
+.hero .wrap {
+  animation: rise 0.36s ease both;
 }
 
 .hero.compact {
@@ -127,13 +135,13 @@ body.site nav a[aria-current="page"] {
 }
 
 .block {
-  padding: 4.5rem 0;
+  padding: 6.5rem 0;
 }
 
 .invert {
   background: var(--paper);
   color: var(--paper-ink);
-  padding: 4.5rem 0;
+  padding: 6.5rem 0;
 }
 
 .invert .meta {
@@ -149,7 +157,11 @@ body.site nav a[aria-current="page"] {
 }
 
 .block.close {
-  padding-bottom: 5.5rem;
+  padding-bottom: 7rem;
+}
+
+.cta-row.mid {
+  margin-top: 2.25rem;
 }
 
 body.site h1 {
@@ -228,6 +240,7 @@ body.site footer.colophon,
   min-height: var(--tap);
   color: var(--muted);
   font-size: var(--fs-meta);
+  transition: color 0.28s ease;
 }
 
 .text-link:hover {
@@ -366,7 +379,7 @@ body.site .invert .cta:hover {
 body.site footer.colophon {
   width: min(var(--wide), calc(100% - (var(--gutter) * 2)));
   margin: 0 auto;
-  padding: 2rem 0 3.5rem;
+  padding: 2.5rem 0 4.5rem;
   color: var(--muted);
 }
 
@@ -387,7 +400,23 @@ body.site footer.colophon p {
   /* Keep offer + Send the URL in the first viewport. Do not grow display. */
   .hero {
     min-height: 0;
+    align-items: flex-start;
     padding: 1.75rem 0 2.25rem;
+  }
+
+  .hero .wrap {
+    animation: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -395,7 +424,11 @@ body.site footer.colophon p {
   html {
     scroll-behavior: auto;
   }
-  body.site .cta {
+  body.site .cta,
+  .text-link {
     transition: none;
+  }
+  .hero .wrap {
+    animation: none;
   }
 }
