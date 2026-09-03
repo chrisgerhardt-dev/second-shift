@@ -67,7 +67,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
       shellName: "",
       shellWarning: "",
-      polishNote: "Not fully polished. Starter residue may remain: Made in Webflow badge (OK), Google+/webflow.com social widgets, and a Second Shift market test footer.",
+      polishNote: "Made in Webflow badge (Starter OK). Optional placeholder favicon.",
       internalPreview: "webflow-refresh/index.html",
       benefits: [
         "Same familiar pages and copy, cleaner type and navigation",
@@ -107,7 +107,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
       shellName: "",
       shellWarning: "",
-      polishNote: "Not fully polished. Second Shift market test footer remains. /about still has leftover template lorem.",
+      polishNote: "Second Shift market test footer remains. /about still has leftover template lorem.",
       internalPreview: "webflow-demo/index.html",
       benefits: [
         "Modern navigation, imagery, scroll, forms, and conversion patterns",

@@ -14,7 +14,7 @@ Clone, Refresh, and Reimagine shells are IE-ready, not fully polished. The three
 - Status and blockers: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md)
 - Authorized Clone-only email draft: [`market-test/interimexecs-email.md`](market-test/interimexecs-email.md)
 
-Ready hub cards restore Buy CTAs (Refresh $4k, Reimagine $6k, desk $750). Talk first stays only if a tier is later marked unready. Refresh `polishNote` records Starter residue (Webflow badge OK; Google+/webflow.com widgets; market-test footer).
+Ready hub cards restore Buy CTAs (Refresh $4k, Reimagine $6k, desk $750). Talk first stays only if a tier is later marked unready. Refresh `polishNote` is only the Made in Webflow badge (Starter OK) and optional placeholder favicon.
 
 ## Checks
 

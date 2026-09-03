@@ -3,8 +3,8 @@
 **Status (2026-09-03):** Production serves this repo (PR #5, PR #7). Clone, Refresh, and Reimagine shells are **IE-ready**. FormSubmit to `chris@gograybeard.com` is **unconfirmed**.
 
 **Fresh live check (cache-bust curl + WebFetch, 2026-09-03):**
-- Refresh `https://interimexecs-refresh.webflow.io` — title Interim Execs, no Blurr. **ready: true**. Not fully polished: Starter residue may remain (Made in Webflow badge OK; Google+/webflow.com social widgets; `Second Shift market test` footer). See `polishNote` in [`destinations.js`](destinations.js).
-- Reimagine homepage — visible byline **By Interim Execs**, author href `/team-members/interim-execs`, `Reta Torphy` / `reta-torphy` **absent**, `/team-members/reta-torphy` **404**. **ready: true**. Not fully polished: market-test footer; `/about` still has template “this is noiceland” lorem; featured post slug is still `japan-house-opens`.
+- Refresh `https://interimexecs-refresh.webflow.io` — title Interim Execs, no Blurr. **ready: true**. Live verify: Google+/webflow.com social widgets and the `Second Shift market test` footer are gone. `polishNote` is only the Made in Webflow badge (Starter OK) and an optional placeholder favicon.
+- Reimagine homepage — visible byline **By Interim Execs**, author href `/team-members/interim-execs`, `Reta Torphy` / `reta-torphy` **absent**, `/team-members/reta-torphy` **404**. **ready: true**. True leftovers: `Second Shift market test` footer still live; `/about` still has template “this is noiceland” lorem; featured post slug is still `japan-house-opens`.
 
 **Three-tier email is blocked** until FormSubmit delivery is proven. Do not send the three-option comparison until that mailbox check passes.
 
@@ -43,7 +43,7 @@ Edit only [`destinations.js`](destinations.js). Refresh and Reimagine are `ready
 
 - `secondshift.care` HTTPS serves this repo.
 - Clone preview is live and IE-specific.
-- Refresh and Reimagine Webflow shells are IE-ready (not fully polished; Starter / market-test residue noted).
+- Refresh and Reimagine Webflow shells are IE-ready. Refresh is not fully polished only for the Starter badge / placeholder favicon. Reimagine still has a market-test footer and `/about` template lorem.
 
 ## Out of scope here
 

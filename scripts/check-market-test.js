@@ -107,14 +107,17 @@ if (!cfg) {
     else ok("refresh is flagged IE-ready");
     if (refresh.cta !== "Preview Refresh") fail("refresh.cta must be Preview Refresh");
     if (refresh.shellWarning) fail("refresh shellWarning must be cleared while IE-ready");
-    if (!refresh.polishNote) fail("refresh must have a polishNote while Starter residue remains");
+    if (!refresh.polishNote) fail("refresh must have a polishNote for remaining Starter chrome");
     else {
-      ["not fully polished", "Made in Webflow", "Google+", "market test"].forEach(function (needle) {
+      ["Made in Webflow", "favicon"].forEach(function (needle) {
         if (!refresh.polishNote.toLowerCase().includes(needle.toLowerCase())) {
           fail("refresh polishNote missing: " + needle);
         }
       });
-      ok("refresh polishNote records Starter residue");
+      if (/Google\+|webflow\.com social|market test footer/i.test(refresh.polishNote)) {
+        fail("refresh polishNote must not claim widgets/footer that were already removed");
+      }
+      ok("refresh polishNote is only Starter badge and placeholder favicon");
     }
     if (!refresh.buy || refresh.buy.href !== stripe.refreshDeposit) fail("refresh buy must be the $4k Payment Link");
     else ok("refresh buy is the $4k deposit");
@@ -130,8 +133,8 @@ if (!cfg) {
     else ok("reimagine is flagged IE-ready");
     if (reimagine.cta !== "Preview Reimagine") fail("reimagine.cta must be Preview Reimagine");
     if (reimagine.shellWarning) fail("reimagine shellWarning must be cleared while IE-ready");
-    if (!reimagine.polishNote || !/not fully polished/i.test(reimagine.polishNote)) {
-      fail("reimagine must note it is not fully polished");
+    if (!reimagine.polishNote || !/market test footer/i.test(reimagine.polishNote)) {
+      fail("reimagine polishNote must keep the still-live market-test footer leftover");
     }
     if (!reimagine.buy || reimagine.buy.href !== stripe.reimagineDeposit) fail("reimagine buy must be the $6k Payment Link");
     else ok("reimagine buy is the $6k deposit");
@@ -218,10 +221,13 @@ if (hub) {
   } else {
     ok("hub send-gate stays closed pending FormSubmit");
   }
-  if (!hub.includes("js-polish-note") || !/Not fully polished/.test(hub) || !/Made in Webflow/.test(hub)) {
-    fail("hub must show an honest polishNote for Starter residue");
+  if (!hub.includes("js-polish-note") || !/Made in Webflow/.test(hub) || !/favicon/i.test(hub)) {
+    fail("hub must show the Refresh Starter badge / placeholder favicon polishNote");
   } else {
-    ok("hub shows polish notes instead of claiming a finished shell");
+    ok("hub shows current polish notes");
+  }
+  if (/Google\+/.test(refreshCard) || /webflow\.com social/i.test(refreshCard)) {
+    fail("refresh card must not claim Google+/webflow.com widgets that were removed");
   }
   if (!hub.includes('data-tier="clone"') || !hub.includes('data-tier="refresh"') || !hub.includes('data-tier="reimagine"')) {
     fail("customize tier selector must include all three options");
