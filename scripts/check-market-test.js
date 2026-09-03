@@ -106,7 +106,16 @@ if (!cfg) {
     if (refresh.ready !== true) fail("refresh.ready must be true after live IE verify");
     else ok("refresh is flagged IE-ready");
     if (refresh.cta !== "Preview Refresh") fail("refresh.cta must be Preview Refresh");
-    if (refresh.shellWarning) fail("refresh shellWarning must be cleared");
+    if (refresh.shellWarning) fail("refresh shellWarning must be cleared while IE-ready");
+    if (!refresh.polishNote) fail("refresh must have a polishNote while Starter residue remains");
+    else {
+      ["not fully polished", "Made in Webflow", "Google+", "market test"].forEach(function (needle) {
+        if (!refresh.polishNote.toLowerCase().includes(needle.toLowerCase())) {
+          fail("refresh polishNote missing: " + needle);
+        }
+      });
+      ok("refresh polishNote records Starter residue");
+    }
     if (!refresh.buy || refresh.buy.href !== stripe.refreshDeposit) fail("refresh buy must be the $4k Payment Link");
     else ok("refresh buy is the $4k deposit");
     if (!refresh.desk || refresh.desk.href !== stripe.growthDesk) fail("refresh desk must be the $750/mo desk");
@@ -120,7 +129,10 @@ if (!cfg) {
     if (reimagine.ready !== true) fail("reimagine.ready must be true after live IE verify");
     else ok("reimagine is flagged IE-ready");
     if (reimagine.cta !== "Preview Reimagine") fail("reimagine.cta must be Preview Reimagine");
-    if (reimagine.shellWarning) fail("reimagine shellWarning must be cleared");
+    if (reimagine.shellWarning) fail("reimagine shellWarning must be cleared while IE-ready");
+    if (!reimagine.polishNote || !/not fully polished/i.test(reimagine.polishNote)) {
+      fail("reimagine must note it is not fully polished");
+    }
     if (!reimagine.buy || reimagine.buy.href !== stripe.reimagineDeposit) fail("reimagine buy must be the $6k Payment Link");
     else ok("reimagine buy is the $6k deposit");
     if (!reimagine.desk || reimagine.desk.href !== stripe.growthDesk) fail("reimagine desk must be the $750/mo desk");
@@ -205,6 +217,11 @@ if (hub) {
     fail("hub send-gate must keep three-tier email blocked until FormSubmit is proven");
   } else {
     ok("hub send-gate stays closed pending FormSubmit");
+  }
+  if (!hub.includes("js-polish-note") || !/Not fully polished/.test(hub) || !/Made in Webflow/.test(hub)) {
+    fail("hub must show an honest polishNote for Starter residue");
+  } else {
+    ok("hub shows polish notes instead of claiming a finished shell");
   }
   if (!hub.includes('data-tier="clone"') || !hub.includes('data-tier="refresh"') || !hub.includes('data-tier="reimagine"')) {
     fail("customize tier selector must include all three options");
@@ -306,7 +323,7 @@ if (redirect && /secondshift\.care/.test(redirect) && /chrisgerhardt-dev\.github
 
 const handoff = read("demos/interimexecs/HANDOFF.md");
 if (handoff) {
-  ["2026-09-03", "secondshift.care", "interimexecs-refresh.webflow.io", "interimexecs-reimagine.webflow.io", "Verify", "chris@gograybeard.com", "IE-ready", "FormSubmit", "Clone-only", "Talk first", "three-tier email is blocked"].forEach((needle) => {
+  ["2026-09-03", "secondshift.care", "interimexecs-refresh.webflow.io", "interimexecs-reimagine.webflow.io", "Verify", "chris@gograybeard.com", "IE-ready", "FormSubmit", "Clone-only", "Talk first", "three-tier email is blocked", "not fully polished", "polishNote", "Starter"].forEach((needle) => {
     if (!handoff.toLowerCase().includes(needle.toLowerCase())) fail("HANDOFF.md missing required note: " + needle);
   });
   if (/still Blurr/i.test(handoff) || /still Notable/i.test(handoff)) {

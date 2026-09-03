@@ -6,7 +6,7 @@ Public lander: `index.html`, `care.html`, `work.html`, `contact.html` — story 
 
 ## Interim Execs market test — HOLD (2026-09-03)
 
-Clone, Refresh, and Reimagine shells are IE-ready. The three-tier comparison email is **still blocked** until FormSubmit is proven.
+Clone, Refresh, and Reimagine shells are IE-ready, not fully polished. The three-tier comparison email is **still blocked** until FormSubmit is proven.
 
 - Public Clone preview: https://secondshift.care/demos/interimexecs/wp-clone/
 - Hub (internal / not for prospect email): [`demos/interimexecs/index.html`](demos/interimexecs/index.html)
@@ -14,7 +14,7 @@ Clone, Refresh, and Reimagine shells are IE-ready. The three-tier comparison ema
 - Status and blockers: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md)
 - Authorized Clone-only email draft: [`market-test/interimexecs-email.md`](market-test/interimexecs-email.md)
 
-Ready hub cards restore Buy CTAs (Refresh $4k, Reimagine $6k, desk $750). Talk first stays only if a tier is later marked unready.
+Ready hub cards restore Buy CTAs (Refresh $4k, Reimagine $6k, desk $750). Talk first stays only if a tier is later marked unready. Refresh `polishNote` records Starter residue (Webflow badge OK; Google+/webflow.com widgets; market-test footer).
 
 ## Checks
 
