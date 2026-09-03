@@ -40,16 +40,39 @@
     }
 
     var buy = card.querySelector(".js-buy");
-    if (buy && choice.buy && choice.buy.href) {
-      buy.setAttribute("href", choice.buy.href);
-      buy.setAttribute("target", "_blank");
-      buy.setAttribute("rel", "noopener noreferrer");
-      if (choice.buy.label) buy.textContent = choice.buy.label;
+    if (buy) {
+      if (!choice.ready) {
+        var talkHref = (choice.talk && choice.talk.href) ||
+          ("mailto:" + (cfg.contactEmail || "chris@gograybeard.com") +
+            "?subject=" + encodeURIComponent("Second Shift " + (choice.label || key) + " — talk first"));
+        buy.setAttribute("href", talkHref);
+        buy.removeAttribute("target");
+        buy.removeAttribute("rel");
+        buy.classList.remove("buy");
+        buy.classList.add("ghost");
+        buy.textContent = (choice.talk && choice.talk.label) || cfg.talkFirstLabel || "Talk first";
+      } else if (choice.buy && choice.buy.href) {
+        buy.setAttribute("href", choice.buy.href);
+        buy.setAttribute("target", "_blank");
+        buy.setAttribute("rel", "noopener noreferrer");
+        buy.classList.add("buy");
+        buy.classList.remove("ghost");
+        if (choice.buy.label) buy.textContent = choice.buy.label;
+      }
     }
 
     var desk = card.querySelector(".js-desk");
     if (desk) {
-      if (choice.desk && choice.desk.href) {
+      if (!choice.ready) {
+        desk.hidden = false;
+        desk.classList.remove("buy");
+        desk.classList.add("ghost");
+        desk.setAttribute("href", "mailto:" + (cfg.contactEmail || "chris@gograybeard.com") +
+          "?subject=" + encodeURIComponent("Second Shift " + (choice.label || key) + " desk — talk first"));
+        desk.removeAttribute("target");
+        desk.removeAttribute("rel");
+        desk.textContent = "Ask about the desk";
+      } else if (choice.desk && choice.desk.href) {
         desk.hidden = false;
         desk.setAttribute("href", choice.desk.href);
         desk.setAttribute("target", "_blank");

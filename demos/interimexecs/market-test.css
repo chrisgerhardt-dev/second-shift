@@ -82,6 +82,35 @@ header, main, footer { width: min(1080px, calc(100% - 2.5rem)); }
   color: var(--muted);
   margin: 0 0 0.55rem;
 }
+.site-stage { position: relative; }
+.demo-watermark {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%) rotate(-22deg);
+  pointer-events: none;
+  z-index: 3;
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(200, 16, 46, 0.22);
+  white-space: nowrap;
+  user-select: none;
+}
+.site-stage[data-theme="reimagine"] .demo-watermark {
+  color: rgba(196, 180, 138, 0.28);
+}
+.chat-banner {
+  margin: 0.55rem 0 0;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid #8a5a3a;
+  background: #1a1410;
+  color: #e8d4c4;
+  font-size: 0.88rem;
+}
 
 .mini-site {
   border: 1px solid var(--line);

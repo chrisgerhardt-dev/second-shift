@@ -28,6 +28,39 @@
     return "";
   }
 
+  function blockedReason(text) {
+    var raw = String(text || "");
+    var lower = raw.toLowerCase();
+    if (/\bpassword\b/.test(lower)) return "Do not send passwords. This demo will not apply that.";
+    if (/\blogin\b/.test(lower)) return "Login details are out of scope for this demo.";
+    if (/\bwp-admin\b/.test(lower)) return "wp-admin access is out of scope for this demo.";
+    if (/\bapi[\s-]?keys?\b/.test(lower) || /\bapikey\b/.test(lower)) return "API keys are out of scope for this demo.";
+    if (/\bssh\b/.test(lower)) return "SSH access is out of scope for this demo.";
+    if (/\bguarantee\b/.test(lower)) return "This demo will not add guarantees.";
+    if (/\bfire\s+tiny\s+frog\b/.test(lower)) return "We do not tell you to fire Tiny Frog. Keep them until you accept the new site.";
+    if (/\breplace\s+tiny\s+frog\b/.test(lower)) return "We do not tell you to replace Tiny Frog immediately. Keep them until you accept the new site.";
+    if (/\$\s*\d/.test(raw) || /\b\d[\d,]*(?:\.\d+)?\s*(?:k|dollars?|usd)\b/i.test(raw)) {
+      return "This demo will not invent or change prices. Talk to Second Shift for real pricing.";
+    }
+    return "";
+  }
+
+  function ensureWatermark(stage) {
+    if (!stage) return;
+    var mark = stage.querySelector("[data-demo-watermark]");
+    if (mark) {
+      mark.textContent = "DEMO EDIT";
+      mark.hidden = false;
+      return;
+    }
+    mark = document.createElement("p");
+    mark.className = "demo-watermark";
+    mark.setAttribute("data-demo-watermark", "");
+    mark.setAttribute("aria-hidden", "true");
+    mark.textContent = "DEMO EDIT";
+    stage.insertBefore(mark, stage.firstChild);
+  }
+
   function parseCustomize(text) {
     var raw = String(text || "").trim();
     if (!raw) return null;
@@ -185,7 +218,9 @@
     describe: describe,
     applyEdit: applyEdit,
     MAX_DEFAULT: MAX_DEFAULT,
-    STORAGE_KEY: STORAGE_KEY
+    STORAGE_KEY: STORAGE_KEY,
+    blockedReason: blockedReason,
+    ensureWatermark: ensureWatermark
   };
 
   function $(sel, rootEl) {
@@ -273,6 +308,12 @@
         escalate();
         return;
       }
+      var blocked = blockedReason(text);
+      if (blocked) {
+        addBubble(transcript, "user", text);
+        addBubble(transcript, "bot", blocked + " Demo only — not a live person. Do not send passwords.");
+        return;
+      }
       var edit = parseCustomize(text);
       if (!edit) return;
       addBubble(transcript, "user", text);
@@ -354,6 +395,7 @@
 
     var startTier = (saved && saved.tier) || "clone";
     setTier(rootEl, startTier);
+    ensureWatermark(stage);
     if (saved && saved.used > 0) {
       if (Array.isArray(saved.history)) {
         saved.history.forEach(function (item) {
