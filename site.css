@@ -211,17 +211,21 @@ body.site .cta:hover {
 }
 .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
 body.site .cta.fill {
-  background: var(--accent);
-  color: var(--bg);
+  background: var(--paper);
+  color: var(--paper-ink);
+  border-color: var(--paper);
 }
 body.site .cta.fill:hover {
   background: transparent;
-  color: var(--accent);
+  color: var(--paper);
+  border-color: var(--paper);
 }
 body.site .cta.ghost { border-color: var(--line); color: var(--muted); }
 body.site .cta.ghost:hover { color: var(--accent); background: transparent; }
 
 /* Hero */
+.mast, .hero, .sheet, .invert, .colophon { isolation: isolate; }
+
 .hero {
   position: relative;
   z-index: 1;
