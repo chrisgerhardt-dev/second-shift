@@ -2,7 +2,7 @@
 
 GrayBeard LLC DBA Second Shift. Tennessee. Public site: `https://secondshift.care` (GitHub Pages, HTTPS).
 
-Public lander: `index.html`, `care.html`, `work.html`, `contact.html` — buyer-plain D1 (“Your site still has to work on Tuesday.”) in `site.css`. Shared tokens in `styles.css` (the Interim Execs hub still depends on those variable names). Contact is form-only on `contact.html`.
+Public lander: `index.html`, `care.html`, `work.html`, `contact.html` — Message A retainer honesty (“You’re paying a retainer. Nothing ships.”) in `site.css`. Shared tokens in `styles.css` (the Interim Execs hub still depends on those variable names). Contact is form-only on `contact.html`.
 
 ## Interim Execs market test — HOLD (2026-09-03)
 
