@@ -3,26 +3,141 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Second Shift — website care for companies that already have a site</title>
+  <title>Second Shift — we own the website so you don’t have to</title>
+  <meta name="description" content="GrayBeard LLC DBA Second Shift. Tennessee. Done-for-you website care for small companies, and owner-editable Webflow for mid-market. $750/mo is a growth desk, not DIY hosting." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="site.css?v=2" />
   <script src="pages-redirect.js"></script>
 </head>
-<body>
-  <header>
-    <a class="brand" href="index.html">Second Shift</a>
-    <nav>
-      <a href="care.html">Care plan</a>
+<body class="site">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="orbits" aria-hidden="true"></div>
+
+  <header class="mast">
+    <a class="wordmark" href="index.html">Second <em>Shift</em></a>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Primary">
+      <a href="care.html">Care</a>
       <a href="work.html">Work</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-  <main>
-    <h1>Your site still has to work on Tuesday.</h1>
-    <p>We keep existing business websites alive. A GrayBeard LLC product. Tennessee.</p>
-    <p class="price">$750 / month growth desk</p>
-    <p class="muted">Conversion sites $4,000 default. Then the desk. We do not launch and disappear.</p>
-    <a class="cta" href="contact.html">Start</a>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <p class="kicker">GrayBeard LLC · DBA Second Shift · Tennessee</p>
+        <h1 class="display">
+          <span class="impression" data-shift="Millions of crumbly websites.">Millions of crumbly websites.</span>
+          <span>A fortune spent <em>holding them up.</em></span>
+        </h1>
+        <div class="hero-grid">
+          <p class="lede">The turnkey fix is not another login. You keep the company. We own the mess — the plugins, the patches, the Tuesday that has to work.</p>
+          <div class="cta-row">
+            <a class="cta fill" href="contact.html">Send the live URL</a>
+            <a class="cta ghost" href="care.html">See the ladder</a>
+          </div>
+        </div>
+      </div>
+      <p class="hero-aside">Night press · since the first shift ended</p>
+    </section>
+
+    <section class="sheet marks-bottom" id="problem">
+      <div class="wrap" data-reveal>
+        <p class="num">01 — The problem</p>
+        <h2 class="section-title">The internet is a landfill of sites that are <em>dying in public.</em></h2>
+        <p class="deck">WordPress retainers. Plugin rot. Agencies that invoice for another month of not collapsing. Money leaves. The homepage still looks like 2014.</p>
+        <p class="fine">Second Shift is the adult in the room. We take over what you already have, or we rebuild it when you actually want a modern site. Either way, someone answers for it.</p>
+      </div>
+    </section>
+
+    <section class="sheet" id="who">
+      <div class="wrap">
+        <p class="num" data-reveal>02 — Who it’s for</p>
+        <h2 class="section-title" data-reveal>Two companies. <em>Two paths.</em></h2>
+        <div class="pair">
+          <article class="path" data-reveal>
+            <p class="kicker">Small companies</p>
+            <h3>You do not want a Squarespace login.</h3>
+            <p>You do not want a Webflow login either. You want a human who owns Tuesday — not a CMS you were supposed to “just update.”</p>
+            <p><strong>That is Clone.</strong> Keep the current site. WordPress care. Changes come through us: chat or a person. Not a DIY editor you will ignore for eighteen months.</p>
+          </article>
+          <article class="path" data-reveal>
+            <p class="kicker">Mid-market and larger</p>
+            <h3>When you want to edit it yourselves.</h3>
+            <p>Then we move you to Webflow. Modern, owner-editable, without a committee of developers for a headline change.</p>
+            <p><strong>Refresh</strong> if the bones are right. <strong>Reimagine</strong> if the whole thing has to move. Full rebrand is a different job.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="invert" id="desk">
+      <div class="wrap" data-reveal>
+        <p class="num">03 — Pricing honesty</p>
+        <p class="price-monument">$750<span>a month · growth desk</span></p>
+        <h2 class="section-title">Not hosting with a smile. Not Squarespace at <em>$16–$99.</em></h2>
+        <p>Squarespace is DIY hosting. You get a login and a template. Clone is done-for-you care. Those stickers are not the same product, and we will not pretend they are so a spreadsheet can call us expensive.</p>
+        <p>The live monthly product is a <strong>growth desk</strong>: visible output on the site — pages, fixes, an SEO pass, work you can point at. It is not “we’re here if something breaks.”</p>
+        <p>Need the lights kept on and nothing else? Say so. That is a care conversation against what WordPress shops already charge. There is no cheaper button here because there is no cheaper live product. We will not invent one to win a price war.</p>
+        <div class="cta-row" style="margin-top:1.6rem">
+          <a class="cta fill" href="care.html">What’s on the desk</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet marks-bottom" id="ladder">
+      <div class="wrap">
+        <p class="num" data-reveal>04 — The ladder</p>
+        <h2 class="section-title" data-reveal>Start where you are. <em>Do not rebuild for sport.</em></h2>
+        <p class="deck" data-reveal>Clone if the site can stay. Climb only when you want a modern, owner-editable Webflow site. We migrate and test before cutover. The old shop stays until you accept the new one.</p>
+        <ol class="rungs">
+          <li data-reveal>
+            <span class="name">Clone</span>
+            <p class="meta">Keep the current site. Cost-save against the incumbent. No redesign. Changes via us.</p>
+            <span class="cost">Growth desk · $750/mo</span>
+          </li>
+          <li data-reveal>
+            <span class="name">Refresh</span>
+            <p class="meta">Webflow restyle. Familiar pages, cleaner look, owner-editable. For mid-market that wants the keys.</p>
+            <span class="cost">$4,000 + desk</span>
+          </li>
+          <li data-reveal>
+            <span class="name">Reimagine</span>
+            <p class="meta">Modern standard, tuned to taste. One collaborative tuning round — one consolidated feedback set. Not awards.</p>
+            <span class="cost">$6,000 + desk</span>
+          </li>
+          <li data-reveal>
+            <span class="name">Rebrand</span>
+            <p class="meta">New identity, not a website package. Separate when the mark itself is the problem.</p>
+            <span class="cost">$10,000+ · separate</span>
+          </li>
+        </ol>
+        <p class="fine" style="margin-top:2rem" data-reveal><strong>Secure by default</strong> means a sensible baseline on every tier — practical hosting and care. Not hack-proof. Not a guarantee. Not a compliance audit.</p>
+      </div>
+    </section>
+
+    <section class="sheet" id="start">
+      <div class="wrap-narrow" data-reveal>
+        <p class="num">05 — Start</p>
+        <h2 class="section-title">Send the URL. We’ll say which <em>rung.</em></h2>
+        <p class="deck">Christopher Gerhardt. GrayBeard LLC, doing business as Second Shift. Tennessee. Write <a href="mailto:chris@gograybeard.com?subject=Second%20Shift%20—%20live%20URL">chris@gograybeard.com</a>.</p>
+        <div class="cta-row">
+          <a class="cta fill" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20—%20live%20URL">chris@gograybeard.com</a>
+          <a class="cta ghost" href="work.html">See the work</a>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer>Second Shift · GrayBeard LLC · chrisgerhardt@gmail.com</footer>
+
+  <footer class="colophon wrap">
+    <p>Second Shift · GrayBeard LLC · Tennessee<br />DBA · not a franchise · one shop that answers</p>
+    <p><a href="mailto:chris@gograybeard.com">chris@gograybeard.com</a></p>
+  </footer>
+  <script src="site.js"></script>
 </body>
 </html>
