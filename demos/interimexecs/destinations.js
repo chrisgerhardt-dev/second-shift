@@ -5,12 +5,14 @@
  * No build step. Works on GitHub Pages project paths.
  *
  * Flip choice.ready when that public URL is actually Interim Execs content.
- * Do not flip ready:true on Refresh/Reimagine while the live URLs are still templates.
- * Unready choices must not expose $4k/$6k deposit buy buttons in the hub UI.
+ * Ready choices restore stored Stripe buy/desk CTAs. Unready choices stay Talk first.
+ * Keep shellWarning empty on ready tiers. Use polishNote for known Starter residue.
+ * Flip formSubmitProven only after mailbox delivery is proven.
  * Flip customDomainReady only after secondshift.care serves this repo.
  */
 window.SECOND_SHIFT_IE_DESTINATIONS = {
   customDomainReady: true,
+  formSubmitProven: false,
   intendedPublicOrigin: "https://secondshift.care",
   githubPagesOrigin: "https://chrisgerhardt-dev.github.io",
   githubPagesPath: "/second-shift/",
@@ -57,14 +59,15 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
     refresh: {
       label: "Refresh",
       href: "https://interimexecs-refresh.webflow.io",
-      ready: false,
-      cta: "Open current Webflow shell",
+      ready: true,
+      cta: "Preview Refresh",
       price: "$4,000 once + $750 / month",
       priceNote: "$4,000 once. $750/month growth desk begins after cutover/acceptance unless otherwise agreed.",
       summary: "Webflow restyle. Modernized but familiar, and owner-editable.",
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
-      shellName: "Blurr",
-      shellWarning: "This live URL is still the unmodified free Blurr template (a photo-blur launch page). It is not Interim Execs content. Do not present it as a finished Refresh.",
+      shellName: "",
+      shellWarning: "",
+      polishNote: "Made in Webflow badge (Starter OK). Optional placeholder favicon.",
       internalPreview: "webflow-refresh/index.html",
       benefits: [
         "Same familiar pages and copy, cleaner type and navigation",
@@ -95,14 +98,16 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
     reimagine: {
       label: "Reimagine",
       href: "https://interimexecs-reimagine.webflow.io",
-      ready: false,
-      cta: "Open current Webflow shell",
+      ready: true,
+      cta: "Preview Reimagine",
+      // Fresh cache-bust check: homepage byline is Interim Execs; /team-members/reta-torphy 404.
       price: "$6,000 once + $750 / month",
       priceNote: "$6,000 once. One tuning round means one consolidated feedback set. $750/month begins after cutover/acceptance unless otherwise agreed. Not a full rebrand (separate, $10,000+).",
       summary: "Premium modern redesign without a full rebrand. One collaborative tuning round.",
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
-      shellName: "Notable / NOICELAND blog",
-      shellWarning: "This live URL is still the unmodified free Notable/NOICELAND blog template (fashion and art posts). It is not Interim Execs content. Do not present it as a finished Reimagine.",
+      shellName: "",
+      shellWarning: "",
+      polishNote: "Second Shift market test footer remains. /about still has leftover template lorem.",
       internalPreview: "webflow-demo/index.html",
       benefits: [
         "Modern navigation, imagery, scroll, forms, and conversion patterns",

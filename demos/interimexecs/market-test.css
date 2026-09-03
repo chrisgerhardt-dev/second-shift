@@ -59,6 +59,11 @@ header, main, footer { width: min(1080px, calc(100% - 2.5rem)); }
 }
 .ok { border-color: var(--accent); }
 .warn { margin: 0.7rem 0 0; }
+.polish {
+  margin: 0.7rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
 .notes { margin-top: 2rem; }
 
 .studio { margin-top: 2.75rem; padding-top: 0.5rem; border-top: 1px solid var(--line); }

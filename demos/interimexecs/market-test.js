@@ -8,7 +8,7 @@
   if (!cfg || !cfg.choices) return;
 
   var order = ["clone", "refresh", "reimagine"];
-  var sendReady = !!cfg.customDomainReady;
+  var sendReady = !!cfg.customDomainReady && !!cfg.formSubmitProven;
 
   var promise = document.querySelector("[data-migration]");
   if (promise && cfg.migrationPromise) promise.textContent = cfg.migrationPromise;
@@ -88,10 +88,20 @@
 
     var warn = card.querySelector(".js-shell-warn");
     if (warn) {
-      if (choice.ready) warn.hidden = true;
+      if (choice.ready || !choice.shellWarning) warn.hidden = true;
       else {
         warn.hidden = false;
-        if (choice.shellWarning) warn.textContent = choice.shellWarning;
+        warn.textContent = choice.shellWarning;
+      }
+    }
+
+    var polish = card.querySelector(".js-polish-note");
+    if (polish) {
+      if (choice.ready && choice.polishNote) {
+        polish.hidden = false;
+        polish.textContent = choice.polishNote;
+      } else {
+        polish.hidden = true;
       }
     }
 
