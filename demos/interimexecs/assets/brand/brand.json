@@ -1,0 +1,56 @@
+{
+  "name": "InterimExecs",
+  "source": "https://interimexecs.com",
+  "scraped": "2026-09-04",
+  "logo": {
+    "svg": "ie-logo.svg",
+    "png": "ie-logo.png",
+    "note": "Primary header wordmark from the live WordPress site (wp-content/uploads/2019/11/ie-logo.svg). SVG wraps the same raster."
+  },
+  "favicon": "favicon.png",
+  "fonts": {
+    "primary": "Open Sans",
+    "display": "Raleway",
+    "accent": "Poppins",
+    "liveStacks": [
+      "Raleway, Open Sans, sans-serif",
+      "Open Sans, Helvetica, Arial, sans-serif",
+      "Poppins, Open Sans, sans-serif"
+    ]
+  },
+  "colors": {
+    "gold": "#e7bf8f",
+    "navy": "#3c5370",
+    "teal": "#377d95",
+    "tealBright": "#008cba",
+    "orange": "#d97732",
+    "orangeBurnt": "#db651b",
+    "red": "#a61f22",
+    "redDeep": "#8f1b1e",
+    "redMuted": "#a62428",
+    "ink": "#272727",
+    "inkSoft": "#222222",
+    "mist": "#f5f5f5",
+    "paper": "#ffffff",
+    "line": "#c1c1c1",
+    "reds": [
+      "#a61f22",
+      "#8f1b1e",
+      "#a62428",
+      "#a82626"
+    ],
+    "neutrals": [
+      "#272727",
+      "#222222",
+      "#f5f5f5",
+      "#c1c1c1",
+      "#dddddd",
+      "#f2f2f2",
+      "#e4e4e4"
+    ]
+  },
+  "reuse": {
+    "webflow": "Drop ie-logo.svg (or ie-logo.png) into Refresh/Reimagine as the header mark. Do not invent a new logo.",
+    "clone": "wp-clone/assets/logo.svg is a copy of the same file."
+  }
+}
