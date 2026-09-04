@@ -8,7 +8,7 @@ Public lander: `index.html`, `care.html`, `work.html`, `contact.html` — Messag
 
 Clone, Refresh, and Reimagine shells are IE-ready. The three-tier comparison email is **still blocked** until FormSubmit is proven. Hub flip is for Christopher’s review of the ladder links only.
 
-- Public Clone preview: https://secondshift.care/demos/interimexecs/wp-clone/
+- Public Clone preview: https://interimexecs.com (live site; same site, lower bill proof)
 - Hub (internal / not for prospect email): [`demos/interimexecs/index.html`](demos/interimexecs/index.html)
 - Destinations and Stripe paths: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js)
 - Status and blockers: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md)

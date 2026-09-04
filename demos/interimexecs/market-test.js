@@ -1,7 +1,8 @@
 /**
  * Applies destinations.js to the public market-test hub.
- * Vanilla JS only. Relative Clone hrefs stay relative to this page so
- * GitHub Pages project paths (/second-shift/demos/interimexecs/) work.
+ * Vanilla JS only. Absolute preview hrefs (Clone live site, Webflow shells)
+ * open in a new tab. Relative internal-preview hrefs stay relative to this
+ * page so GitHub Pages project paths (/second-shift/demos/interimexecs/) work.
  */
 (function () {
   var cfg = window.SECOND_SHIFT_IE_DESTINATIONS;

@@ -90,9 +90,9 @@ if (!cfg) {
   if (!clone) fail("clone choice missing");
   else {
     if (clone.ready !== true) fail("clone.ready should be true");
-    if (clone.href !== "wp-clone/index.html") fail("clone.href must be the in-repo wp-clone page");
-    else ok("clone points at in-repo wp-clone");
-    if (/^https?:\/\//i.test(clone.href)) fail("clone must not be an external URL");
+    if (clone.href !== "https://interimexecs.com") fail("clone.href must be the live InterimExecs site");
+    else ok("clone points at https://interimexecs.com");
+    if (!/^https?:\/\//i.test(clone.href)) fail("clone preview must be an absolute live-site URL");
     if (!clone.benefits || clone.benefits.length < 4) fail("clone benefits missing");
     if (!clone.buy || clone.buy.href !== stripe.growthDesk) fail("clone buy must be the $750/mo desk");
     else ok("clone $750/mo desk buy may stay");
@@ -227,7 +227,13 @@ if (hub) {
   } else {
     ok("hub uses relative stylesheets");
   }
-  if (!hub.includes('href="wp-clone/index.html"')) fail("hub fallback Clone link missing");
+  if (!hub.includes('href="https://interimexecs.com"')) fail("hub fallback Clone link must be the live InterimExecs site");
+  if (hub.includes('href="wp-clone/index.html"')) fail("hub Preview Clone CTA must not use the local wp-clone snapshot");
+  if (!/Clone preview is the live InterimExecs site/i.test(hub)) {
+    fail("hub public destinations note must say Clone preview is the live InterimExecs site");
+  } else {
+    ok("hub destinations note: Clone preview is the live site");
+  }
   if (!hub.includes("https://interimexecs-refresh.webflow.io")) fail("hub fallback Refresh URL missing");
   if (!hub.includes("https://interimexecs-reimagine.webflow.io")) fail("hub fallback Reimagine URL missing");
   if (!hub.includes("https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02")) {

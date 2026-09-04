@@ -15,7 +15,7 @@
 
 ## Live URLs (do not put hub or /ie/ in authorized email)
 
-- Clone (authorized public preview): https://secondshift.care/demos/interimexecs/wp-clone/
+- Clone (hub Preview Clone CTA): https://interimexecs.com — live site, same site / lower bill proof. Local `wp-clone/` stays as a customize / market-test fallback only.
 - Hub (internal / not for prospect email): https://secondshift.care/demos/interimexecs/
 - Short alias (not for prospect email): https://secondshift.care/ie/
 - Refresh (IE-ready, not for authorized email): https://interimexecs-refresh.webflow.io
