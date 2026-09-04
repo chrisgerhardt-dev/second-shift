@@ -6,18 +6,18 @@ Public lander: `index.html`, `care.html`, `work.html`, `contact.html` — Messag
 
 ## Interim Execs market test — HOLD (2026-09-03)
 
-Clone is the only IE-ready public preview: https://interimexecs.com. Refresh and Reimagine are **not IE-ready** while Webflow rebuilds them from the true InterimExecs clone. The three-tier comparison email is **still blocked** until those shells are IE-ready again **and** FormSubmit is proven.
+Clone, Refresh, and Reimagine shells are IE-ready again after the true-clone rebuild. The three-tier comparison email is **still blocked** until FormSubmit is proven. Hub flip is for Christopher’s review of the ladder links only.
 
 - Public Clone preview: https://interimexecs.com (live site; same site, lower bill proof)
 - Asset clone / customize canvas: [`demos/interimexecs/wp-clone/`](demos/interimexecs/wp-clone/) (Pages: https://secondshift.care/demos/interimexecs/wp-clone/)
 - Brand pack (logo + colors + fonts for Refresh and Reimagine): [`demos/interimexecs/assets/brand/`](demos/interimexecs/assets/brand/)
 - Refresh the asset clone from live: `python3 scripts/refresh-ie-asset-clone.py`
 - Hub (internal / not for prospect email): [`demos/interimexecs/index.html`](demos/interimexecs/index.html)
-- Destinations and Stripe paths: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js) — keep `ready: false` on Refresh/Reimagine until the rebuild is done.
+- Destinations and Stripe paths: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js)
 - Status and blockers: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md)
 - Authorized Clone-only email draft: [`market-test/interimexecs-email.md`](market-test/interimexecs-email.md)
 
-Unready hub cards use Talk first, not live $4k / $6k deposit buttons. Clone $750/mo desk buy may stay.
+Ready hub cards restore Buy CTAs (Refresh $4k, Reimagine $6k, desk $750). Talk first stays only if a tier is later marked unready.
 
 ## Checks
 

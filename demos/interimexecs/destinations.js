@@ -6,8 +6,6 @@
  *
  * Flip choice.ready when that public URL is actually Interim Execs content.
  * Ready choices restore stored Stripe buy/desk CTAs. Unready choices stay Talk first.
- * Refresh and Reimagine are temporarily unready while Webflow rebuilds them
- * from the true InterimExecs clone. Do not present those live URLs as finished.
  * Flip formSubmitProven only after mailbox delivery is proven.
  * Flip customDomainReady only after secondshift.care serves this repo.
  *
@@ -68,14 +66,14 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
     refresh: {
       label: "Refresh",
       href: "https://interimexecs-refresh.webflow.io",
-      ready: false,
+      ready: true,
       cta: "Preview Refresh",
       price: "$4,000 once + $750 / month",
       priceNote: "$4,000 once. $750/month growth desk begins after cutover/acceptance unless otherwise agreed.",
       summary: "Webflow restyle. Modernized but familiar, and owner-editable.",
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
       shellName: "",
-      shellWarning: "Refresh is being rebuilt in Webflow from the true InterimExecs clone. This live URL is mid-rebuild and is not ready to show. Talk first — do not present it as a finished Refresh.",
+      shellWarning: "",
       internalPreview: "webflow-refresh/index.html",
       benefits: [
         "Same familiar pages and copy, cleaner type and navigation",
@@ -106,14 +104,14 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
     reimagine: {
       label: "Reimagine",
       href: "https://interimexecs-reimagine.webflow.io",
-      ready: false,
+      ready: true,
       cta: "Preview Reimagine",
       price: "$6,000 once + $750 / month",
       priceNote: "$6,000 once. One tuning round means one consolidated feedback set. $750/month begins after cutover/acceptance unless otherwise agreed. Not a full rebrand (separate, $10,000+).",
       summary: "Premium modern redesign without a full rebrand. One collaborative tuning round.",
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
       shellName: "",
-      shellWarning: "Reimagine is being rebuilt in Webflow from the true InterimExecs clone. This live URL is mid-rebuild and is not ready to show. Talk first — do not present it as a finished Reimagine.",
+      shellWarning: "",
       internalPreview: "webflow-demo/index.html",
       benefits: [
         "Modern navigation, imagery, scroll, forms, and conversion patterns",
