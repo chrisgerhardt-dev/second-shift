@@ -30,7 +30,7 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
   choices: {
     clone: {
       label: "Clone",
-      href: "wp-clone/index.html",
+      href: "https://interimexecs.com",
       ready: true,
       cta: "Preview Clone",
       price: "$750 / month",
