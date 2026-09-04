@@ -66,14 +66,14 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
     refresh: {
       label: "Refresh",
       href: "https://interimexecs-refresh.webflow.io",
-      ready: true,
+      ready: false,
       cta: "Preview Refresh",
       price: "$4,000 once + $750 / month",
       priceNote: "$4,000 once. $750/month growth desk begins after cutover/acceptance unless otherwise agreed.",
       summary: "Webflow restyle. Modernized but familiar, and owner-editable.",
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
       shellName: "",
-      shellWarning: "",
+      shellWarning: "Craft review in progress. Refresh is not ready to show — Christopher found it looks worse than Clone (dark text / craft fail). Do not present it as finished.",
       internalPreview: "webflow-refresh/index.html",
       benefits: [
         "Same familiar pages and copy, cleaner type and navigation",
@@ -104,14 +104,14 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
     reimagine: {
       label: "Reimagine",
       href: "https://interimexecs-reimagine.webflow.io",
-      ready: true,
+      ready: false,
       cta: "Preview Reimagine",
       price: "$6,000 once + $750 / month",
       priceNote: "$6,000 once. One tuning round means one consolidated feedback set. $750/month begins after cutover/acceptance unless otherwise agreed. Not a full rebrand (separate, $10,000+).",
       summary: "Premium modern redesign without a full rebrand. One collaborative tuning round.",
       security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
       shellName: "",
-      shellWarning: "",
+      shellWarning: "Craft review in progress. Reimagine is not ready to show — hold until the Grok Heavy redesign brief lands. Do not present it as finished.",
       internalPreview: "webflow-demo/index.html",
       benefits: [
         "Modern navigation, imagery, scroll, forms, and conversion patterns",
