@@ -1,4 +1,17 @@
 (function () {
+  // Gravity Forms hides wrappers until its JS boots. We stripped that JS so
+  // the form would never unhide — show the fields and dummy-submit instead.
+  document.querySelectorAll(".gform_wrapper[style], .gform_wrapper").forEach(function (el) {
+    if (el.style && el.style.display === "none") el.style.display = "block";
+    el.style.removeProperty("display");
+    if ((el.getAttribute("style") || "").indexOf("display:none") !== -1 || (el.getAttribute("style") || "").indexOf("display: none") !== -1) {
+      el.setAttribute("style", (el.getAttribute("style") || "").replace(/display\s*:\s*none\s*;?/gi, ""));
+    }
+  });
+  document.querySelectorAll("[onclick*='gform']").forEach(function (el) {
+    el.removeAttribute("onclick");
+  });
+
   function showDummyNotice(form) {
     var note = form.getAttribute("data-ss-notice");
     if (note) return;

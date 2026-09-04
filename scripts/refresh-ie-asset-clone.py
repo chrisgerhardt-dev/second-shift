@@ -514,6 +514,19 @@ def neutralize_forms(html: str) -> str:
         html,
         flags=re.I,
     )
+    # Gravity Forms hides the wrapper until its JS runs. We stripped that JS.
+    html = re.sub(
+        r"(<div\b[^>]*gform_wrapper[^>]*style=['\"])([^'\"]*)display\s*:\s*none;?([^'\"]*)(['\"])",
+        r"\1\2\3\4",
+        html,
+        flags=re.I,
+    )
+    html = re.sub(
+        r'''\sonclick=(["'])[^"']*gform[^"']*\1''',
+        "",
+        html,
+        flags=re.I,
+    )
     return html
 
 
@@ -714,12 +727,28 @@ def write_overlay_files() -> None:
 .zendesk-iframe,
 iframe[src*="zopim"],
 iframe[src*="zendesk"] { display: none !important; }
+
+/* Gravity Forms waits on its own JS to unhide. Show the dummy fields. */
+.gform_wrapper { display: block !important; visibility: visible !important; }
+.gform_wrapper[style*="display:none"],
+.gform_wrapper[style*="display: none"] { display: block !important; }
 """,
         encoding="utf-8",
     )
 
     (js_dir / "site.js").write_text(
         """(function () {
+  document.querySelectorAll(".gform_wrapper").forEach(function (el) {
+    if (el.style && el.style.display === "none") el.style.display = "block";
+    var st = el.getAttribute("style") || "";
+    if (/display\\s*:\\s*none/i.test(st)) {
+      el.setAttribute("style", st.replace(/display\\s*:\\s*none\\s*;?/gi, ""));
+    }
+  });
+  document.querySelectorAll("[onclick*='gform']").forEach(function (el) {
+    el.removeAttribute("onclick");
+  });
+
   function showDummyNotice(form) {
     var note = form.getAttribute("data-ss-notice");
     if (note) return;

@@ -29,3 +29,8 @@
 .zendesk-iframe,
 iframe[src*="zopim"],
 iframe[src*="zendesk"] { display: none !important; }
+
+/* Gravity Forms waits on its own JS to unhide. Show the dummy fields. */
+.gform_wrapper { display: block !important; visibility: visible !important; }
+.gform_wrapper[style*="display:none"],
+.gform_wrapper[style*="display: none"] { display: block !important; }

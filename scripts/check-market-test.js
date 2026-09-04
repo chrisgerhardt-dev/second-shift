@@ -324,6 +324,19 @@ if (cloneHome) {
   else ok("clone homepage is an asset mirror with live imagery and a corner badge");
 }
 
+const contactHtml = read("demos/interimexecs/wp-clone/contact.html");
+if (contactHtml) {
+  if (/id=['"]gform_wrapper_1['"][^>]*display\s*:\s*none/i.test(contactHtml)) {
+    fail("contact Gravity Form wrapper must not stay display:none (dummy form should be visible)");
+  }
+  if (!/data-ss-dummy-form/.test(contactHtml)) fail("contact form must be marked dummy");
+  else ok("contact form is a visible dummy (does not post to InterimExecs)");
+}
+const overlayJs = read("demos/interimexecs/wp-clone/js/site.js");
+if (overlayJs && !/gform_wrapper/.test(overlayJs)) {
+  fail("js/site.js must unhide Gravity Form wrappers after we strip GF JS");
+}
+
 const brandDir = path.join(root, "demos/interimexecs/assets/brand");
 ["ie-logo.svg", "COLORS.md", "brand.json"].forEach((name) => {
   if (!fs.existsSync(path.join(brandDir, name))) fail("brand pack missing " + name);
