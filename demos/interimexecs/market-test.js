@@ -3,6 +3,8 @@
  * Vanilla JS only. Absolute preview hrefs (Clone live site, Webflow shells)
  * open in a new tab. Relative internal-preview hrefs stay relative to this
  * page so GitHub Pages project paths (/second-shift/demos/interimexecs/) work.
+ * Clone uses internalPreview / assetMirror for the local wp-clone/ snapshot;
+ * do not put that path on the public Preview Clone CTA.
  */
 (function () {
   var cfg = window.SECOND_SHIFT_IE_DESTINATIONS;

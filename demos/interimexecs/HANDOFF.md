@@ -1,5 +1,7 @@
 # Interim Execs market test — HOLD (2026-09-03)
 
+**Status (2026-09-04):** `wp-clone/` is now a high-fidelity asset mirror of the live public site (real logo, hero, headshots, company-mark strip, theme CSS). Preview Clone on the hub still opens https://interimexecs.com. Use `wp-clone/` / `assets/brand/` for customize-canvas reuse and the **Refresh and Reimagine** logo / palette / fonts. FormSubmit to `chris@gograybeard.com` is still **unconfirmed**. Three-tier email is blocked.
+
 **Status (2026-09-03 evening):** Production serves this repo (PR #5, PR #7). Clone, Refresh, and Reimagine shells are **IE-ready** (craft-READY Webflow staging, 2026-09-03 evening). This hub flip is for Christopher’s review of the ladder links only — not a prospect email send. FormSubmit to `chris@gograybeard.com` is **unconfirmed**.
 
 **Three-tier email is blocked** until FormSubmit delivery is proven. Do not send the three-option comparison until that mailbox check passes.
@@ -15,7 +17,9 @@
 
 ## Live URLs (do not put hub or /ie/ in authorized email)
 
-- Clone (hub Preview Clone CTA): https://interimexecs.com — live site, same site / lower bill proof. Local `wp-clone/` stays as a customize / market-test fallback only.
+- Clone (hub Preview Clone CTA): https://interimexecs.com — live site, same site / lower bill proof.
+- Clone asset mirror (hub “Asset clone” / `choices.clone.internalPreview` + `assetMirror`): https://secondshift.care/demos/interimexecs/wp-clone/ — local high-fidelity snapshot for customize / logo reuse. Refresh the mirror later with `python3 scripts/refresh-ie-asset-clone.py`.
+- Brand pack for **Refresh and Reimagine** (logo + hex tokens + fonts): [`assets/brand/`](assets/brand/) — take `ie-logo.svg` / `ie-logo.png`, `COLORS.md` / `brand.json`, and `FONTS.md` (Open Sans / Raleway / Poppins). Webflow Designer inject is a follow-up; this PR is the asset pack only.
 - Hub (internal / not for prospect email): https://secondshift.care/demos/interimexecs/
 - Short alias (not for prospect email): https://secondshift.care/ie/
 - Refresh (IE-ready, not for authorized email): https://interimexecs-refresh.webflow.io
@@ -40,6 +44,10 @@ Edit only [`destinations.js`](destinations.js). Refresh and Reimagine are `ready
 - `secondshift.care` HTTPS serves this repo.
 - Clone preview is live and IE-specific.
 - Refresh and Reimagine Webflow shells are IE-ready.
+
+## Brand (Refresh and Reimagine)
+
+**Refresh and Reimagine staging must Empathize on the IE audience** (owners, boards, PE who need on-demand senior operators) **and match this brand palette** (navy / gold / teal, not an invented Coca-Cola red) **plus the live fonts when they reinforce the brand**. Logo reuse for both shells. Do not redraw the wordmark. See [`assets/brand/`](assets/brand/).
 
 ## Out of scope here
 

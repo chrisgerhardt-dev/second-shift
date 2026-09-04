@@ -1,6 +1,9 @@
 /**
  * Customize demo: real on-page mutations, then a human handoff.
  * Not a live agent. Caps at destinations.customizeTurns (2–3).
+ * The canvas is the hub mini-site. The high-fidelity Clone snapshot
+ * (logo, hero, live CSS) lives at destinations.choices.clone.assetMirror
+ * (wp-clone/index.html) — refresh it with scripts/refresh-ie-asset-clone.py.
  */
 (function (root) {
   var MAX_DEFAULT = 3;

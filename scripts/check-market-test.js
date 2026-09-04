@@ -93,6 +93,9 @@ if (!cfg) {
     if (clone.href !== "https://interimexecs.com") fail("clone.href must be the live InterimExecs site");
     else ok("clone points at https://interimexecs.com");
     if (!/^https?:\/\//i.test(clone.href)) fail("clone preview must be an absolute live-site URL");
+    if (clone.internalPreview !== "wp-clone/index.html") fail("clone.internalPreview must be the local asset mirror");
+    if (clone.assetMirror !== "wp-clone/index.html") fail("clone.assetMirror must be the local asset mirror");
+    else ok("clone assetMirror / internalPreview point at wp-clone/");
     if (!clone.benefits || clone.benefits.length < 4) fail("clone benefits missing");
     if (!clone.buy || clone.buy.href !== stripe.growthDesk) fail("clone buy must be the $750/mo desk");
     else ok("clone $750/mo desk buy may stay");
@@ -228,7 +231,19 @@ if (hub) {
     ok("hub uses relative stylesheets");
   }
   if (!hub.includes('href="https://interimexecs.com"')) fail("hub fallback Clone link must be the live InterimExecs site");
-  if (hub.includes('href="wp-clone/index.html"')) fail("hub Preview Clone CTA must not use the local wp-clone snapshot");
+  const destHref = (cloneCard.match(/<a[^>]*class="[^"]*js-dest[^"]*"[^>]*href="([^"]+)"/) ||
+    cloneCard.match(/<a[^>]*href="([^"]+)"[^>]*class="[^"]*js-dest[^"]*"/) ||
+    [])[1];
+  if (destHref !== "https://interimexecs.com") {
+    fail("hub Preview Clone CTA (js-dest) must be the live InterimExecs site, not wp-clone");
+  } else {
+    ok("hub Preview Clone CTA stays on the live site");
+  }
+  if (!cloneCard.includes('js-internal') || !cloneCard.includes('href="wp-clone/index.html"')) {
+    fail("hub clone card must expose the local asset clone as js-internal, not as Preview Clone");
+  } else {
+    ok("hub clone card links the local asset mirror separately");
+  }
   if (!/Clone preview is the live InterimExecs site/i.test(hub)) {
     fail("hub public destinations note must say Clone preview is the live InterimExecs site");
   } else {
@@ -294,6 +309,69 @@ ok("clone pages exist and use relative links");
     fail("clone missing asset " + asset);
   }
 });
+
+const cloneHome = read("demos/interimexecs/wp-clone/index.html");
+if (cloneHome) {
+  if (!cloneHome.includes("ie-logo.svg")) fail("clone homepage missing the live InterimExecs logo file");
+  if (!/front-page-feature-image/i.test(cloneHome)) fail("clone homepage missing the live hero image");
+  if (!/microsoft-logo|pepsi-logo|estee-lauder-logo/i.test(cloneHome)) {
+    fail("clone homepage missing the live company-mark logo strip");
+  }
+  if (/class="demo-banner"/.test(cloneHome)) {
+    fail("clone homepage must not use a full-width demo banner (corner badge only)");
+  }
+  if (!cloneHome.includes("ss-clone-badge")) fail("clone homepage missing the discrete SS staging badge");
+  else ok("clone homepage is an asset mirror with live imagery and a corner badge");
+}
+
+const contactHtml = read("demos/interimexecs/wp-clone/contact.html");
+if (contactHtml) {
+  if (/id=['"]gform_wrapper_1['"][^>]*display\s*:\s*none/i.test(contactHtml)) {
+    fail("contact Gravity Form wrapper must not stay display:none (dummy form should be visible)");
+  }
+  if (!/data-ss-dummy-form/.test(contactHtml)) fail("contact form must be marked dummy");
+  else ok("contact form is a visible dummy (does not post to InterimExecs)");
+}
+const overlayJs = read("demos/interimexecs/wp-clone/js/site.js");
+if (overlayJs && !/gform_wrapper/.test(overlayJs)) {
+  fail("js/site.js must unhide Gravity Form wrappers after we strip GF JS");
+}
+
+const brandDir = path.join(root, "demos/interimexecs/assets/brand");
+["ie-logo.svg", "ie-logo.png", "COLORS.md", "FONTS.md", "brand.json"].forEach((name) => {
+  if (!fs.existsSync(path.join(brandDir, name))) fail("brand pack missing " + name);
+});
+if (!fs.existsSync(path.join(brandDir, "fonts/ie-fonts.css"))) {
+  fail("brand pack missing fonts/ie-fonts.css (self-host or CDN fallback)");
+}
+const brandJson = read("demos/interimexecs/assets/brand/brand.json");
+if (brandJson) {
+  let parsedBrand = null;
+  try { parsedBrand = JSON.parse(brandJson); } catch (err) { fail("brand.json is not valid JSON"); }
+  if (parsedBrand) {
+    const colors = parsedBrand.colors || {};
+    if (!colors.gold && !colors.buttonFill) fail("brand.json must include scraped color tokens (gold / button fills)");
+    if (!colors.navy || !colors.ink) fail("brand.json must include navy and ink/text tokens");
+    if (!parsedBrand.logo) fail("brand.json must point at the live logo");
+    const fonts = parsedBrand.fonts || {};
+    const keep = (fonts.keep || []).map((f) => (f.family || "").toLowerCase());
+    if (!keep.some((f) => f.includes("open sans")) || !keep.some((f) => f.includes("raleway"))) {
+      fail("brand.json must list Open Sans and Raleway as keep fonts");
+    }
+    if (!fonts.cdn && !(fonts.files && fonts.files.length)) {
+      fail("brand.json must give a Google Fonts CDN and/or self-hosted font files");
+    }
+    else ok("brand pack has logo + color tokens + fonts for Refresh and Reimagine");
+  }
+}
+const colorsMd = read("demos/interimexecs/assets/brand/COLORS.md");
+if (colorsMd && !/ie-logo\.svg/i.test(colorsMd)) fail("COLORS.md must mention the logo file for Webflow reuse");
+else if (colorsMd && !/Reimagine/i.test(colorsMd)) fail("COLORS.md must say Refresh and Reimagine reuse this pack");
+else if (colorsMd) ok("COLORS.md documents logo reuse for Refresh and Reimagine");
+const fontsMd = read("demos/interimexecs/assets/brand/FONTS.md");
+if (fontsMd && (!/Open Sans/i.test(fontsMd) || !/Raleway/i.test(fontsMd))) {
+  fail("FONTS.md must document the live Open Sans / Raleway families");
+} else if (fontsMd) ok("FONTS.md documents live families and CDN / self-host files");
 
 const alias = read("ie/index.html");
 if (alias) {

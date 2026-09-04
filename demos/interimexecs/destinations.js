@@ -8,6 +8,12 @@
  * Ready choices restore stored Stripe buy/desk CTAs. Unready choices stay Talk first.
  * Flip formSubmitProven only after mailbox delivery is proven.
  * Flip customDomainReady only after secondshift.care serves this repo.
+ *
+ * Clone preview (choices.clone.href) is the live site — identical proof.
+ * choices.clone.internalPreview / assetMirror is the local wp-clone/ asset
+ * mirror for customize-canvas reuse and logo/color extraction. Do not point
+ * the public Preview Clone CTA at wp-clone/. Refresh the mirror with:
+ *   python3 scripts/refresh-ie-asset-clone.py
  */
 window.SECOND_SHIFT_IE_DESTINATIONS = {
   customDomainReady: true,
@@ -49,6 +55,8 @@ window.SECOND_SHIFT_IE_DESTINATIONS = {
         label: "Buy Clone — $750/mo desk"
       },
       editorNote: "After purchase, normal changes are supported updates we make with you.",
+      internalPreview: "wp-clone/index.html",
+      assetMirror: "wp-clone/index.html",
       canvas: {
         hero: "Who is in your corner?",
         deck: "The RED Team means action and results. Same site you already have — cared for, not rebuilt.",
