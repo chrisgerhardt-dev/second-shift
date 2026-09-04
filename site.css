@@ -107,7 +107,8 @@ body.site nav a {
   padding: 0.55rem 0.65rem;
   color: var(--muted);
   font-size: var(--fs-meta);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   text-decoration: none;
 }
 
@@ -207,14 +208,17 @@ body.site footer.colophon,
 .field label,
 .cost {
   font-size: var(--fs-meta);
-  letter-spacing: 0.06em;
+}
+
+.meta,
+body.site footer.colophon {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
 
 .meta {
   color: var(--muted);
   margin: 0 0 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
 }
 
 .fine {
@@ -236,6 +240,8 @@ body.site footer.colophon,
   min-height: var(--tap);
   color: var(--muted);
   font-size: var(--fs-meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   transition: color 0.28s ease;
 }
 
