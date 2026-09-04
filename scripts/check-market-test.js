@@ -106,20 +106,15 @@ if (!cfg) {
   else {
     if (refresh.href !== "https://interimexecs-refresh.webflow.io") fail("refresh.href must be the live Webflow URL");
     else ok("refresh points at interimexecs-refresh.webflow.io");
-    if (refresh.ready !== false) fail("refresh.ready must be false while Webflow rebuilds from the true clone");
-    else ok("refresh is flagged not IE-ready during the true-clone rebuild");
+    if (refresh.ready !== true) fail("refresh.ready must be true after live IE verify");
+    else ok("refresh is flagged IE-ready");
     if (refresh.cta !== "Preview Refresh") fail("refresh.cta must be Preview Refresh");
-    if (!refresh.shellWarning || !/rebuild/i.test(refresh.shellWarning) || !/clone/i.test(refresh.shellWarning)) {
-      fail("refresh shellWarning must explain the true-clone Webflow rebuild");
-    }
+    if (refresh.shellWarning) fail("refresh shellWarning must be cleared");
     if (/blurr|noiceland|notable/i.test(refresh.shellWarning || "")) {
       fail("refresh shellWarning must not mention Blurr / Notable / NOICELAND leftovers");
     }
-    if (!refresh.talk || !/mailto:chris@gograybeard\.com/.test(refresh.talk.href || "")) {
-      fail("refresh must have a Talk first mailto while not IE-ready");
-    }
-    if (!refresh.buy || refresh.buy.href !== stripe.refreshDeposit) fail("refresh stored buy must stay the $4k Payment Link");
-    else ok("refresh stored buy remains the $4k deposit");
+    if (!refresh.buy || refresh.buy.href !== stripe.refreshDeposit) fail("refresh buy must be the $4k Payment Link");
+    else ok("refresh buy is the $4k deposit");
     if (!refresh.desk || refresh.desk.href !== stripe.growthDesk) fail("refresh desk must be the $750/mo desk");
   }
 
@@ -128,20 +123,15 @@ if (!cfg) {
   else {
     if (reimagine.href !== "https://interimexecs-reimagine.webflow.io") fail("reimagine.href must be the live Webflow URL");
     else ok("reimagine points at interimexecs-reimagine.webflow.io");
-    if (reimagine.ready !== false) fail("reimagine.ready must be false while Webflow rebuilds from the true clone");
-    else ok("reimagine is flagged not IE-ready during the true-clone rebuild");
+    if (reimagine.ready !== true) fail("reimagine.ready must be true after live IE verify");
+    else ok("reimagine is flagged IE-ready");
     if (reimagine.cta !== "Preview Reimagine") fail("reimagine.cta must be Preview Reimagine");
-    if (!reimagine.shellWarning || !/rebuild/i.test(reimagine.shellWarning) || !/clone/i.test(reimagine.shellWarning)) {
-      fail("reimagine shellWarning must explain the true-clone Webflow rebuild");
-    }
+    if (reimagine.shellWarning) fail("reimagine shellWarning must be cleared");
     if (/blurr|noiceland|notable/i.test(reimagine.shellWarning || "")) {
       fail("reimagine shellWarning must not mention Blurr / Notable / NOICELAND leftovers");
     }
-    if (!reimagine.talk || !/mailto:chris@gograybeard\.com/.test(reimagine.talk.href || "")) {
-      fail("reimagine must have a Talk first mailto while not IE-ready");
-    }
-    if (!reimagine.buy || reimagine.buy.href !== stripe.reimagineDeposit) fail("reimagine stored buy must stay the $6k Payment Link");
-    else ok("reimagine stored buy remains the $6k deposit");
+    if (!reimagine.buy || reimagine.buy.href !== stripe.reimagineDeposit) fail("reimagine buy must be the $6k Payment Link");
+    else ok("reimagine buy is the $6k deposit");
     if (!reimagine.desk || reimagine.desk.href !== stripe.growthDesk) fail("reimagine desk must be the $750/mo desk");
   }
 }
@@ -203,27 +193,28 @@ if (hub) {
   const reimagineCard = cardHtml("reimagine");
   if (!cloneCard.includes("buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01")) fail("clone card may keep the $750/mo desk buy");
   else ok("clone card keeps $750/mo desk buy");
-  if (/buy\.stripe\.com/.test(refreshCard)) fail("refresh card must not expose live Stripe while not IE-ready");
-  if (/buy\.stripe\.com/.test(reimagineCard)) fail("reimagine card must not expose live Stripe while not IE-ready");
-  if (!/Talk first/.test(refreshCard) || !/mailto:chris@gograybeard\.com/.test(refreshCard)) {
-    fail("refresh card must use Talk first / mailto while not IE-ready");
+  if (!refreshCard.includes("buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00") || !refreshCard.includes("Buy Refresh — $4,000 deposit")) {
+    fail("refresh card must restore the $4k deposit buy CTA");
   }
-  if (!/Talk first/.test(reimagineCard) || !/mailto:chris@gograybeard\.com/.test(reimagineCard)) {
-    fail("reimagine card must use Talk first / mailto while not IE-ready");
+  if (!reimagineCard.includes("buy.stripe.com/28E5kEbkAd3t2796dg6Vq02") || !reimagineCard.includes("Buy Reimagine — $6,000 deposit")) {
+    fail("reimagine card must restore the $6k deposit buy CTA");
   }
-  if (!/Not IE-ready/.test(refreshCard) || !/Not IE-ready/.test(reimagineCard)) {
-    fail("unready Refresh/Reimagine cards must show Not IE-ready");
+  if (!refreshCard.includes("buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01") || !reimagineCard.includes("buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01")) {
+    fail("ready Refresh/Reimagine cards must restore the $750/mo desk CTA");
+  }
+  if (/Talk first/.test(refreshCard) || /Talk first/.test(reimagineCard)) {
+    fail("ready Refresh/Reimagine cards must not use Talk first");
   }
   if (/Blurr|NOICELAND|Notable/.test(refreshCard) || /Blurr|NOICELAND|Notable/.test(reimagineCard)) {
     fail("hub Refresh/Reimagine cards must not mention Blurr / Notable / NOICELAND leftovers");
   }
-  if (!/rebuild/i.test(refreshCard) || !/rebuild/i.test(reimagineCard)) {
-    fail("unready Refresh/Reimagine cards must warn that Webflow is rebuilding from the true clone");
+  if (!/Ready to show/.test(refreshCard) || !/Ready to show/.test(reimagineCard)) {
+    fail("ready Refresh/Reimagine cards must show Ready to show");
   }
-  ok("unready tiers use Talk first instead of $4k/$6k deposit buy buttons");
+  ok("ready tiers restore $4k / $6k deposit buy buttons and $750 desk");
   if (!hub.includes("js-buy")) fail("hub missing buy/talk CTA hooks");
-  if (hub.includes("Buy Refresh — $4,000 deposit") || hub.includes("Buy Reimagine — $6,000 deposit")) {
-    fail("hub must not show live $4k/$6k deposit buy labels while shells are unready");
+  if (!hub.includes("Buy Refresh — $4,000 deposit") || !hub.includes("Buy Reimagine — $6,000 deposit")) {
+    fail("hub must show live $4k/$6k deposit buy labels now that shells are IE-ready");
   }
   if (!/FormSubmit/.test(hub) || !/still blocked/i.test(hub)) {
     fail("hub send-gate must keep three-tier email blocked until FormSubmit is proven");
@@ -272,11 +263,11 @@ if (hub) {
   }
   if (!hub.includes("https://interimexecs-refresh.webflow.io")) fail("hub fallback Refresh URL missing");
   if (!hub.includes("https://interimexecs-reimagine.webflow.io")) fail("hub fallback Reimagine URL missing");
-  if (hub.includes("https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02")) {
-    fail("hub HTML must not expose the Reimagine $6k Payment Link while not IE-ready");
+  if (!hub.includes("https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02")) {
+    fail("hub HTML must expose the Reimagine $6k Payment Link now that it is IE-ready");
   }
-  if (hub.includes("https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00")) {
-    fail("hub HTML must not expose the Refresh $4k Payment Link while not IE-ready");
+  if (!hub.includes("https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00")) {
+    fail("hub HTML must expose the Refresh $4k Payment Link now that it is IE-ready");
   }
   if (!hub.includes("data-demo-reset") || !/Reload does not add free turns/i.test(hub)) {
     fail("hub must persist demo turns and only reset when labeled");
@@ -420,10 +411,7 @@ if (handoff) {
   if (/still Blurr/i.test(handoff) || /still Notable/i.test(handoff) || /NOICELAND/i.test(handoff)) {
     fail("HANDOFF.md must not still claim Blurr / Notable / NOICELAND shells");
   }
-  if (!/rebuild/i.test(handoff) || !/true/i.test(handoff)) {
-    fail("HANDOFF.md must document the true-clone Webflow rebuild");
-  }
-  ok("HANDOFF.md documents Clone IE-ready, Refresh/Reimagine rebuild hold, FormSubmit blocker, and Clone-only email");
+  ok("HANDOFF.md documents IE-ready shells, FormSubmit blocker, and Clone-only email");
 }
 
 const email = read("market-test/interimexecs-email.md");
