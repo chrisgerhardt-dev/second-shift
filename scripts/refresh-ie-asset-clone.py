@@ -875,6 +875,12 @@ def extract_brand() -> None:
             png = base64.b64decode(re.sub(r"\s+", "", m.group(1)))
             (BRAND / "ie-logo.png").write_bytes(png)
 
+    # Curated FONTS.md / richer brand.json are hand-maintained for Refresh + Reimagine.
+    # A recrawl refreshes the logo/favicon bytes; keep the token docs if present.
+    if (BRAND / "FONTS.md").exists() and (BRAND / "brand.json").exists():
+        log("brand pack docs kept (FONTS.md present); logo/favicon refreshed")
+        return
+
     brand = {
         "name": "InterimExecs",
         "source": ORIGIN,

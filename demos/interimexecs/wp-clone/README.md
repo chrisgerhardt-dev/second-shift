@@ -50,8 +50,9 @@ node scripts/check-market-test.js
 ```
 
 The script overwrites this directory and rebuilds `../assets/brand/`
-(logo SVG, favicon, `COLORS.md` / `brand.json`). Refresh / Reimagine can take
-the logo from `demos/interimexecs/assets/brand/ie-logo.svg`.
+(logo SVG/PNG, favicon, `COLORS.md` / `brand.json` / `FONTS.md`). Refresh
+**and Reimagine** take the logo, navy/gold/teal palette, and Open Sans /
+Raleway from `demos/interimexecs/assets/brand/`.
 
 Crawled: 2026-09-04. Public pages only. No emails, no Stripe,
 no Webflow Designer edits.

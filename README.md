@@ -10,7 +10,7 @@ Clone, Refresh, and Reimagine shells are IE-ready. The three-tier comparison ema
 
 - Public Clone preview: https://interimexecs.com (live site; same site, lower bill proof)
 - Asset clone / customize canvas: [`demos/interimexecs/wp-clone/`](demos/interimexecs/wp-clone/) (Pages: https://secondshift.care/demos/interimexecs/wp-clone/)
-- Brand pack (logo + colors for Refresh): [`demos/interimexecs/assets/brand/`](demos/interimexecs/assets/brand/)
+- Brand pack (logo + colors + fonts for Refresh and Reimagine): [`demos/interimexecs/assets/brand/`](demos/interimexecs/assets/brand/)
 - Refresh the asset clone from live: `python3 scripts/refresh-ie-asset-clone.py`
 - Hub (internal / not for prospect email): [`demos/interimexecs/index.html`](demos/interimexecs/index.html)
 - Destinations and Stripe paths: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js)

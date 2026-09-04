@@ -338,23 +338,40 @@ if (overlayJs && !/gform_wrapper/.test(overlayJs)) {
 }
 
 const brandDir = path.join(root, "demos/interimexecs/assets/brand");
-["ie-logo.svg", "COLORS.md", "brand.json"].forEach((name) => {
+["ie-logo.svg", "ie-logo.png", "COLORS.md", "FONTS.md", "brand.json"].forEach((name) => {
   if (!fs.existsSync(path.join(brandDir, name))) fail("brand pack missing " + name);
 });
+if (!fs.existsSync(path.join(brandDir, "fonts/ie-fonts.css"))) {
+  fail("brand pack missing fonts/ie-fonts.css (self-host or CDN fallback)");
+}
 const brandJson = read("demos/interimexecs/assets/brand/brand.json");
 if (brandJson) {
   let parsedBrand = null;
   try { parsedBrand = JSON.parse(brandJson); } catch (err) { fail("brand.json is not valid JSON"); }
   if (parsedBrand) {
     const colors = parsedBrand.colors || {};
-    if (!colors.gold && !colors.red) fail("brand.json must include scraped color tokens");
+    if (!colors.gold && !colors.buttonFill) fail("brand.json must include scraped color tokens (gold / button fills)");
+    if (!colors.navy || !colors.ink) fail("brand.json must include navy and ink/text tokens");
     if (!parsedBrand.logo) fail("brand.json must point at the live logo");
-    else ok("brand pack has logo + color tokens");
+    const fonts = parsedBrand.fonts || {};
+    const keep = (fonts.keep || []).map((f) => (f.family || "").toLowerCase());
+    if (!keep.some((f) => f.includes("open sans")) || !keep.some((f) => f.includes("raleway"))) {
+      fail("brand.json must list Open Sans and Raleway as keep fonts");
+    }
+    if (!fonts.cdn && !(fonts.files && fonts.files.length)) {
+      fail("brand.json must give a Google Fonts CDN and/or self-hosted font files");
+    }
+    else ok("brand pack has logo + color tokens + fonts for Refresh and Reimagine");
   }
 }
 const colorsMd = read("demos/interimexecs/assets/brand/COLORS.md");
 if (colorsMd && !/ie-logo\.svg/i.test(colorsMd)) fail("COLORS.md must mention the logo file for Webflow reuse");
-else if (colorsMd) ok("COLORS.md documents logo reuse for Refresh");
+else if (colorsMd && !/Reimagine/i.test(colorsMd)) fail("COLORS.md must say Refresh and Reimagine reuse this pack");
+else if (colorsMd) ok("COLORS.md documents logo reuse for Refresh and Reimagine");
+const fontsMd = read("demos/interimexecs/assets/brand/FONTS.md");
+if (fontsMd && (!/Open Sans/i.test(fontsMd) || !/Raleway/i.test(fontsMd))) {
+  fail("FONTS.md must document the live Open Sans / Raleway families");
+} else if (fontsMd) ok("FONTS.md documents live families and CDN / self-host files");
 
 const alias = read("ie/index.html");
 if (alias) {

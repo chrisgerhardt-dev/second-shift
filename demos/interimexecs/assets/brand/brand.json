@@ -2,26 +2,62 @@
   "name": "InterimExecs",
   "source": "https://interimexecs.com",
   "scraped": "2026-09-04",
+  "audience": "Owners, boards, and PE who need on-demand senior operators — Empathize here for Refresh and Reimagine.",
   "logo": {
     "svg": "ie-logo.svg",
     "png": "ie-logo.png",
-    "note": "Primary header wordmark from the live WordPress site (wp-content/uploads/2019/11/ie-logo.svg). SVG wraps the same raster."
+    "note": "Primary header wordmark from the live WordPress site (wp-content/uploads/2019/11/ie-logo.svg). SVG wraps the same raster. Use on Refresh and Reimagine."
   },
   "favicon": "favicon.png",
   "fonts": {
-    "primary": "Open Sans",
-    "display": "Raleway",
-    "accent": "Poppins",
+    "keep": [
+      {
+        "family": "Open Sans",
+        "role": "body",
+        "weights": [300, 400, 500, 600, 700, 800],
+        "italics": true,
+        "worthKeeping": true
+      },
+      {
+        "family": "Raleway",
+        "role": "display",
+        "weights": [400, 500, 600, 700, 800, 900],
+        "worthKeeping": true
+      },
+      {
+        "family": "Poppins",
+        "role": "accent",
+        "weights": [400, 700],
+        "worthKeeping": true,
+        "note": "Occasional bands only."
+      }
+    ],
+    "skip": ["Helvetica", "Arial", "sans-serif", "Font Awesome", "ionicons"],
     "liveStacks": [
       "Raleway, Open Sans, sans-serif",
       "Open Sans, Helvetica, Arial, sans-serif",
       "Poppins, Open Sans, sans-serif"
+    ],
+    "cdn": "https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800|Raleway:400,500,600,700,800,900|Poppins:400,700&subset=latin&display=swap",
+    "selfHost": "fonts/ie-fonts.css",
+    "files": [
+      "fonts/open-sans-400.woff2",
+      "fonts/open-sans-600.woff2",
+      "fonts/open-sans-700.woff2",
+      "fonts/raleway-500.woff2",
+      "fonts/raleway-600.woff2",
+      "fonts/raleway-700.woff2",
+      "fonts/poppins-400.woff2",
+      "fonts/poppins-700.woff2"
     ]
   },
   "colors": {
     "gold": "#e7bf8f",
+    "buttonFill": "#e7bf8f",
     "navy": "#3c5370",
+    "bandFill": "#3c5370",
     "teal": "#377d95",
+    "link": "#377d95",
     "tealBright": "#008cba",
     "orange": "#d97732",
     "orangeBurnt": "#db651b",
@@ -29,28 +65,20 @@
     "redDeep": "#8f1b1e",
     "redMuted": "#a62428",
     "ink": "#272727",
+    "text": "#222222",
     "inkSoft": "#222222",
-    "mist": "#f5f5f5",
     "paper": "#ffffff",
+    "background": "#ffffff",
+    "mist": "#f5f5f5",
+    "backgroundAlt": "#f5f5f5",
     "line": "#c1c1c1",
-    "reds": [
-      "#a61f22",
-      "#8f1b1e",
-      "#a62428",
-      "#a82626"
-    ],
-    "neutrals": [
-      "#272727",
-      "#222222",
-      "#f5f5f5",
-      "#c1c1c1",
-      "#dddddd",
-      "#f2f2f2",
-      "#e4e4e4"
-    ]
+    "heroOverlay": "#1b2d42",
+    "reds": ["#a61f22", "#8f1b1e", "#a62428", "#a82626"],
+    "neutrals": ["#272727", "#222222", "#ffffff", "#f5f5f5", "#c1c1c1", "#dddddd", "#f2f2f2"]
   },
   "reuse": {
-    "webflow": "Drop ie-logo.svg (or ie-logo.png) into Refresh/Reimagine as the header mark. Do not invent a new logo.",
+    "refresh": "Empathize on the IE owner/board/PE audience. Match this palette and Open Sans / Raleway. Drop ie-logo.svg into the header. Do not invent a new logo.",
+    "reimagine": "Same brand pack as Refresh — logo, palette, and fonts. Modernize layout and conversion; do not drift off navy/gold/teal or swap the wordmark.",
     "clone": "wp-clone/assets/logo.svg is a copy of the same file."
   }
 }
