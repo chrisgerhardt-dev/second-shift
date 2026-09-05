@@ -1,0 +1,59 @@
+/* Shared market-ladder hub. Loaded next to demos/<slug>/index.html. */
+main { max-width: none; }
+header, main, footer { width: min(1080px, calc(100% - 2.5rem)); }
+
+.kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 2.2rem 0 0;
+}
+.promise {
+  border: 1px solid var(--accent);
+  padding: 0.9rem 1.05rem;
+  margin: 1.4rem 0 0;
+}
+.trio { display: grid; gap: 1.1rem; margin: 1.75rem 0 0.5rem; }
+@media (min-width: 880px) { .trio { grid-template-columns: 1fr 1fr 1fr; } }
+.choice {
+  border: 1px solid var(--line);
+  padding: 1.15rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+.choice.is-shell { border-style: dashed; }
+.choice h2 { margin: 0.25rem 0 0.45rem; font-size: 1.4rem; }
+.label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.status {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.7rem;
+}
+.choice.is-ready .status { color: var(--accent); }
+.choice.is-shell .status { color: #d4a27a; }
+.price { margin: 0 0 0.35rem; color: var(--accent); font-size: 1.05rem; }
+.price-note { margin: 0 0 0.7rem; font-size: 0.9rem; color: var(--muted); }
+.benefits { margin: 0.4rem 0 0; padding-left: 1.1rem; color: var(--ink); }
+.benefits li { margin: 0.35rem 0; font-size: 0.95rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: auto; padding-top: 0.95rem; }
+.cta { margin-top: 0; }
+.ghost { border-color: var(--line); color: var(--muted); }
+.ghost:hover { background: transparent; color: var(--accent); }
+.tier-sec { margin: 0.75rem 0 0; font-size: 0.92rem; color: var(--muted); }
+.tier-sec strong { color: var(--ink); font-weight: 600; }
+.warn, .gate {
+  border: 1px solid var(--line);
+  padding: 0.85rem 1rem;
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+}
+.gate, .choice.is-shell .warn {
+  border-color: #8a5a3a;
+  background: #1a1410;
+  color: #e8d4c4;
+}
+.warn { margin: 0.7rem 0 0; }
+.notes { margin-top: 2rem; }

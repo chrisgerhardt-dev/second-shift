@@ -1,0 +1,24 @@
+/* Second Shift overlay — do not restyle the mirrored Beacon CPA chrome.
+   Discrete corner badge only. */
+.ss-clone-badge {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2147483000;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1b1b1b;
+  color: #f3f3f3 !important;
+  font: 700 9px/26px Verdana, Arial, sans-serif;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-decoration: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  opacity: 0.72;
+}
+.ss-clone-badge:hover { opacity: 1; color: #fff !important; }
+.gform_wrapper { display: block !important; visibility: visible !important; }
+.gform_wrapper[style*="display:none"],
+.gform_wrapper[style*="display: none"] { display: block !important; }
+
