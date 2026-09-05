@@ -900,6 +900,15 @@ def process_page(page_url: str, filename: str) -> None:
     html = repair_broken_data_uris(html)
     html = inject_chrome(html)
     html = forbid_root_absolute(html)
+    # Wix fill URLs contain commas; a naive srcset rewrite splits them.
+    # Prefer the rewritten src so the badge / photos actually display.
+    if SITE.get("kind") == "wix":
+        html = re.sub(
+            r'\s(?:srcset|srcSet|data-srcset)=["\'][^"\']*["\']',
+            "",
+            html,
+            flags=re.I,
+        )
     # Drop scripts that never downloaded (dead Market Hardware CDN, etc.).
     def drop_missing_script(m: re.Match) -> str:
         src_m = re.search(r'\bsrc\s*=\s*["\']([^"\']+)["\']', m.group(0), flags=re.I)
