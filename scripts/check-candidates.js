@@ -37,9 +37,9 @@ const CANDIDATES = [
     name: "Western Mechanical",
     live: "https://www.westernmech.com",
     refresh: "https://westernmech-refresh.webflow.io/",
-    reimagine: "https://westernmech-reimagine.webflow.io",
+    reimagine: "https://westernmech-reimagine.webflow.io/",
     refreshReady: true,
-    reimagineReady: false,
+    reimagineReady: true,
     clonePages: ["index.html", "contact.html"],
     needles: /Western Mechanical|Clinton Township/i
   },
