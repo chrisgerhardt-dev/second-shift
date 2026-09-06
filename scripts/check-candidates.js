@@ -58,9 +58,9 @@ const CANDIDATES = [
     slug: "mcihvac",
     name: "MCI",
     live: "https://www.mcihvac.com",
-    refresh: "https://mcihvac-refresh.webflow.io",
+    refresh: "https://mcihvac-refresh.webflow.io/",
     reimagine: "https://mcihvac-reimagine.webflow.io",
-    refreshReady: false,
+    refreshReady: true,
     reimagineReady: false,
     clonePages: ["index.html", "contact.html"],
     needles: /Mechanical Contractors|MCI/i

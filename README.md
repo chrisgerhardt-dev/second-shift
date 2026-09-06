@@ -21,7 +21,7 @@ Unready hub cards use Talk first, not live $4k / $6k deposit buttons. Clone $750
 
 ## Market ladders for review (2026-09-05)
 
-Internal review only. No outreach. Clone preview is the live site. Western Mechanical Refresh and Reimagine are published. Kaback Refresh is published (`ready: true` → https://kaback-refresh.webflow.io/). Other Refresh / Reimagine stay `ready: false` until Webflow publishes.
+Internal review only. No outreach. Clone preview is the live site. Western Mechanical Refresh and Reimagine are published. Kaback and MCI Refresh are published (`ready: true` → https://kaback-refresh.webflow.io/ and https://mcihvac-refresh.webflow.io/). Other Refresh / Reimagine stay `ready: false` until Webflow publishes.
 
 | Slug | Live | Hub | Asset clone | Brand pack |
 | --- | --- | --- | --- | --- |
