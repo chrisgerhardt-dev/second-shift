@@ -27,14 +27,19 @@ function read(rel) {
   }
   return fs.readFileSync(abs, "utf8");
 }
+function sameHref(a, b) {
+  return String(a || "").replace(/\/+$/, "") === String(b || "").replace(/\/+$/, "");
+}
 
 const CANDIDATES = [
   {
     slug: "westernmech",
     name: "Western Mechanical",
     live: "https://www.westernmech.com",
-    refresh: "https://westernmech-refresh.webflow.io",
+    refresh: "https://westernmech-refresh.webflow.io/",
     reimagine: "https://westernmech-reimagine.webflow.io",
+    refreshReady: true,
+    reimagineReady: false,
     clonePages: ["index.html", "contact.html"],
     needles: /Western Mechanical|Clinton Township/i
   },
@@ -44,6 +49,8 @@ const CANDIDATES = [
     live: "https://kaback.com",
     refresh: "https://kaback-refresh.webflow.io",
     reimagine: "https://kaback-reimagine.webflow.io",
+    refreshReady: false,
+    reimagineReady: false,
     clonePages: ["index.html"],
     needles: /Kaback|HVAC/i
   },
@@ -53,6 +60,8 @@ const CANDIDATES = [
     live: "https://www.mcihvac.com",
     refresh: "https://mcihvac-refresh.webflow.io",
     reimagine: "https://mcihvac-reimagine.webflow.io",
+    refreshReady: false,
+    reimagineReady: false,
     clonePages: ["index.html", "contact.html"],
     needles: /Mechanical Contractors|MCI/i
   },
@@ -62,6 +71,8 @@ const CANDIDATES = [
     live: "https://beaconcpa.com",
     refresh: "https://beaconcpa-refresh.webflow.io",
     reimagine: "https://beaconcpa-reimagine.webflow.io",
+    refreshReady: false,
+    reimagineReady: false,
     clonePages: ["index.html", "contact.html"],
     needles: /Beacon|CPA/i
   }
@@ -107,11 +118,18 @@ CANDIDATES.forEach(function (c) {
   if (clone.internalPreview !== "wp-clone/index.html" || clone.assetMirror !== "wp-clone/index.html") {
     fail(c.slug + " clone assetMirror / internalPreview must be wp-clone/");
   }
-  if (refresh.ready !== false) fail(c.slug + " refresh.ready must be false");
-  if (reimagine.ready !== false) fail(c.slug + " reimagine.ready must be false");
-  else ok(c.slug + " Refresh/Reimagine ready flags are false");
-  if (refresh.href !== c.refresh) fail(c.slug + " refresh.href placeholder mismatch");
-  if (reimagine.href !== c.reimagine) fail(c.slug + " reimagine.href placeholder mismatch");
+  if (refresh.ready !== !!c.refreshReady) {
+    fail(c.slug + " refresh.ready must be " + !!c.refreshReady);
+  } else {
+    ok(c.slug + " refresh.ready is " + !!c.refreshReady);
+  }
+  if (reimagine.ready !== !!c.reimagineReady) {
+    fail(c.slug + " reimagine.ready must be " + !!c.reimagineReady);
+  } else {
+    ok(c.slug + " reimagine.ready is " + !!c.reimagineReady);
+  }
+  if (!sameHref(refresh.href, c.refresh)) fail(c.slug + " refresh.href mismatch");
+  if (!sameHref(reimagine.href, c.reimagine)) fail(c.slug + " reimagine.href mismatch");
   if (/buy\.stripe\.com/.test(destSrc)) fail(c.slug + " destinations must not add Stripe links");
 
   const hub = read("demos/" + c.slug + "/index.html");
