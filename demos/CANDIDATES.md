@@ -9,7 +9,7 @@ Four Clone / Refresh / Reimagine hubs for Christopher. No outreach. Do not email
 | mcihvac | https://www.mcihvac.com | Wix Thunderbolt | Home + Contact |
 | beaconcpa | https://beaconcpa.com | WordPress / Elementor | Home + Contact |
 
-Clone `ready: true` points at the live URL. Western Mechanical Refresh and Reimagine are published. Kaback and MCI Refresh are published (`https://kaback-refresh.webflow.io/`, `https://mcihvac-refresh.webflow.io/`, both `ready: true`). Other Refresh / Reimagine stay `ready: false` until Webflow publishes.
+Clone `ready: true` points at the live URL. All four firms have Refresh and Reimagine published (`ready: true` on `*-refresh.webflow.io` and `*-reimagine.webflow.io`). Talk first only — no Stripe.
 
 ## Refresh a mirror
 

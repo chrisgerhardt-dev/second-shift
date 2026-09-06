@@ -48,9 +48,9 @@ const CANDIDATES = [
     name: "Kaback",
     live: "https://kaback.com",
     refresh: "https://kaback-refresh.webflow.io/",
-    reimagine: "https://kaback-reimagine.webflow.io",
+    reimagine: "https://kaback-reimagine.webflow.io/",
     refreshReady: true,
-    reimagineReady: false,
+    reimagineReady: true,
     clonePages: ["index.html"],
     needles: /Kaback|HVAC/i
   },
@@ -59,9 +59,9 @@ const CANDIDATES = [
     name: "MCI",
     live: "https://www.mcihvac.com",
     refresh: "https://mcihvac-refresh.webflow.io/",
-    reimagine: "https://mcihvac-reimagine.webflow.io",
+    reimagine: "https://mcihvac-reimagine.webflow.io/",
     refreshReady: true,
-    reimagineReady: false,
+    reimagineReady: true,
     clonePages: ["index.html", "contact.html"],
     needles: /Mechanical Contractors|MCI/i
   },
@@ -69,10 +69,10 @@ const CANDIDATES = [
     slug: "beaconcpa",
     name: "Beacon CPA",
     live: "https://beaconcpa.com",
-    refresh: "https://beaconcpa-refresh.webflow.io",
-    reimagine: "https://beaconcpa-reimagine.webflow.io",
-    refreshReady: false,
-    reimagineReady: false,
+    refresh: "https://beaconcpa-refresh.webflow.io/",
+    reimagine: "https://beaconcpa-reimagine.webflow.io/",
+    refreshReady: true,
+    reimagineReady: true,
     clonePages: ["index.html", "contact.html"],
     needles: /Beacon|CPA/i
   }
