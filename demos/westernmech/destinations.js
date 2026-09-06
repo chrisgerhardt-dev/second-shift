@@ -4,8 +4,8 @@
  * Hub and scripts/check-candidates.js read this object.
  * Clone preview is the live site. Asset clone is wp-clone/.
  * Flip choice.ready when that public URL is actually Western Mechanical content.
- * Refresh is published. Reimagine stays ready:false until Webflow publishes.
- * No Stripe on this ladder — unready and ready choices both use Talk first.
+ * Refresh and Reimagine are published. No Stripe on this ladder —
+ * ready choices still use Talk first.
  *
  * Refresh the mirror later:
  *   python3 scripts/refresh-asset-clone.py westernmech
@@ -49,13 +49,13 @@ window.SECOND_SHIFT_DESTINATIONS = {
     },
     reimagine: {
       label: "Reimagine",
-      href: "https://westernmech-reimagine.webflow.io",
-      ready: false,
+      href: "https://westernmech-reimagine.webflow.io/",
+      ready: true,
       cta: "Preview Reimagine",
       price: "$6,000 once + $750 / month",
-      priceNote: "Webflow URL TBD. Not ready to show until Webflow publishes.",
+      priceNote: "$6,000 once. One tuning round means one consolidated feedback set. $750/month begins after cutover/acceptance unless otherwise agreed. Not a full rebrand (separate, $10,000+).",
       summary: "Modern redesign without a full rebrand.",
-      shellWarning: "Reimagine is not ready to show. Webflow staging URL is a placeholder until the site publishes.",
+      shellWarning: "",
       internalPreview: "",
       talk: {
         href: "mailto:chris@gograybeard.com?subject=Second%20Shift%20Reimagine%20%E2%80%94%20talk%20first",
