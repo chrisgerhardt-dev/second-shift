@@ -47,9 +47,9 @@ const CANDIDATES = [
     slug: "kaback",
     name: "Kaback",
     live: "https://kaback.com",
-    refresh: "https://kaback-refresh.webflow.io",
+    refresh: "https://kaback-refresh.webflow.io/",
     reimagine: "https://kaback-reimagine.webflow.io",
-    refreshReady: false,
+    refreshReady: true,
     reimagineReady: false,
     clonePages: ["index.html"],
     needles: /Kaback|HVAC/i
