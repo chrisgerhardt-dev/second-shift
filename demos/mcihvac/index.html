@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>MCI Mechanical market test — Second Shift</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../candidate-hub.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="../../index.html">Second Shift</a>
+    <nav>
+      <a href="../../care.html">Care plan</a>
+      <a href="../../work.html">Work</a>
+      <a href="../../contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <p class="kicker">MCI Mechanical · market test</p>
+    <h1>Three choices: Clone, Refresh, Reimagine.</h1>
+    <p>Internal review only. Same brand and public copy. Not a live cutover, and MCI has not purchased. Do not email them.</p>
+    <p class="promise" data-migration>If you purchase Clone, Refresh, or Reimagine, we handle migration and testing before cutover.</p>
+    <p class="muted">Dummy forms never email MCI. Destinations are set in <code>destinations.js</code> only. No Stripe on this ladder.</p>
+
+    <aside class="gate">
+      <strong>Review only. Do not email MCI.</strong>
+      <span> Clone is ready (live site). Refresh and Reimagine stay parked until Webflow publishes.</span>
+    </aside>
+
+    <div class="trio">
+      <article class="choice is-ready" data-choice="clone">
+        <p class="label">Clone</p>
+        <p class="status js-status">Ready to show</p>
+        <h2>Same site, lower bill.</h2>
+        <p class="price">$750 / month</p>
+        <p class="price-note">No redesign fee. Growth desk begins after cutover/acceptance unless otherwise agreed.</p>
+        <p>Keep the current Wix site. Pure cost-savings.</p>
+        <ul class="benefits">
+          <li>Keep the current public pages and copy</li>
+          <li>Lower monthly bill — cost-savings, not a redesign</li>
+          <li>Secure-by-default care</li>
+          <li>We handle takeover, migration, and testing</li>
+        </ul>
+        <div class="actions">
+          <a class="cta js-dest" href="https://www.mcihvac.com" target="_blank" rel="noopener noreferrer">Preview Clone</a>
+          <a class="cta ghost js-internal" href="wp-clone/index.html">Asset clone</a>
+          <a class="cta ghost js-buy" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20Clone%20%E2%80%94%20talk%20first">Talk first</a>
+        </div>
+      </article>
+
+      <article class="choice is-shell" data-choice="refresh">
+        <p class="label">Refresh</p>
+        <p class="status js-status">Not ready to show</p>
+        <h2>Lower friction, owner-editable.</h2>
+        <p class="price">$4,000 once + $750 / month</p>
+        <p class="price-note">Webflow URL TBD. Not ready to show until Webflow publishes.</p>
+        <p>Webflow restyle. Familiar pages, better look.</p>
+        <p class="warn js-shell-warn">Refresh is not ready to show. Webflow staging URL is a placeholder until the site publishes.</p>
+        <div class="actions">
+          <a class="cta js-dest" href="https://mcihvac-refresh.webflow.io" target="_blank" rel="noopener noreferrer">Preview Refresh</a>
+          <a class="cta ghost js-buy" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20Refresh%20%E2%80%94%20talk%20first">Talk first</a>
+        </div>
+      </article>
+
+      <article class="choice is-shell" data-choice="reimagine">
+        <p class="label">Reimagine</p>
+        <p class="status js-status">Not ready to show</p>
+        <h2>Modern standard, tuned to taste.</h2>
+        <p class="price">$6,000 once + $750 / month</p>
+        <p class="price-note">Webflow URL TBD. Not ready to show until Webflow publishes.</p>
+        <p>Premium modern redesign without a full rebrand.</p>
+        <p class="warn js-shell-warn">Reimagine is not ready to show. Webflow staging URL is a placeholder until the site publishes.</p>
+        <div class="actions">
+          <a class="cta js-dest" href="https://mcihvac-reimagine.webflow.io" target="_blank" rel="noopener noreferrer">Preview Reimagine</a>
+          <a class="cta ghost js-buy" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20Reimagine%20%E2%80%94%20talk%20first">Talk first</a>
+        </div>
+      </article>
+    </div>
+
+    <section class="notes">
+      <p class="muted">Clone preview is the live site. The Asset clone link is the local <code>wp-clone/</code> mirror. Brand pack: <code>assets/brand/</code>. Refresh later with <code>python3 scripts/refresh-asset-clone.py mcihvac</code>.</p>
+    </section>
+  </main>
+  <footer>Second Shift · GrayBeard LLC · chris@gograybeard.com</footer>
+  <script src="../../pages-redirect.js"></script>
+  <script src="destinations.js"></script>
+  <script src="../candidate-hub.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "name": "Western Mechanical Contractors",
+  "slug": "westernmech",
+  "source": "https://www.westernmech.com",
+  "scraped": "2026-09-05",
+  "kind": "html",
+  "logo": {
+    "file": "westernmech-logo.jpg",
+    "note": "Primary mark copied from the live homepage."
+  },
+  "favicon": null,
+  "fonts": {
+    "keep": [
+      {
+        "family": "Verdana",
+        "role": "body",
+        "weights": [
+          400,
+          700
+        ],
+        "worthKeeping": true,
+        "note": "Live body stack on the Market Hardware brochure."
+      },
+      {
+        "family": "Palatino Linotype",
+        "role": "display",
+        "weights": [
+          400,
+          700
+        ],
+        "worthKeeping": true,
+        "note": "Heading / quote face in layout.css."
+      }
+    ],
+    "skip": [
+      "Arial",
+      "Helvetica",
+      "sans-serif",
+      "serif"
+    ],
+    "liveStacks": [
+      "Verdana, sans-serif",
+      "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
+      "Arial, Helvetica, sans-serif"
+    ],
+    "cdn": null
+  },
+  "colors": {
+    "navy": "#00254f",
+    "burgundy": "#8e1325",
+    "red": "#d3222a",
+    "ink": "#333333",
+    "paper": "#ffffff",
+    "mist": "#f2f2f2",
+    "steel": "#b7c5d0"
+  },
+  "reuse": {
+    "refresh": "Empathize on the Western Mechanical audience. Match this palette and the keep fonts. Drop the logo file into the header. Do not invent a new mark.",
+    "reimagine": "Same brand pack as Refresh \u2014 logo, palette, and fonts. Modernize layout; do not swap the wordmark.",
+    "clone": "wp-clone/assets/ holds a copy of the live logo."
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "MCI Mechanical",
+  "slug": "mcihvac",
+  "source": "https://www.mcihvac.com",
+  "scraped": "2026-09-05",
+  "kind": "wix",
+  "logo": {
+    "file": "mcihvac-logo.png",
+    "header": "mcihvac-header-logo.png",
+    "note": "Certification lockup from the live homepage plus the header wordmark (mcihvac-header-logo.png)."
+  },
+  "favicon": null,
+  "fonts": {
+    "keep": [
+      {
+        "family": "Lulo Clean W01 One Bold",
+        "role": "display",
+        "weights": [
+          700
+        ],
+        "worthKeeping": true,
+        "note": "Wix paid display. Webflow stand-in: Anton or Barlow Condensed Bold."
+      },
+      {
+        "family": "Brandon Grotesque Light",
+        "role": "body",
+        "weights": [
+          300,
+          400
+        ],
+        "worthKeeping": true,
+        "note": "Wix paid body. Webflow stand-in: Montserrat 300/400."
+      },
+      {
+        "family": "DIN Next W01 Light",
+        "role": "accent",
+        "weights": [
+          300
+        ],
+        "worthKeeping": true,
+        "note": "Occasional UI. Webflow stand-in: DIN or Barlow."
+      }
+    ],
+    "skip": [
+      "Helvetica",
+      "Arial",
+      "Madefor",
+      "sans-serif"
+    ],
+    "liveStacks": [
+      "lulo-clean-w01-one-bold, sans-serif",
+      "brandon-grot-w01-light, sans-serif",
+      "din-next-w01-light, sans-serif"
+    ],
+    "cdn": null
+  },
+  "colors": {
+    "navy": "#002f5e",
+    "blue": "#589be3",
+    "link": "#116dff",
+    "mist": "#e4ebfc",
+    "ink": "#2f2e2e",
+    "paper": "#ffffff",
+    "green": "#439410"
+  },
+  "reuse": {
+    "refresh": "Empathize on the MCI audience. Match this palette and the keep fonts. Drop the logo file into the header. Do not invent a new mark.",
+    "reimagine": "Same brand pack as Refresh \u2014 logo, palette, and fonts. Modernize layout; do not swap the wordmark.",
+    "clone": "wp-clone/assets/ holds a copy of the live logo."
+  }
+}

@@ -1,0 +1,402 @@
+@charset "UTF-8";
+/******************************************************************************************************
+
+										Market Hardware Core CSS
+
+/******************************************************************************************************/
+
+/* reset */
+body, p, h1, h2, h3, h4, h5, h6, a, div, blockquote, cite, a img, address {
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+	border: none;
+	outline: none;
+	list-style: none;
+	text-decoration: none;
+	font-size: 100%;
+	font-weight: inherit;
+	font-style: inherit;
+}
+table, td, tr, tbody, thead, th, caption {
+	border-spacing: 0;
+	border: none;
+	border-collapse: separate;
+	vertical-align: top;
+	text-align: left;
+	font-weight: normal;
+}
+/* typography */
+body {
+	font-size: 0.75em /* 12px */;
+	background: #00254f;
+	color: black;
+	font-family: Verdana, sans-serif;
+	line-height: 1.5em;
+	margin: 0 auto;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #8e1325;
+}
+h1 {
+	font-size: 1.4em /* 18px */;
+}
+h2 {
+	font-size: 1.2em /* 15px */;
+}
+h3 {
+	font-size: 1.1em /* 14px */;
+}
+h4, h5, h6 {
+	font-size: 1.1em /* 13px */;
+}
+p, ul, ol {
+	margin-bottom: 1.1em;
+} /* DO NOT RESIZE */
+li {
+	margin-bottom: 0.5em;
+}
+a, a:visited {
+	color: #00254F;
+	text-decoration: underline;
+}
+a:hover, a:active {
+	color: #00254F;
+	text-decoration: none;
+}
+/* group (also known as clearfix) applies style to div's containing other floating elements - FLOAT CHILDREN LEFT AND CLEAR NONE */
+.group:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.group {
+	zoom: 1;
+	display: block;
+}
+/* layout */
+#branding {
+	position: relative;
+}
+#nav2 ul, #nav2 li, #callout ul, #callout li {
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+	list-style-type: none;
+}
+#nav2 li {
+	position: relative;
+}
+#nav2 li ul {
+	display: none;
+}
+.overview #nav2 li#nav-overview ul, .services #nav2 li#nav-services ul {
+	display: block;
+}
+#nav2 a, #nav2 a:visited {
+	color: #fuchsia;
+	text-decoration: none;
+}
+#nav2 a:hover, #nav2 a:active, .home #nav2 #nav2-home a, .about #nav2 #nav2-about a, .services #nav2 #nav2-services a, .testimonials #nav2 #nav2-testimonials a, .request #nav2 #nav2-request a, .contact #nav2 #nav2-contact a {
+	color: #fuchsia;
+	text-decoration: none;
+}
+#footer {
+	margin: 0 auto;
+	font-size: 90%;
+	text-align: center;
+	color: #fff;
+}
+#footer a, #footer a:visited {
+	color: #fff;
+	text-decoration: underline;
+}
+#footer a:hover, #footer a:active {
+	color: #fff;
+	text-decoration: none;
+}
+.breadcrumb {
+	font-size: 85%;
+	padding-bottom: 10px;
+}
+.breadcrumb a {
+	outline: none;
+}
+blockquote {
+	margin: 10px 10px;
+	padding: 5px;
+	background: #f2f2f2;
+	border-bottom: 1px solid #e2e2e2;
+	border-right: 1px solid #e2e2e2;
+}
+blockquote p {
+	padding-left: 10px;
+}
+/* forms */
+form, fieldset, input {
+	margin : 0;
+	padding : 0;
+}
+form {
+	width: 38em;
+	margin-left: 5px;
+}
+form p {
+	font-size: 100%;
+	padding: 2px;
+	margin: 0;
+}
+/* fieldset styling */
+fieldset {
+	margin: 1em 0;
+	padding: 1em;
+	border : 1px solid #e2e2e2
+}
+/* legend styling */
+legend {
+	font-weight: bold;
+	color: #8e1325;
+}
+/* style for  labels */
+label {
+	float: left;
+	width: 14em;
+}
+/* style for required labels */
+label .required {
+	font-size: 0.9em;
+	font-style: normal;
+	color: red;
+}
+label.error, input.submit {
+	color: #F00;
+	margin: 5px 0 0 0;
+}
+input {
+	width: 225px;
+}
+input.radio, input.submit {
+	width: auto;
+}
+textarea {
+	width: 225px;
+	height: 100px;
+	padding: 0;
+}
+/* submit */
+form div button {
+	width: 100px;
+	margin-top: 5px;
+	margin-left: 297px;
+	padding: 0 .25em;
+	background-color: #8e1325;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 90%;
+}
+div #captcha-error,
+div[id^="captcha-error_"]{
+    color:#fff;
+	display:block;
+	width:60%;
+	background-color:red;
+	padding:4px;
+	margin-top:5px;
+}
+/******************************************************************************************************
+
+											Custom Styles
+
+/******************************************************************************************************/
+
+html {
+	background: #00254f;
+}
+#bodycontainer {
+	width: 877px;
+	margin: 0 auto;
+}
+#container {
+	position: relative;
+	float: left;
+	width: 872px;
+	margin-top: 10px;
+	background: #b7c5d0;
+}
+#headercontainer {
+	position: relative;
+	float: left;
+	width: 858px;
+	border: #fff 7px solid;
+	border-top: none;
+	border-bottom: none;
+	background: transparent url(../design/header_topimage.jpg) top left no-repeat;
+}
+#headercontainer2 {
+	position: relative;
+	float: left;
+	width: 858px;
+	border: #fff 7px solid;
+	border-top: none;
+	border-bottom: none;
+	background: url(../design/interior_header.jpg) top left no-repeat;
+}
+#branding {
+	position: relative;
+	float: left;
+	width: 858px;
+}
+#logo {
+	position: relative;
+	float: left;
+	width: 350px;
+	padding-top: 20px;
+}
+#spacer {
+	height: 40px;
+	width: 100%;
+	display: block;
+	position: relative;
+	float: left;
+}
+#contacts {
+	position: relative;
+	float: right;
+	width: 500px;
+	padding: 30px 0 0 0;
+	text-align: right;
+	color: #656565;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+#contacts a, #contacts a:visited {
+	text-decoration: none;
+	color: #d3222a;
+}
+#contacts a:hover {
+	color: #d3222a;
+}
+#contacts img {
+	padding: 0 5px;
+}
+#quicklinks {
+	position: relative;
+	float: left;
+	padding: 0;
+	margin: 0;
+	width: 858px;
+	height: 234px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+.quicklink {
+	position: relative;
+	float: left;
+	width: 171px;
+	margin: 0;
+	padding: 0;
+	padding-top: 200px;
+	text-align: center;
+}
+.quicklink a, .quicklink a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+.quicklink a:hover {
+	color: #DAE1E7;
+	text-decoration: none;
+}
+#bottomcontainer {
+	position: relative;
+	float: left;
+	width: 844px;
+	background: transparent url(../design/bkg_bottomcontainer.jpg) top left repeat-y;
+}
+#leftcolumn {
+	position: relative;
+	float: left;
+	width: 168px;
+	background: url(../design/img_sideslice.jpg) top left repeat-x;
+}
+#callout {
+}
+#callout p {
+	color: #666666;
+	text-align: center;
+}
+#nav2 {
+	padding: 10px 5px 10px 10px;
+}
+#nav2 li {
+	margin: 0;
+	padding: 0;
+	border-bottom: dotted 1px #00254f;
+}
+#nav2 a, #nav2 a:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	line-height: 25px;
+	padding-left: 15px;
+}
+#nav2 a:hover, #nav2 a:active, .home #nav2 #nav2-home a, .overview #nav2 #nav2-overview a, .services #nav2 #nav2-services a, .projects #nav2 #nav2-projects a, .training #nav2 #nav2-training a, .testimonials #nav2 #nav2-testimonials a, .bid-list #nav2 #nav2-bid-list a .request #nav2 #nav2-request a, .contact #nav2 #nav2-contact a {
+	color: #8e1325;
+	padding-left: 15px;
+	background: url(../design/arrowred.gif) left no-repeat;
+}
+#nav2 ul li ul li {
+	margin-left: 10px;
+	padding-left: 15px;
+	text-indent: -15px;
+}
+#nav2 .last {
+	border-bottom: none;
+}
+#copy {
+	position: relative;
+	float: left;
+	width: 635px;
+	margin-left: 10px;
+	padding: 30px 15px;
+	color: #333333;
+}
+#rightcolumn {
+	position: relative;
+	float: right;
+	width: 325px;
+	margin-left: 40px;
+	margin-bottom: 20px;
+	padding-top: 30px;
+	color: #333333;
+	font-weight: bold;
+}
+.attribution {
+	text-align: right;
+	font-style: italic;
+	font-weight: normal;
+}
+#footer {
+	position: relative;
+	float: left;
+	width: 872px;
+	padding-top: 10px;
+	font-size: 85%;
+	color: #ffffff;
+	border-top: #fff 7px solid;
+	background: #00254f;
+}
+#footer a, a:visited {
+	color: #ffffff;
+}
+#footer a:hover {
+	color: #ffffff;
+}
+h1.home-tag {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-style: italic;
+}

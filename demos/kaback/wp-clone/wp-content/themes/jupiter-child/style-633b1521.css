@@ -1,0 +1,49 @@
+/*
+Theme Name:     Jupiter Child Theme
+Theme URI: 		http://demos.artbees.net/jupiter5
+Description:    Child theme for the Jupiter theme 
+Author:         Your name here
+Theme URI: 		http://themeforest.net/user/artbees
+Template:       jupiter
+Text Domain: mk_framework
+Domain Path: /languages/
+*/
+
+
+
+/*** Submit Button Styling ***/
+
+.gform_wrapper .button:hover {
+    background-color: #EDCD1F!important;
+	color: #222C5E!important;
+}
+
+/*** Client Form Button Hover State ***/
+
+.client-form-btn #mk-button-4 .mk-button:hover {
+    border-color: #EDCD1F !important;
+}
+
+/*** White Text Styling ***/
+
+.white-heading-h2 h2 {
+	  color: #ffffff !important;
+}
+
+.white-text-paragraph p {
+	  color: #ffffff !important;
+}	
+
+/*** Centers All Text on Mobile ***/
+
+@media only screen and (max-width: 767px) {
+    p,h2,h3,h4,h5,h6 {
+        text-align: center!important;
+    }
+    .mk-col-1-3 {
+        text-align:center!important;
+    }
+    .widget_social_networks .align-left {
+        text-align: center;
+    }
+}

@@ -19,10 +19,34 @@ Clone is the only IE-ready public preview: https://interimexecs.com. Refresh and
 
 Unready hub cards use Talk first, not live $4k / $6k deposit buttons. Clone $750/mo desk buy may stay.
 
+## Market ladders for review (2026-09-05)
+
+Internal review only. No outreach. Clone preview is the live site; Refresh / Reimagine stay `ready: false` until Webflow publishes.
+
+| Slug | Live | Hub | Asset clone | Brand pack |
+| --- | --- | --- | --- | --- |
+| `westernmech` | https://www.westernmech.com | [`demos/westernmech/`](demos/westernmech/) | [`wp-clone/`](demos/westernmech/wp-clone/) | [`assets/brand/`](demos/westernmech/assets/brand/) |
+| `kaback` | https://kaback.com | [`demos/kaback/`](demos/kaback/) | [`wp-clone/`](demos/kaback/wp-clone/) | [`assets/brand/`](demos/kaback/assets/brand/) |
+| `mcihvac` | https://www.mcihvac.com | [`demos/mcihvac/`](demos/mcihvac/) | [`wp-clone/`](demos/mcihvac/wp-clone/) | [`assets/brand/`](demos/mcihvac/assets/brand/) |
+| `beaconcpa` | https://beaconcpa.com | [`demos/beaconcpa/`](demos/beaconcpa/) | [`wp-clone/`](demos/beaconcpa/wp-clone/) | [`assets/brand/`](demos/beaconcpa/assets/brand/) |
+
+Refresh a mirror later:
+
+```bash
+python3 scripts/refresh-asset-clone.py westernmech
+python3 scripts/refresh-asset-clone.py kaback
+python3 scripts/refresh-asset-clone.py mcihvac
+python3 scripts/refresh-asset-clone.py beaconcpa
+node scripts/check-candidates.js
+```
+
+Beacon homepage fetched without a Cloudflare challenge in the 2026-09-05 crawl. Recrawl if a bot wall appears. Dummy forms only. Do not email prospects. Do not edit the Interim Execs hub.
+
 ## Checks
 
 ```bash
 node scripts/check-market-test.js
+node scripts/check-candidates.js
 ```
 
 Static HTML. No build tooling. GitHub Pages serves the repo root from `main`.
