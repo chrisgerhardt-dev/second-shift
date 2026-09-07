@@ -1,7 +1,7 @@
 /**
  * Current | Webflow Clone tabs (mobile). Desktop shows both panes.
- * Never fetch the Webflow host — a 404 must not break this hub.
- * Staging-soon stays until destinations.js marks webflowPreview.ready.
+ * Never fetch the Webflow host. When webflowPreview.ready, show the
+ * embed + open-staging CTA — not Staging soon.
  */
 (function () {
   var root = document.querySelector("[data-compare]");
@@ -33,6 +33,7 @@
   var wf = clone.webflowPreview || {};
   var live = cfg.liveOrigin || "https://anacorp.com";
   var stageHref = wf.href || "https://anacorp-refresh.webflow.io/";
+  var ready = !!wf.ready;
 
   var currentCta = root.querySelector('[data-pane="current"] .js-dest');
   if (currentCta) {
@@ -49,16 +50,25 @@
     if (wf.cta) wfCta.textContent = wf.cta;
   }
 
+  var embed = root.querySelector("[data-webflow-stage] .frame-embed");
+  if (embed) embed.setAttribute("src", stageHref);
+
   var stage = root.querySelector("[data-webflow-stage]");
-  if (stage) {
-    var ready = !!wf.ready;
-    stage.classList.toggle("is-pending", !ready);
-    stage.hidden = false;
-    if (!ready) {
-      var note = stage.querySelector(".frame-fallback");
-      if (note && !/staging soon/i.test(note.textContent || "")) {
-        note.innerHTML = "<strong>Staging soon.</strong> Webflow Clone is wired but not READY yet. The Current pane still opens " + live.replace(/^https:\/\//, "") + ".";
-      }
+  if (!stage) return;
+  stage.hidden = false;
+  stage.classList.toggle("is-pending", !ready);
+  var note = stage.querySelector(".frame-fallback");
+  if (!ready) {
+    if (embed) embed.hidden = true;
+    if (note) {
+      note.hidden = false;
+      note.innerHTML = "<strong>Staging soon.</strong> Webflow Clone is wired but not READY yet. The Current pane still opens " + live.replace(/^https:\/\//, "") + ".";
+    }
+  } else {
+    if (embed) embed.hidden = false;
+    if (note) {
+      note.hidden = false;
+      note.textContent = "Webflow Clone staging is live (DEMO). If the embed is blocked, open it in a new tab.";
     }
   }
 })();

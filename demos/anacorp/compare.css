@@ -76,4 +76,10 @@
   display: block;
   border: 1px solid var(--line);
 }
+.frame-embed {
+  width: 100%;
+  min-height: 22rem;
+  border: 1px solid var(--line);
+  background: #0c0b09;
+}
 .pane .actions { margin-top: 1rem; padding-top: 0; }
