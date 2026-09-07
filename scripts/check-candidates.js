@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Static checks for Western Mechanical, Kaback, MCI, and Beacon CPA ladders.
+ * Static checks for Western Mechanical, Kaback, MCI, Beacon CPA, and ANA ladders.
  * Does not touch Interim Execs. Run: node scripts/check-candidates.js
  */
 "use strict";
@@ -75,6 +75,17 @@ const CANDIDATES = [
     reimagineReady: true,
     clonePages: ["index.html", "contact.html"],
     needles: /Beacon|CPA/i
+  },
+  {
+    slug: "anacorp",
+    name: "Alliance North America",
+    live: "https://anacorp.com",
+    refresh: "https://anacorp-refresh.webflow.io/",
+    reimagine: "https://anacorp-reimagine.webflow.io/",
+    refreshReady: false,
+    reimagineReady: false,
+    clonePages: ["index.html", "contact.html"],
+    needles: /Alliance North America|ANA|AIRMAN/i
   }
 ];
 
@@ -131,6 +142,24 @@ CANDIDATES.forEach(function (c) {
   if (!sameHref(refresh.href, c.refresh)) fail(c.slug + " refresh.href mismatch");
   if (!sameHref(reimagine.href, c.reimagine)) fail(c.slug + " reimagine.href mismatch");
   if (/buy\.stripe\.com/.test(destSrc)) fail(c.slug + " destinations must not add Stripe links");
+  if (c.slug === "anacorp") {
+    if (/gograybeard|christopher/i.test(destSrc)) {
+      fail("anacorp destinations must not include Christopher name or gograybeard emails");
+    }
+    if (!/hello@secondshift\.care/.test(destSrc)) {
+      fail("anacorp destinations must route Talk first to hello@secondshift.care");
+    }
+    if (!clone.webflowPreview || !sameHref(clone.webflowPreview.href, c.refresh)) {
+      fail("anacorp clone.webflowPreview must use anacorp-refresh.webflow.io as close-Clone stand-in");
+    } else {
+      ok("anacorp Webflow Clone staging stand-in is wired");
+    }
+    if (clone.webflowPreview.ready) {
+      fail("anacorp webflowPreview.ready must stay false while staging is a 404");
+    } else {
+      ok("anacorp Webflow Clone stays pending so the hub shows Staging soon");
+    }
+  }
 
   const hub = read("demos/" + c.slug + "/index.html");
   if (!hub) return;
@@ -145,6 +174,59 @@ CANDIDATES.forEach(function (c) {
   if (!hub.includes(c.live)) fail(c.slug + " hub fallback Clone link must be the live site");
   if (hub.includes("buy.stripe.com")) fail(c.slug + " hub must not expose Stripe");
   if (!/Do not email/i.test(hub)) fail(c.slug + " hub must say do not email the prospect");
+  if (c.slug === "anacorp") {
+    if (/gograybeard|christopher/i.test(hub)) {
+      fail("anacorp hub must not include Christopher name or gograybeard emails");
+    }
+    if (!/DEMO/i.test(hub) || !/review-only/i.test(hub)) {
+      fail("anacorp hub must label Refresh/Reimagine as DEMO / review-only");
+    }
+    if (!/unpaid market test/i.test(hub)) {
+      fail("anacorp hub must say unpaid market test");
+    }
+    if (/hello@secondshift\.care/.test(hub) === false) {
+      fail("anacorp hub Talk first fallback must use hello@secondshift.care");
+    }
+    if (!/Webflow (Clone|migration)/i.test(hub)) {
+      fail("anacorp hub must lead with Webflow migration/Clone");
+    }
+    if (!/obvious improvements/i.test(hub) || !/SEO/i.test(hub)) {
+      fail("anacorp hub must lock lead copy to obvious improvements + $750/mo SEO desk");
+    }
+    if (!/proposal review/i.test(hub) || !/not affiliated/i.test(hub)) {
+      fail("anacorp hub must say proposal review and not affiliated as official ANA production");
+    }
+    if (!hub.includes('data-pane="current"') || !hub.includes('data-pane="webflow"')) {
+      fail("anacorp hub must show Current | Webflow Clone comparison panes");
+    }
+    if (!hub.includes("www.anacorp.com")) {
+      fail("anacorp hub must link the current live site");
+    }
+    if (!hub.includes("anacorp-refresh.webflow.io")) {
+      fail("anacorp hub must wire the close-Clone Webflow staging URL");
+    }
+    if (!/staging soon/i.test(hub)) {
+      fail("anacorp hub must placeholder Webflow Clone when staging is not READY");
+    }
+    if (!/legal pages/i.test(hub) || !/trademarks/i.test(hub) || !/accurate contact/i.test(hub)) {
+      fail("anacorp hub must say the Webflow Clone preserves legal pages, trademarks, and accurate contact");
+    }
+    if (!/does not invent claims/i.test(hub)) {
+      fail("anacorp hub must say the SEO desk does not invent claims");
+    }
+    if (!/Privacy Choices/i.test(hub) || !/Do Not Sell/i.test(hub) || !/opt-out/i.test(hub)) {
+      fail("anacorp hub must name the California Privacy Choices / Do Not Sell-Share opt-out win");
+    }
+    if (!/not legal advice/i.test(hub)) {
+      fail("anacorp hub must say the opt-out note is not legal advice");
+    }
+    const compareJs = read("demos/anacorp/compare.js") || "";
+    if (/fetch\s*\(/.test(compareJs)) {
+      fail("anacorp compare.js must not fetch the Webflow host (404 must not break the hub)");
+    } else {
+      ok("anacorp compare.js does not probe Webflow");
+    }
+  }
   if (!hub.includes('src="destinations.js"')) fail(c.slug + " hub must load destinations.js");
   if (!hub.includes("../candidate-hub.js")) fail(c.slug + " hub must load shared candidate-hub.js");
   if (/demos\/interimexecs/.test(hub) || /\/ie\//.test(hub)) fail(c.slug + " hub must not link the IE demo");

@@ -7,6 +7,7 @@ Usage (from repo root):
     python3 scripts/refresh-asset-clone.py kaback
     python3 scripts/refresh-asset-clone.py mcihvac
     python3 scripts/refresh-asset-clone.py beaconcpa
+    python3 scripts/refresh-asset-clone.py anacorp
     python3 scripts/refresh-asset-clone.py --all
 
 Writes demos/<slug>/wp-clone/ (HTML + CSS/JS/images with relative paths)
@@ -255,6 +256,72 @@ SITES = {
             "mist": "#f1f0f2",
             "lilac": "#eff3fd",
             "accent": "#ffbc7d",
+        },
+    },
+    "anacorp": {
+        "name": "Alliance North America",
+        "short": "Alliance North America",
+        "origin": "https://anacorp.com",
+        "hosts": ("anacorp.com", "www.anacorp.com"),
+        "pages": [("/", "index.html"), ("/contact/", "contact.html")],
+        "page_map": {
+            "/": "index.html",
+            "": "index.html",
+            "/contact/": "contact.html",
+            "/contact": "contact.html",
+        },
+        "logo_hints": (
+            "ANA-METAL-LOGO-SITE",
+            "ana-metal-logo",
+            "logo-top-v",
+            "logonotext",
+        ),
+        "needles": ("Alliance North America", "ANA", "AIRMAN", "Henderson"),
+        "kind": "wordpress",
+        "asset_hosts": ("cdn.jsdelivr.net",),
+        "fonts": {
+            "keep": [
+                {
+                    "family": "Russo One",
+                    "role": "display",
+                    "weights": [400],
+                    "worthKeeping": True,
+                    "note": "Live Elementor display / headings. Condensed industrial sans.",
+                },
+                {
+                    "family": "Roboto",
+                    "role": "body",
+                    "weights": [400, 500, 700],
+                    "worthKeeping": True,
+                    "note": "Live Elementor body / UI. Also loaded via fonts.googleapis.com.",
+                },
+                {
+                    "family": "Roboto Slab",
+                    "role": "accent",
+                    "weights": [400, 700],
+                    "worthKeeping": True,
+                    "note": "Local Elementor Google Font (robotoslab.css). Use sparingly.",
+                },
+            ],
+            "skip": ["Arial", "Helvetica", "sans-serif", "serif", "Font Awesome"],
+            "liveStacks": [
+                "'Russo One', sans-serif",
+                "'Russo One', Arial, serif",
+                "'Roboto', sans-serif",
+            ],
+            "cdn": "https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@400;700&display=swap",
+        },
+        "curated_colors": {
+            "red": "#ef3f36",
+            "redHot": "#f04135",
+            "blue": "#388ac7",
+            "green": "#81bd47",
+            "teal": "#47bed3",
+            "steel": "#939598",
+            "slate": "#58656a",
+            "gold": "#bc9e5a",
+            "ink": "#000000",
+            "paper": "#ffffff",
         },
     },
 }
@@ -1360,7 +1427,7 @@ def refresh(slug: str) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("slugs", nargs="*", help="westernmech, kaback, mcihvac, beaconcpa")
+    parser.add_argument("slugs", nargs="*", help="westernmech, kaback, mcihvac, beaconcpa, anacorp")
     parser.add_argument("--all", action="store_true")
     args = parser.parse_args()
     slugs = list(SITES) if args.all or not args.slugs else args.slugs

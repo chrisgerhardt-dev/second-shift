@@ -23,8 +23,24 @@ header, main, footer { width: min(1080px, calc(100% - 2.5rem)); }
   flex-direction: column;
 }
 .choice.is-shell { border-style: dashed; }
+.choice.is-recommended { border-color: var(--accent); }
+.choice.is-stepup { opacity: 0.72; }
 .choice h2 { margin: 0.25rem 0 0.45rem; font-size: 1.4rem; }
 .label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.rec {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
+}
+.stepup {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.35rem;
+}
 .status {
   font-size: 0.78rem;
   letter-spacing: 0.08em;

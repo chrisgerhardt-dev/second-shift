@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>ANA comparison — Current and Webflow Clone — Second Shift</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../candidate-hub.css" />
+  <link rel="stylesheet" href="compare.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="../../index.html">Second Shift</a>
+    <nav>
+      <a href="../../care.html">Care plan</a>
+      <a href="../../work.html">Work</a>
+      <a href="../../contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <p class="kicker">DEMO · Second Shift proposal review</p>
+    <h1>Current site, then the Webflow Clone.</h1>
+    <p class="offer">Webflow migration clone + obvious improvements + <strong>$750/mo SEO desk</strong> (monthly on-page/content SEO pass). Not a redesign.</p>
+    <p>Second Shift unpaid market test for friendly client review. This is a proposal comparison — not official ANA production, not a live cutover, and we are not affiliated with Alliance North America as their production site. Do not email them. This page does not send outreach. No invented claims: public copy stays what is already on anacorp.com.</p>
+    <p class="promise" data-migration>Webflow migration is the lead package: clone of the current site with obvious improvements, then the $750/mo desk including a monthly SEO pass.</p>
+    <p class="muted">Sell-side note only (this hub, not the ANA shell): the $750/mo desk includes SEO optimization. Destinations live in <code>destinations.js</code>. No Stripe. DEMO / review-only.</p>
+
+    <aside class="gate">
+      <strong>DEMO / Second Shift proposal review.</strong>
+      <span> Not affiliated as official ANA production. Review only. Do not email Alliance North America.</span>
+    </aside>
+    <aside class="gate" data-compliance>
+      <strong>Webflow Clone compliance.</strong>
+      <span> The clone preserves legal pages, trademarks, and accurate contact from the live site. The $750/mo SEO desk does not invent claims — it works from published ANA copy only.</span>
+    </aside>
+    <aside class="win" data-opt-out>
+      <strong>One obvious improvement: California privacy opt-out.</strong>
+      <span> The live footer already shows <em>Privacy Choices</em>. On the Webflow Clone that control is wired as a real Do Not Sell-Share / opt-out path — compliance hygiene, not a redesign. This is site hygiene, not legal advice.</span>
+    </aside>
+
+    <div class="compare" data-compare>
+      <div class="compare-tabs" role="tablist" aria-label="Site comparison">
+        <button type="button" role="tab" id="tab-current" data-tab="current" aria-controls="pane-current" aria-selected="true">Current</button>
+        <button type="button" role="tab" id="tab-webflow" data-tab="webflow" aria-controls="pane-webflow" aria-selected="false">Webflow Clone</button>
+      </div>
+
+      <div class="compare-grid">
+        <section class="pane is-active" id="pane-current" data-pane="current" role="tabpanel" aria-labelledby="tab-current">
+          <p class="pane-kicker">Current</p>
+          <h2>Live site</h2>
+          <p class="pane-copy">What customers see today. Opens the public site — we do not invent pages or claims.</p>
+          <div class="frame-wrap">
+            <p class="frame-fallback">Live anacorp.com blocks embedding (<code>X-Frame-Options: SAMEORIGIN</code>). Use the button to open the current site.</p>
+            <img class="frame-still" src="assets/brand/current-still.webp" alt="Public homepage banner from anacorp.com — ANA Flex launch still, used as visual reference because the live site cannot be iframed." width="1920" height="600" />
+          </div>
+          <div class="actions">
+            <a class="cta js-dest" href="https://www.anacorp.com/" target="_blank" rel="noopener noreferrer">Open current site</a>
+            <a class="cta ghost js-internal" href="wp-clone/index.html">Local asset clone</a>
+          </div>
+        </section>
+
+        <section class="pane" id="pane-webflow" data-pane="webflow" role="tabpanel" aria-labelledby="tab-webflow">
+          <p class="pane-kicker">Webflow Clone</p>
+          <h2>Migration staging</h2>
+          <p class="pane-copy">Same site, cloned to Webflow, with obvious improvements — including a working California Privacy Choices / Do Not Sell-Share opt-out. Staging is DEMO / review-only — not production. Not legal advice.</p>
+          <div class="frame-wrap is-pending" data-webflow-stage>
+            <p class="frame-fallback"><strong>Staging soon.</strong> <code>anacorp-refresh.webflow.io</code> is wired as the Webflow Clone stand-in. It is not READY yet (404). Open the link to re-check; this pane flips when that host serves the clone.</p>
+          </div>
+          <div class="actions">
+            <a class="cta js-webflow" href="https://anacorp-refresh.webflow.io/" target="_blank" rel="noopener noreferrer">Open Webflow Clone (DEMO)</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="notes">
+      <p class="muted">Current preview: <a href="https://www.anacorp.com/" target="_blank" rel="noopener noreferrer">https://www.anacorp.com/</a> (canonical <code>https://anacorp.com</code>). Webflow Clone: <a href="https://anacorp-refresh.webflow.io/" target="_blank" rel="noopener noreferrer">https://anacorp-refresh.webflow.io/</a> — placeholder until READY. Brand pack: <code>assets/brand/</code>. The $750/mo SEO desk is explained on this hub only, not on the ANA shell. Recrawl later with <code>python3 scripts/refresh-asset-clone.py anacorp</code>.</p>
+    </section>
+
+    <div hidden>
+      <article class="choice" data-choice="clone">
+        <p class="label">Clone</p>
+        <p class="status js-status"></p>
+        <a class="js-dest" href="https://anacorp.com">Preview live site</a>
+        <a class="js-webflow" href="https://anacorp-refresh.webflow.io/">Webflow Clone staging (DEMO)</a>
+        <a class="js-internal" href="wp-clone/index.html">Asset clone</a>
+        <a class="js-buy" href="mailto:hello@secondshift.care?subject=Second%20Shift%20Webflow%20migration%20%E2%80%94%20talk%20first">Talk first</a>
+      </article>
+      <article class="choice" data-choice="refresh">
+        <p class="label">Refresh</p>
+        <p class="status js-status"></p>
+        <p class="warn js-shell-warn"></p>
+        <a class="js-dest" href="https://anacorp-refresh.webflow.io/">Preview Refresh (DEMO)</a>
+        <a class="js-buy" href="mailto:hello@secondshift.care?subject=Second%20Shift%20Refresh%20%E2%80%94%20talk%20first">Talk first</a>
+      </article>
+      <article class="choice" data-choice="reimagine">
+        <p class="label">Reimagine</p>
+        <p class="status js-status"></p>
+        <p class="warn js-shell-warn"></p>
+        <a class="js-dest" href="https://anacorp-reimagine.webflow.io/">Preview Reimagine (DEMO)</a>
+        <a class="js-buy" href="mailto:hello@secondshift.care?subject=Second%20Shift%20Reimagine%20%E2%80%94%20talk%20first">Talk first</a>
+      </article>
+    </div>
+  </main>
+  <footer>Second Shift · GrayBeard LLC · hello@secondshift.care · DEMO / proposal review</footer>
+  <script src="../../pages-redirect.js"></script>
+  <script src="destinations.js"></script>
+  <script src="../candidate-hub.js"></script>
+  <script src="compare.js"></script>
+</body>
+</html>
