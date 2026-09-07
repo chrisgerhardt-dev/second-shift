@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Desk — Erwin PD officer portal (demo)</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,560&display=swap" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+<body class="portal" data-page="dashboard">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="demo-bar" role="status">
+    <strong>DEMO</strong>
+    <span>Staff desk shell. Replace cards from the live TAS Portal Demo when screenshots arrive.</span>
+  </div>
+
+  <header class="mast">
+    <div class="mast-inner">
+      <a class="brand" href="index.html">Erwin PD portal <small>Officer desk · demo</small></a>
+      <nav aria-label="Portal">
+        <a href="index.html" aria-current="page">Desk</a>
+        <a href="tips.html">Tips</a>
+        <a href="directory.html">Directory</a>
+        <a href="../index.html">Public site</a>
+        <a href="#" data-sign-out>Sign out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <p class="meta">Demo desk</p>
+        <h1>Shift desk</h1>
+        <p class="lede who" data-who></p>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap grid two">
+        <article class="card">
+          <p class="meta">Current shift</p>
+          <h2 data-shift-name></h2>
+          <p><span class="status-pill" data-shift-status></span></p>
+          <p data-shift-window></p>
+          <p data-shift-supervisor></p>
+          <p data-shift-units></p>
+          <p data-shift-notes></p>
+        </article>
+        <article class="card">
+          <p class="meta">Tips queue</p>
+          <div data-tips-queue></div>
+          <p class="btn-row"><a class="cta ghost" href="tips.html">Open tip inbox</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <p class="meta">Bulletin</p>
+        <div class="grid cards" data-bulletin></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <article class="card">
+          <p class="meta">Links</p>
+          <ul class="link-list">
+            <li><a href="tips.html">Tip inbox</a></li>
+            <li><a href="directory.html">Directory</a></li>
+            <li><a href="../index.html">Citizen homepage</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div class="wrap">
+      <p>Unofficial Second Shift prototype. Not affiliated with the Town of Erwin or the Erwin Police Department. Seeded sample data only — not a live CAD, RMS, or evidence system. Do not email the town.</p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/portal.js"></script>
+</body>
+</html>

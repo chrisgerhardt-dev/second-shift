@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Officer portal — Erwin PD (demo)</title>
+  <meta name="description" content="Demo officer door. Any username and password work, or skip straight in. Not affiliated with the Town of Erwin or EPD." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,560&display=swap" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body class="login">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="demo-bar" role="status">
+    <strong>DEMO</strong>
+    <span>No real login. Any credentials work, or enter without them.</span>
+  </div>
+
+  <div class="login-shell">
+    <main id="main" class="login-card">
+      <a class="login-back" href="index.html">Back to public homepage</a>
+      <p class="meta">Officer portal</p>
+      <h1>Staff desk</h1>
+      <p>This is an open demo. Nothing is checked or sent. Type anything, or skip the form.</p>
+
+      <p class="btn-row">
+        <a class="cta enter" href="portal/index.html">Enter demo portal</a>
+      </p>
+
+      <form data-login action="portal/index.html" method="post">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" placeholder="Any name" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Anything" />
+        <button type="submit">Continue</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
