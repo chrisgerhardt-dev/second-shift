@@ -209,6 +209,12 @@ CANDIDATES.forEach(function (c) {
     if (!/does not invent claims/i.test(hub)) {
       fail("anacorp hub must say the SEO desk does not invent claims");
     }
+    if (!/Privacy Choices/i.test(hub) || !/Do Not Sell/i.test(hub) || !/opt-out/i.test(hub)) {
+      fail("anacorp hub must name the California Privacy Choices / Do Not Sell-Share opt-out win");
+    }
+    if (!/not legal advice/i.test(hub)) {
+      fail("anacorp hub must say the opt-out note is not legal advice");
+    }
   }
   if (!hub.includes('src="destinations.js"')) fail(c.slug + " hub must load destinations.js");
   if (!hub.includes("../candidate-hub.js")) fail(c.slug + " hub must load shared candidate-hub.js");

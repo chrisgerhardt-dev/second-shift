@@ -25,6 +25,8 @@
  *
  * Compliance (hub sell side): Webflow Clone preserves legal pages, trademarks,
  * and accurate contact. The SEO desk does not invent claims.
+ * Obvious improvement: California Privacy Choices / Do Not Sell-Share opt-out
+ * wired properly on the Clone. Site hygiene — not legal advice.
  *
  * No Stripe on this ladder — ready choices still use Talk first.
  * Talk first goes to hello@secondshift.care (no personal mailbox on this hub).

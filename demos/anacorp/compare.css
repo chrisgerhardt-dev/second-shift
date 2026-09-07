@@ -26,6 +26,12 @@
   padding: 0.9rem 1.05rem;
   margin: 1.1rem 0 0;
 }
+.win {
+  border: 1px solid var(--accent);
+  padding: 0.85rem 1rem;
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+}
 .compare-grid {
   display: grid;
   gap: 1.1rem;

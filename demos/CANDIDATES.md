@@ -12,7 +12,7 @@ Five Clone / Refresh / Reimagine hubs for internal review. No outreach. Do not e
 
 Clone `ready: true` points at the live URL. Western Mechanical, Kaback, MCI, and Beacon CPA have Refresh and Reimagine published (`ready: true` on `*-refresh.webflow.io` and `*-reimagine.webflow.io`).
 
-ANA client hub is a **Current | Webflow Clone** comparison (`demos/anacorp/`). Lead package is **Webflow migration** — clone of their site with obvious improvements (not a redesign) — plus the **$750/mo desk including SEO** (monthly on-page/content SEO pass) on the hub sell side only, not on the ANA shell. Current opens `https://www.anacorp.com/`. Webflow Clone uses `anacorp-refresh.webflow.io` (placeholder “staging soon” while that host 404s). Redesign ladder is hidden from the comparison. DEMO / Second Shift proposal review — not affiliated as official ANA production. Talk first only — no Stripe.
+ANA client hub is a **Current | Webflow Clone** comparison (`demos/anacorp/`). Lead package is **Webflow migration** — clone of their site with obvious improvements (not a redesign) — plus the **$750/mo desk including SEO** (monthly on-page/content SEO pass) on the hub sell side only, not on the ANA shell. One named obvious improvement: California **Privacy Choices / Do Not Sell-Share opt-out** wired properly on the Clone (hygiene, not legal advice). Current opens `https://www.anacorp.com/`. Webflow Clone uses `anacorp-refresh.webflow.io` (placeholder “staging soon” while that host 404s). Redesign ladder is hidden from the comparison. DEMO / Second Shift proposal review — not affiliated as official ANA production. Talk first only — no Stripe.
 
 ## Refresh a mirror
 
