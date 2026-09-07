@@ -190,8 +190,23 @@ CANDIDATES.forEach(function (c) {
     if (!/Webflow (Clone|migration)/i.test(hub)) {
       fail("anacorp hub must lead with Webflow migration/Clone");
     }
-    if (!/obvious improvements/i.test(hub) || !/SEO/i.test(hub)) {
-      fail("anacorp hub must lock lead copy to obvious improvements + $750/mo SEO desk");
+    if (/obvious improvements/i.test(hub)) {
+      fail("anacorp hub must not pitch obvious improvements in the migration");
+    }
+    if (!/WordPress/i.test(hub) || !/same (site|look|website)/i.test(hub) || !/no-code/i.test(hub)) {
+      fail("anacorp hub must lock lead copy to same-site WordPress → no-code Webflow");
+    }
+    if (!/Webflow Editor/i.test(hub) || !/owner-editable|edit it themselves/i.test(hub)) {
+      fail("anacorp hub must say they edit the site after cutover in the Webflow Editor");
+    }
+    if (!/\$750\/mo SEO desk/i.test(hub) || !/SEO/i.test(hub)) {
+      fail("anacorp hub must lock the desk as $750/mo SEO desk");
+    }
+    if (!/not a (visual )?redesign/i.test(hub)) {
+      fail("anacorp hub must say the migration is not a redesign");
+    }
+    if (/obvious improvements/i.test(cfg.migrationPromise || "") || /obvious improvements/i.test(clone.summary || "")) {
+      fail("anacorp destinations must not pitch obvious improvements in the migration");
     }
     if (!/proposal review/i.test(hub) || !/not affiliated/i.test(hub)) {
       fail("anacorp hub must say proposal review and not affiliated as official ANA production");

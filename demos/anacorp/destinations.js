@@ -3,9 +3,12 @@
  *
  * Hub and scripts/check-candidates.js read this object.
  *
- * ANA play (locked): lead package is Webflow migration — clone of their site
- * with obvious improvements (not a redesign) — plus the $750/mo desk including
- * SEO optimization (monthly on-page/content SEO pass).
+ * ANA play (locked): lead package is WordPress → Webflow — same site,
+ * platform only, same look — plus the $750/mo desk including SEO
+ * (monthly on-page/content SEO pass). Not a redesign. Do not pitch
+ * “obvious improvements” or a visual refresh in the migration. Routine
+ * edits after cutover happen in the Webflow Editor (no-code). WordPress
+ * developers are the bottleneck; they keep the look and stop waiting on WP.
  * Do not lead with Refresh $4k / Reimagine $6k. Those stay muted step-ups.
  *
  * Clone preview (js-dest) is the live site. Asset clone is wp-clone/.
@@ -21,8 +24,8 @@
  *
  * Compliance (hub sell side): Webflow Clone preserves legal pages, trademarks,
  * and accurate contact. The SEO desk does not invent claims.
- * Obvious improvement: California Privacy Choices / Do Not Sell-Share opt-out
- * wired properly on the Clone. Site hygiene — not legal advice.
+ * Under the hood only: California Privacy Choices / Do Not Sell-Share
+ * opt-out wired properly on the Clone. Site hygiene — not legal advice.
  *
  * No Stripe on this ladder — ready choices still use Talk first.
  * Talk first goes to hello@secondshift.care (no personal mailbox on this hub).
@@ -38,7 +41,7 @@ window.SECOND_SHIFT_DESTINATIONS = {
   formSubmitProven: false,
   contactEmail: "hello@secondshift.care",
   talkFirstLabel: "Talk first",
-  migrationPromise: "Webflow migration is the lead package: clone of the current site with obvious improvements, then the $750/mo desk including a monthly SEO pass.",
+  migrationPromise: "Webflow migration is the lead package: same site moved WordPress → Webflow. Same look. Owner-editable after cutover in the Webflow Editor. Then the $750/mo desk including a monthly SEO pass. Not a visual redesign.",
 
   choices: {
     clone: {
@@ -48,7 +51,7 @@ window.SECOND_SHIFT_DESTINATIONS = {
       cta: "Preview live site",
       price: "$750 / month",
       priceNote: "$750/mo desk after cutover, including SEO optimization — a monthly on-page/content SEO pass. No redesign fee.",
-      summary: "Webflow migration. Clone of their site with obvious improvements. Not a redesign. $750/mo desk includes SEO.",
+      summary: "Same site, WordPress to no-code Webflow. Platform only. Same look. $750/mo desk includes SEO. Not a redesign.",
       internalPreview: "wp-clone/index.html",
       assetMirror: "wp-clone/index.html",
       webflowPreview: {
