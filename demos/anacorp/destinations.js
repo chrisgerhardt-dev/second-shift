@@ -10,14 +10,9 @@
  *
  * Clone preview (js-dest) is the live site. Asset clone is wp-clone/.
  * Primary buy-path preview is Webflow Clone staging (choices.clone.webflowPreview).
- * Until a dedicated clone subdomain exists, anacorp-refresh.webflow.io is the
- * close-Clone stand-in. Swap webflowPreview.href when a clone host is ready.
- *
- * Destination flips:
- *   Refresh and Reimagine hrefs are wired to the Webflow staging hosts.
- *   Keep ready: false (pending / placeholder UI) until that public URL is
- *   actually Alliance North America content — not a 404 or empty shell.
- *   Then flip choices.refresh.ready / choices.reimagine.ready to true.
+ * Close-Clone stand-in is anacorp-refresh.webflow.io (ANA content LIVE 2026-09-07).
+ * choices.clone.webflowPreview.ready is true — hub shows the Clone, not Staging soon.
+ * Keep choices.refresh.ready false so the hidden redesign rung stays muted.
  *
  * Staging URLs (DEMO / review-only, not a live cutover):
  *   https://anacorp-refresh.webflow.io/   (close-Clone stand-in + Refresh)
@@ -58,9 +53,9 @@ window.SECOND_SHIFT_DESTINATIONS = {
       webflowPreview: {
         href: "https://anacorp-refresh.webflow.io/",
         cta: "Open Webflow Clone (DEMO)",
-        ready: false,
+        ready: true,
         standIn: true,
-        note: "Close-Clone stand-in. Keep ready: false while the host 404s so the hub shows Staging soon. Current pane still opens the live site."
+        note: "Close-Clone stand-in is live ANA Clone content (title ANA | AIRMAN…). DEMO / review-only."
       }
     },
     refresh: {

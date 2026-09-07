@@ -154,10 +154,10 @@ CANDIDATES.forEach(function (c) {
     } else {
       ok("anacorp Webflow Clone staging stand-in is wired");
     }
-    if (clone.webflowPreview.ready) {
-      fail("anacorp webflowPreview.ready must stay false while staging is a 404");
+    if (clone.webflowPreview.ready !== true) {
+      fail("anacorp webflowPreview.ready must be true now that staging is ANA Clone content");
     } else {
-      ok("anacorp Webflow Clone stays pending so the hub shows Staging soon");
+      ok("anacorp Webflow Clone preview is ready");
     }
   }
 
@@ -205,8 +205,8 @@ CANDIDATES.forEach(function (c) {
     if (!hub.includes("anacorp-refresh.webflow.io")) {
       fail("anacorp hub must wire the close-Clone Webflow staging URL");
     }
-    if (!/staging soon/i.test(hub)) {
-      fail("anacorp hub must placeholder Webflow Clone when staging is not READY");
+    if (!/frame-embed|iframe/i.test(hub) || !hub.includes("Open Webflow Clone")) {
+      fail("anacorp hub must embed or clearly open the live Webflow Clone staging");
     }
     if (!/legal pages/i.test(hub) || !/trademarks/i.test(hub) || !/accurate contact/i.test(hub)) {
       fail("anacorp hub must say the Webflow Clone preserves legal pages, trademarks, and accurate contact");
