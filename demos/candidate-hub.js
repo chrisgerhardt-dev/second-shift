@@ -65,5 +65,21 @@
         internal.hidden = true;
       }
     }
+
+    var webflow = card.querySelector(".js-webflow");
+    if (webflow) {
+      var wf = choice.webflowPreview;
+      if (wf && wf.href) {
+        webflow.hidden = false;
+        webflow.setAttribute("href", wf.href);
+        if (wf.cta) webflow.textContent = wf.cta;
+        if (/^https?:\/\//i.test(wf.href)) {
+          webflow.setAttribute("target", "_blank");
+          webflow.setAttribute("rel", "noopener noreferrer");
+        }
+      } else {
+        webflow.hidden = true;
+      }
+    }
   });
 })();

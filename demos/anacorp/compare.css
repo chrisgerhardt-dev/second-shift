@@ -1,0 +1,73 @@
+/* ANA comparison hub — Current | Webflow Clone. Sell-side only. */
+.compare { margin: 1.75rem 0 0; }
+.compare-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 0 0.85rem;
+}
+.compare-tabs button {
+  font: inherit;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+}
+.compare-tabs button[aria-selected="true"] {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.offer {
+  border: 1px solid var(--accent);
+  padding: 0.9rem 1.05rem;
+  margin: 1.1rem 0 0;
+}
+.compare-grid {
+  display: grid;
+  gap: 1.1rem;
+}
+@media (min-width: 900px) {
+  .compare-grid { grid-template-columns: 1fr 1fr; }
+  .compare-tabs { display: none; }
+  .pane { display: flex !important; }
+}
+.pane {
+  display: none;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  padding: 1.1rem 1.1rem 1.2rem;
+  min-height: 100%;
+}
+.pane.is-active { display: flex; }
+.pane-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
+}
+.pane h2 { margin: 0 0 0.45rem; font-size: 1.45rem; }
+.pane-copy { margin: 0 0 0.9rem; color: var(--muted); }
+.frame-wrap {
+  border: 1px solid var(--line);
+  background: #16140f;
+  min-height: 16rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+.frame-wrap.is-pending { border-style: dashed; }
+.frame-fallback { margin: 0; font-size: 0.95rem; color: var(--ink); }
+.frame-still {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+.pane .actions { margin-top: 1rem; padding-top: 0; }
