@@ -9,15 +9,22 @@
     return /\/portal(\/|$)/.test(location.pathname);
   }
 
+  function inPolicies() {
+    return /\/portal\/policies(\/|$)/.test(location.pathname);
+  }
+
   function loginHref() {
+    if (inPolicies()) return "../../login.html";
     return inPortal() ? "../login.html" : "login.html";
   }
 
   function homeHref() {
+    if (inPolicies()) return "../../index.html";
     return inPortal() ? "../index.html" : "index.html";
   }
 
   function portalHref() {
+    if (inPolicies()) return "../index.html";
     return inPortal() ? "index.html" : "portal/index.html";
   }
 

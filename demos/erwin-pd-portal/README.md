@@ -18,11 +18,15 @@ Public Webflow (if Christopher stands one up later) stays separate. This folder 
 ## What is here
 
 ```
-index.html            Citizen homepage (911, 423-743-1870, 211 N Main Ave, Chief Tony Buchanan)
-login.html            Officer door — Enter demo portal, or any username/password
-portal/index.html     Staff desk: shift card, tips queue, bulletin, links (open, no gate)
-portal/tips.html      Sample tip inbox (open)
-portal/directory.html Roles. Only named person: Chief Tony Buchanan
+index.html                    Citizen homepage (911, 423-743-1870, 211 N Main Ave, Chief Tony Buchanan)
+login.html                    Officer door — Enter demo portal, or any username/password
+portal/index.html             Staff desk: shift card, tips queue, bulletin, links (open, no gate)
+portal/tips.html              Sample tip inbox (open)
+portal/directory.html         Roles. Only named person: Chief Tony Buchanan
+portal/policies/index.html    Policy catalog home — four sections + due-to-acknowledge queue
+portal/policies/section.html  Section list with search (`?s=general-orders|draft-general-orders|forms|town-policy`)
+portal/policies/item.html     Title stub (`?id=…`) — HTML placeholder, not a real GO PDF
+js/policies-data.js           Inventoried TAS title tree (16 / 38 / 29 / 1)
 ```
 
 Facts used (and only these):
@@ -33,7 +37,9 @@ Facts used (and only these):
 - Emergency 911
 - Chief Tony Buchanan (February 2026)
 
-Bulletin cards (fleet, body cams, radios, policies) are **demo copy** from public remarks. Refresh them when screenshots of the live TAS Portal Demo arrive.
+Bulletin cards (fleet, body cams, radios, policies) are **demo copy** from public remarks. The Policies bulletin card and the citizen homepage both link into the unofficial catalog.
+
+The Policies module mirrors the TAS portal **title tree** only. Purpose text is a one- or two-sentence demo stub. Drafts are marked **Under review**. Nothing here is an official order, Town code, or accreditation file.
 
 ## How the demo login works
 
@@ -41,8 +47,10 @@ Bulletin cards (fleet, body cams, radios, policies) are **demo copy** from publi
 
 - Big **Enter demo portal** button goes straight to the desk (plain link, works without JavaScript)
 - The form accepts **any** username and password, including blanks
-- Portal routes are also open if you hit them directly
+- Portal routes — including Policies — are also open if you hit them directly
 - Client-side only. Nothing is emailed or checked against a server
+
+Acknowledge (demo) on current General Orders writes to `localStorage` in this browser only. Reset the seeded due queue from the Policies home.
 
 ## Local preview
 
@@ -52,6 +60,8 @@ python3 -m http.server 4173
 ```
 
 Open `http://127.0.0.1:4173/`.
+
+Click-through: **Home → Policies** or **Officer portal → Enter demo portal → Policies**. Counts should read 16 General Orders, 38 Draft General Orders, 29 Forms, 1 Town Policy.
 
 ## Connect Cloudflare Pages to `erwin-pd-portal.pages.dev`
 
@@ -69,15 +79,16 @@ The Pages project already exists. Do not create a second project.
 
 After Access is off:
 
-`https://erwin-pd-portal.pages.dev/` → citizen homepage → Officer portal → desk.
+`https://erwin-pd-portal.pages.dev/` → citizen homepage → Officer portal → desk → Policies.
 
 ## Do not
 
 - Email the Town of Erwin or EPD
 - Invent officer names
 - Treat sample tips as real reports
+- Publish real legal policy body text or claim accreditation
 - Put this card on the Second Shift marketing lander (there is no demos index)
 
 ## Refresh later
 
-When TAS Portal Demo screenshots or notes arrive, update `js/data.js` (shift, tips, bulletin) and the desk copy. Keep the disclaimer and DEMO bar.
+When TAS Portal Demo screenshots or notes arrive, update `js/data.js` (shift, tips, bulletin) and the desk copy. Keep the disclaimer and DEMO bar. Policy **titles** live in `js/policies-data.js` — keep counts aligned with the live TAS tree if that inventory changes.

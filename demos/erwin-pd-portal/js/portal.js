@@ -62,6 +62,13 @@
         card.appendChild(el("p", "meta", item.tag));
         card.appendChild(el("h3", "", item.title));
         card.appendChild(el("p", "", item.body));
+        if (item.href) {
+          var row = el("p", "btn-row");
+          var link = el("a", "cta ghost", item.linkLabel || "Open");
+          link.href = item.href;
+          row.appendChild(link);
+          card.appendChild(row);
+        }
         board.appendChild(card);
       });
     }

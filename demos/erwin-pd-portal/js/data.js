@@ -3,6 +3,7 @@
  * Named person: Chief Tony Buchanan. Other roles are titles only.
  * Bulletin themes follow public remarks (fleet, body cams, radios, policies)
  * and are placeholders until live TAS Portal Demo screenshots land.
+ * Policy titles live in js/policies-data.js.
  */
 window.EPD = {
   agency: {
@@ -68,7 +69,9 @@ window.EPD = {
     {
       tag: "Policies",
       title: "Policies and procedures in work",
-      body: "Demo copy. Public remarks: policies and procedures are being updated. No official orders are published here."
+      body: "Demo copy. Public remarks: policies and procedures are being updated. Open the unofficial title catalog — not official orders.",
+      href: "policies/index.html",
+      linkLabel: "Open policy catalog"
     }
   ],
   directory: [

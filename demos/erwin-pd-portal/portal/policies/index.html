@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Policies — Erwin PD officer portal (demo)</title>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,560&display=swap" />
+  <link rel="stylesheet" href="../../css/site.css" />
+</head>
+<body class="portal" data-page="policies-home">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="demo-bar" role="status">
+    <strong>DEMO</strong>
+    <span>Unofficial Second Shift catalog. Not affiliated with the Town of Erwin, EPD, or TAS. Titles only — not official orders.</span>
+  </div>
+
+  <header class="mast">
+    <div class="mast-inner">
+      <a class="brand" href="../index.html">Erwin PD portal <small>Officer desk · demo</small></a>
+      <nav aria-label="Portal">
+        <a href="../index.html">Desk</a>
+        <a href="../tips.html">Tips</a>
+        <a href="index.html" aria-current="page">Policies</a>
+        <a href="../directory.html">Directory</a>
+        <a href="../../index.html">Public site</a>
+        <a href="#" data-sign-out>Sign out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <p class="meta">Policy catalog</p>
+        <h1>Policies</h1>
+        <p class="lede">Open title tree for a sales walkthrough. Counts match the public TAS portal inventory. This is not an official directive system and does not claim accreditation.</p>
+        <p class="who" data-who></p>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <aside class="banner-note" role="note">
+          <p class="meta">Demo narrative</p>
+          <p>Policies rewrite in progress. Public remarks put written procedures in the same work pile as fleet upkeep, new body cameras, and new radios. This catalog is a title tree with short stubs — not issued orders and not a quote dump from the department.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <p class="meta">How it works</p>
+        <ol class="how-list">
+          <li>Stay on this open demo — no Access wall and no one-time code.</li>
+          <li>Choose a section below.</li>
+          <li>Open a General Order stub, then Acknowledge (demo). That toggle stays in this browser only.</li>
+          <li>Drafts stay Under review. There is no supervisor workflow here.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <p class="meta">Sections</p>
+        <div class="grid four">
+          <a class="card policy-card" href="section.html?s=general-orders">
+            <p class="meta">Current titles</p>
+            <h2>General Orders</h2>
+            <p>Issued-title stubs with demo effective and issued dates.</p>
+            <span class="count-badge" data-count="general-orders">0</span>
+          </a>
+          <a class="card policy-card" href="section.html?s=draft-general-orders">
+            <p class="meta">Under review</p>
+            <h2>Draft General Orders</h2>
+            <p>Draft titles only. Not issued and not approved.</p>
+            <span class="count-badge" data-count="draft-general-orders">0</span>
+          </a>
+          <a class="card policy-card" href="section.html?s=forms">
+            <p class="meta">Title list</p>
+            <h2>Forms</h2>
+            <p>Form names for the catalog. No official blanks.</p>
+            <span class="count-badge" data-count="forms">0</span>
+          </a>
+          <a class="card policy-card" href="section.html?s=town-policy">
+            <p class="meta">Ordinance title</p>
+            <h2>Town Policy</h2>
+            <p>One town ordinance title. Not the municipal code.</p>
+            <span class="count-badge" data-count="town-policy">0</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <p class="meta">Due for acknowledge</p>
+        <div class="card">
+          <h2>Demo queue</h2>
+          <p>Seeded in this browser with five current General Order titles. Acknowledge (demo) writes to localStorage only. Nothing is emailed or stored on a server.</p>
+          <div class="queue-list" data-due-queue></div>
+          <p class="btn-row">
+            <a class="cta ghost" href="#" data-reset-acks>Reset demo acknowledgements</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div class="wrap">
+      <p>Unofficial Second Shift prototype. Not affiliated with the Town of Erwin, the Erwin Police Department, or TAS. Title inventory only — not official orders, not legal guidance, and not an accreditation file. Do not email the town.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/policies-data.js"></script>
+  <script src="../../js/policies.js"></script>
+</body>
+</html>
