@@ -196,6 +196,9 @@ CANDIDATES.forEach(function (c) {
     if (!/WordPress/i.test(hub) || !/same (site|look|website)/i.test(hub) || !/no-code/i.test(hub)) {
       fail("anacorp hub must lock lead copy to same-site WordPress → no-code Webflow");
     }
+    if (!/bottleneck/i.test(hub) || !/platform swap/i.test(hub) || !/owner-editable/i.test(hub)) {
+      fail("anacorp hub must say why migrate: WP bottleneck, same look, owner-editable platform swap");
+    }
     if (!/Webflow Editor/i.test(hub) || !/after cutover/i.test(hub) || !/client/i.test(hub)) {
       fail("anacorp hub must say later changes are the client's after cutover in the Webflow Editor");
     }

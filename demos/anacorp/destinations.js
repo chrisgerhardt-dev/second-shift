@@ -42,7 +42,7 @@ window.SECOND_SHIFT_DESTINATIONS = {
   formSubmitProven: false,
   contactEmail: "hello@secondshift.care",
   talkFirstLabel: "Talk first",
-  migrationPromise: "Webflow migration is the lead package: same site moved WordPress → Webflow. Same look. Owner-editable after cutover in the Webflow Editor. Then the $750/mo desk including a monthly SEO pass. Not a visual redesign.",
+  migrationPromise: "Webflow migration is the lead package: same website, now no-code Webflow. WordPress developers are the bottleneck. Same look. Owner-editable after cutover. Then the $750/mo desk including a monthly SEO pass. Pure platform swap — not a visual redesign.",
 
   choices: {
     clone: {
@@ -52,7 +52,7 @@ window.SECOND_SHIFT_DESTINATIONS = {
       cta: "Preview live site",
       price: "$750 / month",
       priceNote: "$750/mo desk after cutover, including SEO optimization — a monthly on-page/content SEO pass. No redesign fee.",
-      summary: "Same site, WordPress to no-code Webflow. Platform only. Same look. $750/mo desk includes SEO. Not a redesign.",
+      summary: "Same website, now no-code Webflow. Pure platform swap. Same look. $750/mo desk includes SEO. Not a redesign.",
       internalPreview: "wp-clone/index.html",
       assetMirror: "wp-clone/index.html",
       webflowPreview: {
