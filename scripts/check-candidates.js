@@ -203,6 +203,12 @@ CANDIDATES.forEach(function (c) {
     if (!/staging soon/i.test(hub)) {
       fail("anacorp hub must placeholder Webflow Clone when staging is not READY");
     }
+    if (!/legal pages/i.test(hub) || !/trademarks/i.test(hub) || !/accurate contact/i.test(hub)) {
+      fail("anacorp hub must say the Webflow Clone preserves legal pages, trademarks, and accurate contact");
+    }
+    if (!/does not invent claims/i.test(hub)) {
+      fail("anacorp hub must say the SEO desk does not invent claims");
+    }
   }
   if (!hub.includes('src="destinations.js"')) fail(c.slug + " hub must load destinations.js");
   if (!hub.includes("../candidate-hub.js")) fail(c.slug + " hub must load shared candidate-hub.js");

@@ -23,6 +23,9 @@
  *   https://anacorp-refresh.webflow.io/   (close-Clone stand-in + Refresh)
  *   https://anacorp-reimagine.webflow.io/
  *
+ * Compliance (hub sell side): Webflow Clone preserves legal pages, trademarks,
+ * and accurate contact. The SEO desk does not invent claims.
+ *
  * No Stripe on this ladder — ready choices still use Talk first.
  * Talk first goes to hello@secondshift.care (no personal mailbox on this hub).
  *

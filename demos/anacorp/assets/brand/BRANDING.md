@@ -26,4 +26,4 @@ Primary brand red **`#ef3f36`**. Supporting: blue `#388ac7`, green `#81bd47` (Jo
 
 ## Webflow Clone brief
 
-Clone the current site with **obvious improvements** — not a redesign. Keep this logo, palette, type, and public copy. Owner-editable after cutover. The $750/mo desk includes a monthly on-page/content SEO pass.
+Clone the current site with **obvious improvements** — not a redesign. Keep this logo, palette, type, and public copy. Preserve legal pages, trademarks, and accurate contact. The $750/mo SEO desk does not invent claims. Owner-editable after cutover. The desk includes a monthly on-page/content SEO pass.
