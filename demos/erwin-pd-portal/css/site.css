@@ -237,7 +237,7 @@ footer.colophon {
 }
 footer.colophon p { margin: 0 0 0.6rem; max-width: 46rem; }
 
-/* Login — Cloudflare Access pattern: email, then code */
+/* Login — open demo door. Any credentials, or skip. */
 body.login {
   min-height: 100svh;
   background: var(--navy-deep);
@@ -280,37 +280,31 @@ body.login .login-shell {
   font: inherit;
   letter-spacing: 0.06em;
 }
-.login-card input#code {
-  font-size: 1.35rem;
-  letter-spacing: 0.28em;
-  text-align: center;
+.login-card .cta.enter {
+  width: 100%;
+  justify-content: center;
+  background: #f4efe4;
+  border-color: #f4efe4;
+  color: var(--navy-deep);
+  font-size: 1.1rem;
 }
-.login-card button[type="submit"],
-.login-card button[type="button"] {
+.login-card .cta.enter:hover {
+  background: transparent;
+  color: #f4efe4;
+}
+.login-card form { margin-top: 1.4rem; }
+.login-card form label { margin-top: 0.75rem; }
+.login-card button[type="submit"] {
+  width: 100%;
   min-height: var(--tap);
+  margin-top: 0.9rem;
   padding: 0.7rem 1rem;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
   border: 1px solid #f4efe4;
-}
-.login-card button[type="submit"] {
-  width: 100%;
-  margin-top: 0.9rem;
-  background: #f4efe4;
-  color: var(--navy-deep);
-}
-.login-card button[type="button"] {
-  margin-top: 0.7rem;
-  width: 100%;
   background: transparent;
   color: #f4efe4;
-}
-.login-card .error {
-  margin: 0.8rem 0 0;
-  color: #f3c4b8;
-  border: 1px solid #8a3d34;
-  padding: 0.65rem 0.75rem;
 }
 .login-back {
   display: inline-block;

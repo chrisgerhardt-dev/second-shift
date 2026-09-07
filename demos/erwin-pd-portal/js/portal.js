@@ -3,8 +3,7 @@
   var data = window.EPD;
   if (!auth || !data) return;
 
-  var user = auth.requireAuth();
-  if (!user) return;
+  var user = auth.currentUser();
 
   function $(sel, root) {
     return (root || document).querySelector(sel);
@@ -24,9 +23,9 @@
 
   var who = $(".who");
   if (who) {
-    who.textContent = user.via === "cloudflare-access"
-      ? "Signed in via Cloudflare Access"
-      : user.email;
+    who.textContent = user.via === "open-demo"
+      ? "Open demo — no login required"
+      : ("Demo session · " + user.name);
   }
 
   document.querySelectorAll("[data-sign-out]").forEach(function (btn) {

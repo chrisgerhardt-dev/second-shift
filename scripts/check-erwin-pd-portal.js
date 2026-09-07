@@ -52,10 +52,17 @@ if (!home.includes("not affiliated") && !home.includes("Not affiliated")) {
   fail("homepage must disclaim affiliation");
 }
 
-if (!login.includes("Send login code")) fail("login must use Access-style send-code CTA");
-if (!login.includes("000000")) fail("login must document demo code 000000");
-if (!auth.includes("CF_Authorization")) fail("auth must recognize Cloudflare Access cookie");
-if (!auth.includes("000000")) fail("auth demo code must be 000000");
+if (!login.includes("Enter demo portal")) fail("login must offer Enter demo portal");
+if (!login.includes("portal/index.html")) fail("Enter demo portal must be a plain link to the desk");
+if (!login.includes("username") || !login.includes("password")) fail("login must have username and password fields");
+if (login.includes("000000") || login.includes("Send login code")) {
+  fail("login must not require a magic code");
+}
+if (auth.includes("requireAuth") || auth.includes("CF_Authorization")) {
+  fail("auth must not gate the portal or depend on Cloudflare Access");
+}
+const portalJs = read("js/portal.js");
+if (portalJs.includes("requireAuth")) fail("portal pages must stay open without login");
 
 if (!data.includes("Tony Buchanan")) fail("seed data must name Chief Buchanan");
 ["Regan Tilson", "Patrick Bennett", "Joey Ennis"].forEach((name) => {
@@ -64,7 +71,13 @@ if (!data.includes("Tony Buchanan")) fail("seed data must name Chief Buchanan");
 
 if (!readme.includes("erwin-pd-portal.pages.dev")) fail("README must explain CF hostname");
 if (!readme.includes("demos/erwin-pd-portal")) fail("README must set CF root directory");
-if (!readme.includes("TAS Portal Demo")) fail("README must mention renaming TAS Access title");
+if (!readme.includes("TAS Portal Demo")) fail("README must name the current Access wall");
+if (!readme.includes("currently has Cloudflare Access")) {
+  fail("README must say pages.dev is blocked by Access, not by the demo");
+}
+if (!readme.includes("any") && !readme.includes("Any")) {
+  fail("README must say any credentials work");
+}
 
 const lander = fs.readFileSync(path.join(root, "index.html"), "utf8");
 if (lander.includes("erwin-pd-portal")) {

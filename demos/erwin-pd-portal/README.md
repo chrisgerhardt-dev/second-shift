@@ -10,18 +10,18 @@ Public Webflow (if Christopher stands one up later) stays separate. This folder 
 
 | Host | What it is |
 | --- | --- |
-| `https://secondshift.care/demos/erwin-pd-portal/` | GitHub Pages after merge to `main` |
+| `https://secondshift.care/demos/erwin-pd-portal/` | GitHub Pages after merge to `main` — this is the open demo |
 | `https://erwin-pd-portal.pages.dev/` | Existing Cloudflare Pages project Christopher already named |
 
-The Cloudflare hostname is currently an Access wall titled **TAS Portal Demo**. Point that project at this folder, then leave homepage public and put Access on the staff routes.
+**`erwin-pd-portal.pages.dev` currently has Cloudflare Access in front** (login title: **TAS Portal Demo**). That wall is on the hostname, not in this app. The demo itself is open: no real auth, no Access check, no magic code. Until Access is turned off or bypassed on that project, the Pages hostname will keep asking for an email code and will not show this site.
 
 ## What is here
 
 ```
 index.html            Citizen homepage (911, 423-743-1870, 211 N Main Ave, Chief Tony Buchanan)
-login.html            Officer entry — email, then a one-time code (Cloudflare Access pattern)
-portal/index.html     Staff desk: shift card, tips queue, bulletin, links
-portal/tips.html      Sample tip inbox
+login.html            Officer door — Enter demo portal, or any username/password
+portal/index.html     Staff desk: shift card, tips queue, bulletin, links (open, no gate)
+portal/tips.html      Sample tip inbox (open)
 portal/directory.html Roles. Only named person: Chief Tony Buchanan
 ```
 
@@ -35,6 +35,15 @@ Facts used (and only these):
 
 Bulletin cards (fleet, body cams, radios, policies) are **demo copy** from public remarks. Refresh them when screenshots of the live TAS Portal Demo arrive.
 
+## How the demo login works
+
+`homepage → Officer portal → login.html`
+
+- Big **Enter demo portal** button goes straight to the desk (plain link, works without JavaScript)
+- The form accepts **any** username and password, including blanks
+- Portal routes are also open if you hit them directly
+- Client-side only. Nothing is emailed or checked against a server
+
 ## Local preview
 
 ```bash
@@ -42,46 +51,25 @@ cd demos/erwin-pd-portal
 python3 -m http.server 4173
 ```
 
-Open `http://127.0.0.1:4173/`. Citizen homepage is `/`. Officer portal is `/login.html`.
-
-Demo login (no Access in front):
-
-1. Any email with an `@`
-2. Code `000000`
-3. Nothing is emailed
-
-If a `CF_Authorization` cookie is already present (Cloudflare Access passed), the PIN step is skipped.
+Open `http://127.0.0.1:4173/`.
 
 ## Connect Cloudflare Pages to `erwin-pd-portal.pages.dev`
 
 The Pages project already exists. Do not create a second project.
 
-1. Cloudflare Dashboard → **Workers & Pages** → project **`erwin-pd-portal`** (hostname `erwin-pd-portal.pages.dev`).
+1. Cloudflare Dashboard → **Workers & Pages** → project **`erwin-pd-portal`**.
 2. **Settings → Builds & deployments**
    - Connect this GitHub repo: `chrisgerhardt-dev/second-shift`
    - Production branch: `main`
    - **Root directory:** `demos/erwin-pd-portal`
    - Build command: leave empty
-   - Build output directory: leave empty / `/` (this folder is already static)
+   - Build output directory: leave empty / `/`
 3. Save and retry the latest deployment.
-4. **Zero Trust → Access → Applications**
-   - Rename the application from **TAS Portal Demo** to **Erwin PD Officer Portal** (or keep the old name; only the login title changes).
-   - Protect staff paths only. Leave the citizen homepage public:
+4. **Zero Trust → Access:** the hostname is still branded **TAS Portal Demo**. Disable that Access application, or add a Bypass policy for everyone, so the open demo is actually reachable. Do not leave Access as the only way in — this prototype is not built to sit behind it.
 
-   | Path | Policy |
-   | --- | --- |
-   | `/` and `/index.html` | Bypass / public |
-   | `/css/*`, `/js/*`, `/favicon.svg`, `/robots.txt` | Bypass / public |
-   | `/login*` | Allow (email one-time code) |
-   | `/portal*` | Allow (email one-time code) |
+After Access is off:
 
-5. Include `chris@gograybeard.com` on the allow policy.
-
-Resulting UX on the Pages hostname:
-
-`homepage → Officer portal → Cloudflare Access email code → staff desk`
-
-GitHub Pages has no Access. There the same Officer portal link uses the in-page soft gate (`000000`).
+`https://erwin-pd-portal.pages.dev/` → citizen homepage → Officer portal → desk.
 
 ## Do not
 

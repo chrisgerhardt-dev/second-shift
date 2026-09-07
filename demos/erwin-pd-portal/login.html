@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Log in to officer portal — Erwin PD (demo)</title>
-  <meta name="description" content="Demo officer login. Cloudflare Access pattern: email, then a one-time code. Not affiliated with the Town of Erwin or EPD." />
+  <title>Officer portal — Erwin PD (demo)</title>
+  <meta name="description" content="Demo officer door. Any username and password work, or skip straight in. Not affiliated with the Town of Erwin or EPD." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,30 +16,26 @@
   <a class="skip" href="#main">Skip to content</a>
   <div class="demo-bar" role="status">
     <strong>DEMO</strong>
-    <span>Soft gate for GitHub Pages. On Cloudflare, Access can sit in front of this path.</span>
+    <span>No real login. Any credentials work, or enter without them.</span>
   </div>
 
   <div class="login-shell">
     <main id="main" class="login-card">
       <a class="login-back" href="index.html">Back to public homepage</a>
       <p class="meta">Officer portal</p>
-      <h1>Log in to Erwin PD portal</h1>
-      <p>Same pattern as Cloudflare Access: work email, then a one-time code. This demo does not send mail.</p>
+      <h1>Staff desk</h1>
+      <p>This is an open demo. Nothing is checked or sent. Type anything, or skip the form.</p>
 
-      <form data-login novalidate>
-        <div data-step="email">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" inputmode="email" autocomplete="username" required placeholder="chris@gograybeard.com" />
-          <button type="submit">Send login code</button>
-        </div>
-        <div data-step="code" hidden>
-          <p>Enter the code for <strong data-sent-to></strong>. Demo code is <strong>000000</strong>.</p>
-          <label for="code">Login code</label>
-          <input id="code" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]*" placeholder="000000" />
-          <button type="submit">Sign in</button>
-          <button type="button" data-back-email>Use a different email</button>
-        </div>
-        <p class="error" data-error hidden></p>
+      <p class="btn-row">
+        <a class="cta enter" href="portal/index.html">Enter demo portal</a>
+      </p>
+
+      <form data-login action="portal/index.html" method="post">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" placeholder="Any name" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Anything" />
+        <button type="submit">Continue</button>
       </form>
     </main>
   </div>

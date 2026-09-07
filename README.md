@@ -58,4 +58,4 @@ Unofficial homepage + officer portal prototype. Not affiliated with the Town of 
 
 - Folder: [`demos/erwin-pd-portal/`](demos/erwin-pd-portal/)
 - GitHub Pages (after merge): https://secondshift.care/demos/erwin-pd-portal/
-- Cloudflare Pages project: `erwin-pd-portal` → https://erwin-pd-portal.pages.dev/ (set root directory to `demos/erwin-pd-portal`; see the folder README)
+- Cloudflare Pages project: `erwin-pd-portal` → https://erwin-pd-portal.pages.dev/ (set root directory to `demos/erwin-pd-portal`; that hostname still has a Cloudflare Access wall titled “TAS Portal Demo” — the demo itself is open; see the folder README)
