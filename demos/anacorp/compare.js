@@ -1,7 +1,7 @@
 /**
  * Current | Webflow Clone tabs (mobile). Desktop shows both panes.
- * If the Webflow stand-in returns 200, drop the "staging soon" copy.
- * Destinations stay in destinations.js.
+ * Never fetch the Webflow host — a 404 must not break this hub.
+ * Staging-soon stays until destinations.js marks webflowPreview.ready.
  */
 (function () {
   var root = document.querySelector("[data-compare]");
@@ -28,12 +28,37 @@
     });
   });
 
-  var cfg = window.SECOND_SHIFT_DESTINATIONS;
-  var href = cfg && cfg.choices && cfg.choices.clone && cfg.choices.clone.webflowPreview
-    ? cfg.choices.clone.webflowPreview.href
-    : "https://anacorp-refresh.webflow.io/";
-  var stage = root.querySelector("[data-webflow-stage]");
-  if (!stage) return;
+  var cfg = window.SECOND_SHIFT_DESTINATIONS || {};
+  var clone = (cfg.choices && cfg.choices.clone) || {};
+  var wf = clone.webflowPreview || {};
+  var live = cfg.liveOrigin || "https://anacorp.com";
+  var stageHref = wf.href || "https://anacorp-refresh.webflow.io/";
 
-  fetch(href, { mode: "no-cors" }).catch(function () { /* placeholder stays */ });
+  var currentCta = root.querySelector('[data-pane="current"] .js-dest');
+  if (currentCta) {
+    currentCta.setAttribute("href", "https://www.anacorp.com/");
+    currentCta.setAttribute("target", "_blank");
+    currentCta.setAttribute("rel", "noopener noreferrer");
+  }
+
+  var wfCta = root.querySelector('[data-pane="webflow"] .js-webflow');
+  if (wfCta) {
+    wfCta.setAttribute("href", stageHref);
+    wfCta.setAttribute("target", "_blank");
+    wfCta.setAttribute("rel", "noopener noreferrer");
+    if (wf.cta) wfCta.textContent = wf.cta;
+  }
+
+  var stage = root.querySelector("[data-webflow-stage]");
+  if (stage) {
+    var ready = !!wf.ready;
+    stage.classList.toggle("is-pending", !ready);
+    stage.hidden = false;
+    if (!ready) {
+      var note = stage.querySelector(".frame-fallback");
+      if (note && !/staging soon/i.test(note.textContent || "")) {
+        note.innerHTML = "<strong>Staging soon.</strong> Webflow Clone is wired but not READY yet. The Current pane still opens " + live.replace(/^https:\/\//, "") + ".";
+      }
+    }
+  }
 })();

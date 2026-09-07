@@ -154,6 +154,11 @@ CANDIDATES.forEach(function (c) {
     } else {
       ok("anacorp Webflow Clone staging stand-in is wired");
     }
+    if (clone.webflowPreview.ready) {
+      fail("anacorp webflowPreview.ready must stay false while staging is a 404");
+    } else {
+      ok("anacorp Webflow Clone stays pending so the hub shows Staging soon");
+    }
   }
 
   const hub = read("demos/" + c.slug + "/index.html");
@@ -214,6 +219,12 @@ CANDIDATES.forEach(function (c) {
     }
     if (!/not legal advice/i.test(hub)) {
       fail("anacorp hub must say the opt-out note is not legal advice");
+    }
+    const compareJs = read("demos/anacorp/compare.js") || "";
+    if (/fetch\s*\(/.test(compareJs)) {
+      fail("anacorp compare.js must not fetch the Webflow host (404 must not break the hub)");
+    } else {
+      ok("anacorp compare.js does not probe Webflow");
     }
   }
   if (!hub.includes('src="destinations.js"')) fail(c.slug + " hub must load destinations.js");

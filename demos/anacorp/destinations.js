@@ -57,9 +57,10 @@ window.SECOND_SHIFT_DESTINATIONS = {
       assetMirror: "wp-clone/index.html",
       webflowPreview: {
         href: "https://anacorp-refresh.webflow.io/",
-        cta: "Webflow Clone staging (DEMO)",
+        cta: "Open Webflow Clone (DEMO)",
+        ready: false,
         standIn: true,
-        note: "Close-Clone stand-in until a dedicated clone subdomain exists. DEMO / review-only."
+        note: "Close-Clone stand-in. Keep ready: false while the host 404s so the hub shows Staging soon. Current pane still opens the live site."
       }
     },
     refresh: {
