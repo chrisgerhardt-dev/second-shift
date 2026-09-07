@@ -1,7 +1,8 @@
 /**
  * Current | Webflow Clone tabs (mobile). Desktop shows both panes.
- * Never fetch the Webflow host. When webflowPreview.ready, show the
- * embed + open-staging CTA — not Staging soon.
+ * Never fetch the Webflow host. Never iframe webflow.io — CSP
+ * frame-ancestors only allows webflow.com / webflow.io. Ready
+ * means outbound still + new-tab CTA, not Staging soon.
  */
 (function () {
   var root = document.querySelector("[data-compare]");
@@ -42,33 +43,35 @@
     currentCta.setAttribute("rel", "noopener noreferrer");
   }
 
-  var wfCta = root.querySelector('[data-pane="webflow"] .js-webflow');
-  if (wfCta) {
-    wfCta.setAttribute("href", stageHref);
-    wfCta.setAttribute("target", "_blank");
-    wfCta.setAttribute("rel", "noopener noreferrer");
-    if (wf.cta) wfCta.textContent = wf.cta;
+  function wireOutbound(el) {
+    if (!el) return;
+    el.setAttribute("href", stageHref);
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener noreferrer");
   }
 
-  var embed = root.querySelector("[data-webflow-stage] .frame-embed");
-  if (embed) embed.setAttribute("src", stageHref);
+  var wfCta = root.querySelector('[data-pane="webflow"] .js-webflow');
+  wireOutbound(wfCta);
+  if (wfCta && wf.cta) wfCta.textContent = wf.cta;
+  wireOutbound(root.querySelector('[data-pane="webflow"] .js-webflow-still'));
 
   var stage = root.querySelector("[data-webflow-stage]");
   if (!stage) return;
   stage.hidden = false;
   stage.classList.toggle("is-pending", !ready);
   var note = stage.querySelector(".frame-fallback");
+  var still = stage.querySelector(".still-card");
   if (!ready) {
-    if (embed) embed.hidden = true;
+    if (still) still.hidden = true;
     if (note) {
       note.hidden = false;
       note.innerHTML = "<strong>Staging soon.</strong> Webflow Clone is wired but not READY yet. The Current pane still opens " + live.replace(/^https:\/\//, "") + ".";
     }
   } else {
-    if (embed) embed.hidden = false;
+    if (still) still.hidden = false;
     if (note) {
       note.hidden = false;
-      note.textContent = "Webflow Clone staging is live (DEMO). If the embed is blocked, open it in a new tab.";
+      note.textContent = "Webflow Clone staging is live (DEMO). This hub does not embed it — open the Clone in a new tab.";
     }
   }
 })();

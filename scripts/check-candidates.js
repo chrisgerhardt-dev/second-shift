@@ -205,8 +205,23 @@ CANDIDATES.forEach(function (c) {
     if (!hub.includes("anacorp-refresh.webflow.io")) {
       fail("anacorp hub must wire the close-Clone Webflow staging URL");
     }
-    if (!/frame-embed|iframe/i.test(hub) || !hub.includes("Open Webflow Clone")) {
-      fail("anacorp hub must embed or clearly open the live Webflow Clone staging");
+    if (/<iframe\b/i.test(hub) || /frame-embed/i.test(hub)) {
+      fail("anacorp hub must not iframe webflow.io (CSP frame-ancestors would show a blank box)");
+    }
+    if (!hub.includes("Open Webflow Clone") || !/new tab/i.test(hub)) {
+      fail("anacorp hub must open the live Webflow Clone in a new tab");
+    }
+    if (!hub.includes("does not embed")) {
+      fail("anacorp hub must say it does not embed Webflow staging");
+    }
+    if (!hub.includes("clone-still.webp") || !hub.includes("current-still.webp")) {
+      fail("anacorp hub must use still cards for Current and Webflow Clone");
+    }
+    const stillPath = path.join(root, "demos/anacorp/assets/brand/clone-still.webp");
+    if (!fs.existsSync(stillPath)) {
+      fail("anacorp brand pack missing clone-still.webp");
+    } else {
+      ok("anacorp Webflow Clone still is present");
     }
     if (!/legal pages/i.test(hub) || !/trademarks/i.test(hub) || !/accurate contact/i.test(hub)) {
       fail("anacorp hub must say the Webflow Clone preserves legal pages, trademarks, and accurate contact");
@@ -225,6 +240,11 @@ CANDIDATES.forEach(function (c) {
       fail("anacorp compare.js must not fetch the Webflow host (404 must not break the hub)");
     } else {
       ok("anacorp compare.js does not probe Webflow");
+    }
+    if (/frame-embed|createElement\s*\(\s*['"]iframe|querySelector[^;]*iframe/i.test(compareJs)) {
+      fail("anacorp compare.js must not set an iframe src for Webflow");
+    } else {
+      ok("anacorp compare.js does not iframe Webflow");
     }
   }
   if (!hub.includes('src="destinations.js"')) fail(c.slug + " hub must load destinations.js");

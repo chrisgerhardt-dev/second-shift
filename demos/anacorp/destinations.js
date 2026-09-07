@@ -11,7 +11,8 @@
  * Clone preview (js-dest) is the live site. Asset clone is wp-clone/.
  * Primary buy-path preview is Webflow Clone staging (choices.clone.webflowPreview).
  * Close-Clone stand-in is anacorp-refresh.webflow.io (ANA content LIVE 2026-09-07).
- * choices.clone.webflowPreview.ready is true — hub shows the Clone, not Staging soon.
+ * choices.clone.webflowPreview.ready is true — hub shows a still + new-tab
+ * CTA to the Clone, not Staging soon. Do not iframe webflow.io (CSP).
  * Keep choices.refresh.ready false so the hidden redesign rung stays muted.
  *
  * Staging URLs (DEMO / review-only, not a live cutover):

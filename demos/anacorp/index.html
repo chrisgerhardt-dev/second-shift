@@ -51,8 +51,10 @@
           <h2>Live site</h2>
           <p class="pane-copy">What customers see today. Opens the public site — we do not invent pages or claims.</p>
           <div class="frame-wrap">
-            <p class="frame-fallback">Live anacorp.com blocks embedding (<code>X-Frame-Options: SAMEORIGIN</code>). Use the button to open the current site.</p>
-            <img class="frame-still" src="assets/brand/current-still.webp" alt="Public homepage banner from anacorp.com — ANA Flex launch still, used as visual reference because the live site cannot be iframed." width="1920" height="600" />
+            <p class="frame-fallback">Live anacorp.com blocks embedding (<code>X-Frame-Options: SAMEORIGIN</code>). Open the current site in a new tab.</p>
+            <a class="still-card" href="https://www.anacorp.com/" target="_blank" rel="noopener noreferrer">
+              <img class="frame-still" src="assets/brand/current-still.webp" alt="Public homepage banner from anacorp.com — ANA Flex launch still. Opens the live site in a new tab." width="1920" height="600" />
+            </a>
           </div>
           <div class="actions">
             <a class="cta js-dest" href="https://www.anacorp.com/" target="_blank" rel="noopener noreferrer">Open current site</a>
@@ -65,8 +67,10 @@
           <h2>Ready to review</h2>
           <p class="pane-copy">Same site, cloned to Webflow, with obvious improvements — including a working California Privacy Choices / Do Not Sell-Share opt-out. DEMO / review-only — not production. Not legal advice.</p>
           <div class="frame-wrap" data-webflow-stage>
-            <p class="frame-fallback">Webflow staging is live. If the embed is blocked (Webflow <code>frame-ancestors</code>), use the button to open it.</p>
-            <iframe class="frame-embed" title="ANA Webflow Clone staging" src="https://anacorp-refresh.webflow.io/" loading="lazy" referrerpolicy="no-referrer"></iframe>
+            <p class="frame-fallback">Webflow Clone staging is live (DEMO). This hub does not embed it — Webflow CSP only allows webflow.com / webflow.io to frame staging. Open the Clone in a new tab.</p>
+            <a class="still-card js-webflow-still" href="https://anacorp-refresh.webflow.io/" target="_blank" rel="noopener noreferrer">
+              <img class="frame-still" src="assets/brand/clone-still.webp" alt="Webflow Clone homepage still — ANA logo, nav, and At ANA We Make Your World Easier hero. Opens staging in a new tab." width="1280" height="720" />
+            </a>
           </div>
           <div class="actions">
             <a class="cta js-webflow" href="https://anacorp-refresh.webflow.io/" target="_blank" rel="noopener noreferrer">Open Webflow Clone (DEMO)</a>
@@ -76,7 +80,7 @@
     </div>
 
     <section class="notes">
-      <p class="muted">Current preview: <a href="https://www.anacorp.com/" target="_blank" rel="noopener noreferrer">https://www.anacorp.com/</a> (canonical <code>https://anacorp.com</code>). Webflow Clone is live: <a href="https://anacorp-refresh.webflow.io/" target="_blank" rel="noopener noreferrer">https://anacorp-refresh.webflow.io/</a> (DEMO / review-only). Brand pack: <code>assets/brand/</code>. The $750/mo SEO desk is explained on this hub only, not on the ANA shell. Recrawl later with <code>python3 scripts/refresh-asset-clone.py anacorp</code>.</p>
+      <p class="muted">Current preview: <a href="https://www.anacorp.com/" target="_blank" rel="noopener noreferrer">https://www.anacorp.com/</a> (canonical <code>https://anacorp.com</code>). Webflow Clone is live — open in a new tab: <a href="https://anacorp-refresh.webflow.io/" target="_blank" rel="noopener noreferrer">https://anacorp-refresh.webflow.io/</a> (DEMO / review-only). This hub uses still cards, not iframes. Brand pack: <code>assets/brand/</code>. The $750/mo SEO desk is explained on this hub only, not on the ANA shell. Recrawl later with <code>python3 scripts/refresh-asset-clone.py anacorp</code>.</p>
     </section>
 
     <div hidden>
