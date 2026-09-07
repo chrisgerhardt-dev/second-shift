@@ -196,8 +196,8 @@ CANDIDATES.forEach(function (c) {
     if (!/WordPress/i.test(hub) || !/same (site|look|website)/i.test(hub) || !/no-code/i.test(hub)) {
       fail("anacorp hub must lock lead copy to same-site WordPress → no-code Webflow");
     }
-    if (!/Webflow Editor/i.test(hub) || !/owner-editable|edit it themselves/i.test(hub)) {
-      fail("anacorp hub must say they edit the site after cutover in the Webflow Editor");
+    if (!/Webflow Editor/i.test(hub) || !/after cutover/i.test(hub) || !/client/i.test(hub)) {
+      fail("anacorp hub must say later changes are the client's after cutover in the Webflow Editor");
     }
     if (!/\$750\/mo SEO desk/i.test(hub) || !/SEO/i.test(hub)) {
       fail("anacorp hub must lock the desk as $750/mo SEO desk");

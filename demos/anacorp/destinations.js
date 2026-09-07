@@ -6,9 +6,10 @@
  * ANA play (locked): lead package is WordPress → Webflow — same site,
  * platform only, same look — plus the $750/mo desk including SEO
  * (monthly on-page/content SEO pass). Not a redesign. Do not pitch
- * “obvious improvements” or a visual refresh in the migration. Routine
- * edits after cutover happen in the Webflow Editor (no-code). WordPress
- * developers are the bottleneck; they keep the look and stop waiting on WP.
+ * “obvious improvements” or any improvements in the migration. Later
+ * changes are the client's, after cutover, in the Webflow Editor (no-code).
+ * WordPress developers are the bottleneck; they keep the look and stop
+ * waiting on WP.
  * Do not lead with Refresh $4k / Reimagine $6k. Those stay muted step-ups.
  *
  * Clone preview (js-dest) is the live site. Asset clone is wp-clone/.
