@@ -47,6 +47,15 @@ Beacon homepage fetched without a Cloudflare challenge in the 2026-09-05 crawl. 
 ```bash
 node scripts/check-market-test.js
 node scripts/check-candidates.js
+node scripts/check-erwin-pd-portal.js
 ```
 
 Static HTML. No build tooling. GitHub Pages serves the repo root from `main`.
+
+## Erwin PD portal experiment
+
+Unofficial homepage + officer portal prototype. Not affiliated with the Town of Erwin or EPD. Do not email the town. Not on the marketing lander.
+
+- Folder: [`demos/erwin-pd-portal/`](demos/erwin-pd-portal/)
+- GitHub Pages (after merge): https://secondshift.care/demos/erwin-pd-portal/
+- Cloudflare Pages project: `erwin-pd-portal` → https://erwin-pd-portal.pages.dev/ (set root directory to `demos/erwin-pd-portal`; see the folder README)
