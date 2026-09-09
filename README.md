@@ -13,7 +13,7 @@ Same locked package as ANA: pure WordPress → Webflow — same website, now no-
 - Brand pack: [`demos/interimexecs/assets/brand/`](demos/interimexecs/assets/brand/)
 - Refresh the asset clone from live: `python3 scripts/refresh-ie-asset-clone.py`
 - Hub (Current | Webflow Clone, DEMO / review-only): [`demos/interimexecs/index.html`](demos/interimexecs/index.html) — https://secondshift.care/demos/interimexecs/
-- Destinations: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js) — `webflowPreview.ready` stays **false** until `interimexecs-refresh.webflow.io` serves IE content (404 on 2026-09-09). Hub shows Staging soon. Do not iframe webflow.io.
+- Destinations: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js) — Clone / `webflowPreview` is `https://interimexecs-refresh-4d5162.webflow.io/` (`siteId` `6aa172cba67941dfcc29e970`). `webflowPreview.ready` stays **false** while Home is eye-checked. Hub shows Staging soon. Do not iframe webflow.io.
 - Status: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md)
 - Authorized Clone-only email draft (confirm before send): [`market-test/interimexecs-email.md`](market-test/interimexecs-email.md)
 

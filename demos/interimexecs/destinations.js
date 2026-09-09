@@ -15,15 +15,16 @@
  *
  * Clone preview (js-dest) is the live site. Asset clone is wp-clone/.
  * Primary buy-path preview is Webflow Clone staging (choices.clone.webflowPreview).
- * Close-Clone stand-in is interimexecs-refresh.webflow.io (teammate may
- * rename to interimexecs-clone.webflow.io — update hrefs if they do).
- * choices.clone.webflowPreview.ready is false until that host serves
- * Interim Execs content. Hub shows Staging soon. Do not iframe
+ * Close-Clone stand-in is interimexecs-refresh-4d5162.webflow.io
+ * (siteId 6aa172cba67941dfcc29e970). Published staging host as of
+ * 2026-09-09. choices.clone.webflowPreview.ready stays false until
+ * Home is eye-checked. Hub shows Staging soon. Do not iframe
  * webflow.io (CSP). Keep choices.refresh.ready false so the hidden
  * redesign rung stays muted.
  *
  * Staging URLs (DEMO / review-only, not a live cutover):
- *   https://interimexecs-refresh.webflow.io/   (close-Clone stand-in + Refresh)
+ *   https://interimexecs-refresh-4d5162.webflow.io/   (close-Clone stand-in)
+ *   https://interimexecs-refresh.webflow.io/          (muted Refresh step-up)
  *   https://interimexecs-reimagine.webflow.io/
  *
  * Compliance (hub sell side): Webflow Clone preserves legal pages,
@@ -58,11 +59,12 @@ window.SECOND_SHIFT_DESTINATIONS = {
       internalPreview: "wp-clone/index.html",
       assetMirror: "wp-clone/index.html",
       webflowPreview: {
-        href: "https://interimexecs-refresh.webflow.io/",
+        href: "https://interimexecs-refresh-4d5162.webflow.io/",
+        siteId: "6aa172cba67941dfcc29e970",
         cta: "Open Webflow Clone (DEMO)",
         ready: false,
         standIn: true,
-        note: "Close-Clone stand-in is wired to interimexecs-refresh.webflow.io. Not READY yet — host was a 404 on 2026-09-09. Flip choices.clone.webflowPreview.ready to true when that host shows Interim Execs content."
+        note: "Close-Clone stand-in is wired to interimexecs-refresh-4d5162.webflow.io (siteId 6aa172cba67941dfcc29e970). Published staging host. Not READY yet — Home is still being eye-checked. Hub shows Staging soon. Flip choices.clone.webflowPreview.ready to true after that review, when the hub has a live still from this host."
       }
     },
     refresh: {

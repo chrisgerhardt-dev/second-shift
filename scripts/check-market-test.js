@@ -88,13 +88,18 @@ if (!cfg) {
     if (clone.internalPreview !== "wp-clone/index.html") fail("clone.internalPreview must be the local asset mirror");
     if (clone.assetMirror !== "wp-clone/index.html") fail("clone.assetMirror must be the local asset mirror");
     else ok("clone assetMirror / internalPreview point at wp-clone/");
-    if (!clone.webflowPreview || !sameHref(clone.webflowPreview.href, "https://interimexecs-refresh.webflow.io/")) {
-      fail("clone.webflowPreview must use interimexecs-refresh.webflow.io as close-Clone stand-in");
+    if (!clone.webflowPreview || !sameHref(clone.webflowPreview.href, "https://interimexecs-refresh-4d5162.webflow.io/")) {
+      fail("clone.webflowPreview must use interimexecs-refresh-4d5162.webflow.io as close-Clone stand-in");
     } else {
       ok("Webflow Clone staging stand-in is wired");
     }
+    if (clone.webflowPreview.siteId !== "6aa172cba67941dfcc29e970") {
+      fail("clone.webflowPreview.siteId must be 6aa172cba67941dfcc29e970");
+    } else {
+      ok("Webflow Clone siteId is 6aa172cba67941dfcc29e970");
+    }
     if (clone.webflowPreview.ready !== false) {
-      fail("webflowPreview.ready must stay false until staging serves Interim Execs content");
+      fail("webflowPreview.ready must stay false until Home is eye-checked");
     } else {
       ok("webflowPreview.ready is false (Staging soon)");
     }
@@ -217,8 +222,14 @@ if (hub) {
   if (!hub.includes("https://interimexecs.com")) {
     fail("hub fallback Clone link must be the live site");
   }
+  if (!hub.includes("interimexecs-refresh-4d5162.webflow.io")) {
+    fail("hub must wire the published Webflow Clone staging URL");
+  }
+  if (!hub.includes("6aa172cba67941dfcc29e970")) {
+    fail("hub must document the Webflow Clone siteId");
+  }
   if (!hub.includes("interimexecs-refresh.webflow.io")) {
-    fail("hub must wire the close-Clone Webflow staging URL");
+    fail("hub must keep the muted Refresh URL wired");
   }
   if (!hub.includes("interimexecs-reimagine.webflow.io")) {
     fail("hub must keep the muted Reimagine URL wired");
@@ -279,6 +290,9 @@ if (hub) {
   if (/parked/i.test(hub)) fail("hub still claims the domain is parked");
 
   const compareJs = read("demos/interimexecs/compare.js") || "";
+  if (!compareJs.includes("interimexecs-refresh-4d5162.webflow.io")) {
+    fail("compare.js fallback stage URL must be the published Clone host");
+  }
   if (/fetch\s*\(/.test(compareJs)) {
     fail("compare.js must not fetch the Webflow host (404 must not break the hub)");
   } else {
@@ -408,8 +422,10 @@ if (handoff) {
   [
     "2026-09-09",
     "secondshift.care",
+    "interimexecs-refresh-4d5162.webflow.io",
     "interimexecs-refresh.webflow.io",
     "interimexecs-reimagine.webflow.io",
+    "6aa172cba67941dfcc29e970",
     "Verify",
     "hello@secondshift.care",
     "Staging soon",
