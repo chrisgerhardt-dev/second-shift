@@ -278,6 +278,15 @@ if (hub) {
   } else {
     ok("hub shows Staging soon for the Webflow Clone");
   }
+  const clonePane = (hub.match(/data-pane="webflow"[\s\S]*?<\/section>/) || [""])[0];
+  if (/current-still\.webp/.test(clonePane)) {
+    fail("Webflow Clone pane must not reuse the Current still while staging is pending");
+  }
+  if (!/still-card\[hidden\]/.test(read("demos/interimexecs/compare.css") || "")) {
+    fail("compare.css must hide [hidden] still cards (display:block would otherwise leak the still)");
+  } else {
+    ok("pending Webflow still stays hidden");
+  }
   if (!/legal pages/i.test(hub) || !/trademarks/i.test(hub) || !/accurate contact/i.test(hub)) {
     fail("hub must say the Webflow Clone preserves legal pages, trademarks, and accurate contact");
   }

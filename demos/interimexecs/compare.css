@@ -80,6 +80,9 @@
   display: block;
   text-decoration: none;
 }
+.still-card[hidden] {
+  display: none;
+}
 .still-card:focus-visible .frame-still,
 .still-card:hover .frame-still {
   outline: 2px solid var(--accent);
