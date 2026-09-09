@@ -267,6 +267,10 @@ if (hub) {
   if (!hub.includes("compare.js") || !hub.includes("compare.css")) {
     fail("hub must load compare.js / compare.css");
   }
+  const compareCss = read("demos/interimexecs/compare.css") || "";
+  if (!/\.still-card\[hidden\]/.test(compareCss)) {
+    fail("compare.css must hide [hidden] still cards (display:block must not override hidden)");
+  }
   if (hub.includes('src="customize.js"') || hub.includes("data-chat-input")) {
     fail("public hub must not lead with the customize / three-tier studio");
   }
