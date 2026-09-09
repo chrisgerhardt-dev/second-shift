@@ -4,7 +4,7 @@
 
 **Public hub:** Current | Webflow Clone comparison at [`index.html`](index.html) / https://secondshift.care/demos/interimexecs/. DEMO / review-only. No Christopher name or `gograybeard` on public pages. Talk first goes to `hello@secondshift.care`. No Stripe. This page does not send outreach. Do not email Interim Execs.
 
-**Webflow Clone:** `choices.clone.webflowPreview.ready` is **false**. Close-Clone stand-in is https://interimexecs-refresh.webflow.io/ (teammate may rename to `interimexecs-clone.webflow.io`). Host returned HTTP 404 on 2026-09-09. Hub shows **Staging soon**. Flip `ready` to true when that host serves Interim Execs content. Do not iframe `webflow.io` (CSP).
+**Webflow Clone:** `choices.clone.webflowPreview.ready` is **false**. Close-Clone stand-in is https://interimexecs-refresh-4d5162.webflow.io/ (`siteId` `6aa172cba67941dfcc29e970`). Published staging host as of 2026-09-09. Hub shows **Staging soon** — Christopher is still eye-checking Home; do not flip `ready` until that review and the hub has a live still from this host. Do not iframe `webflow.io` (CSP).
 
 **Muted step-ups:** `choices.refresh.ready` and `choices.reimagine.ready` stay **false**. Hidden redesign ladder only. Not the lead.
 
@@ -26,16 +26,17 @@
 - Brand pack (logo + hex tokens + fonts): [`assets/brand/`](assets/brand/)
 - Hub (client-sendable comparison / not a live cutover): https://secondshift.care/demos/interimexecs/
 - Short alias: https://secondshift.care/ie/
-- Webflow Clone stand-in (not READY — Staging soon; 404 on 2026-09-09): https://interimexecs-refresh.webflow.io/
+- Webflow Clone stand-in (not READY — Staging soon; Home eye-check pending): https://interimexecs-refresh-4d5162.webflow.io/ (`siteId` `6aa172cba67941dfcc29e970`)
+- Refresh (muted step-up; not READY): https://interimexecs-refresh.webflow.io/
 - Reimagine (muted step-up; not READY): https://interimexecs-reimagine.webflow.io/
 
 ## Destinations (one file)
 
-Edit only [`destinations.js`](destinations.js). Keep `choices.clone.webflowPreview.ready` **false** until the Webflow host shows Interim Execs content. Keep Refresh / Reimagine `ready: false`. Keep `formSubmitProven: false` until mailbox delivery is proven. Verify before any prospect email.
+Edit only [`destinations.js`](destinations.js). Keep `choices.clone.webflowPreview.ready` **false** until Home is eye-checked and the hub has a live still from `interimexecs-refresh-4d5162.webflow.io`. Keep Refresh / Reimagine `ready: false`. Keep `formSubmitProven: false` until mailbox delivery is proven. Verify before any prospect email.
 
 ## Remaining send-blockers
 
-1. **Webflow Clone host:** interimexecs-refresh.webflow.io was a 404 on 2026-09-09. Do not flip `webflowPreview.ready` until it serves IE content.
+1. **Webflow Clone host:** interimexecs-refresh-4d5162.webflow.io is published (siteId `6aa172cba67941dfcc29e970`). Do not flip `webflowPreview.ready` until Christopher finishes the Home eye-check and the hub has a live still from that host.
 2. **Mailbox:** FormSubmit delivery is still unconfirmed. **Verify** before any authorized email.
 
 ## Cleared
