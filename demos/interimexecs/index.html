@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Interim Execs market test — Second Shift</title>
-  <!-- Relative assets: works at /second-shift/demos/interimexecs/ on GitHub Pages. -->
+  <title>Interim Execs comparison — Current and Webflow Clone — Second Shift</title>
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="market-test.css" />
+  <link rel="stylesheet" href="../candidate-hub.css" />
+  <link rel="stylesheet" href="compare.css" />
 </head>
 <body>
   <header>
@@ -19,199 +19,99 @@
     </nav>
   </header>
   <main>
-    <p class="kicker">Interim Execs · market test</p>
-    <h1>Three choices: Clone, Refresh, Reimagine.</h1>
-    <p>Authorized test client. Same brand and public copy. Not a live cutover, and Interim Execs has not purchased.</p>
-    <p><strong>Core promise:</strong> remove the “this company looks dated” penalty. The bar is a site that looks good and never stands out in a bad way.</p>
-    <p><strong>Secure by default</strong> means a standard security baseline on every tier — not hack-proof, not a guarantee, and not a compliance audit. Full rebrand is separate ($10,000+).</p>
-    <p class="promise" data-migration>If you purchase Clone, Refresh, or Reimagine, we handle migration and testing before cutover. Keep Tiny Frog active until you accept the new site. Their contract and fees stay theirs.</p>
-    <p class="muted">Dummy forms never email Interim Execs. Destinations and buy links are set in <code>destinations.js</code> only.</p>
+    <p class="kicker">DEMO · Second Shift proposal review</p>
+    <h1>Current site, then the same site on Webflow.</h1>
+    <p class="offer">Same website, now <strong>no-code Webflow</strong>. WordPress developers are the bottleneck — they keep the look and stop waiting on WordPress for routine changes. Plus the <strong>$750/mo SEO desk</strong> (monthly on-page/content SEO pass). Pure platform swap. Not a redesign.</p>
+    <p>Second Shift unpaid market test for friendly client review. This is a proposal comparison — not official Interim Execs production, not a live cutover, and we are not affiliated with Interim Execs as their production site. Do not email them. This page does not send outreach. No invented claims: public copy stays what is already on interimexecs.com.</p>
+    <p class="promise" data-migration>Webflow migration is the lead package: same website, now no-code Webflow. WordPress developers are the bottleneck. Same look. Owner-editable after cutover. Then the $750/mo desk including a monthly SEO pass. Pure platform swap — not a visual redesign.</p>
+    <p class="muted">Sell-side note only (this hub, not the Interim Execs shell): the $750/mo desk includes SEO optimization. Later site changes are the client's, after cutover, in the Webflow Editor — not part of the migration. Destinations live in <code>destinations.js</code>. No Stripe. DEMO / review-only.</p>
 
-    <aside class="gate" data-send-gate>
-      <strong>Do not email Interim Execs yet.</strong>
-      <span> Clone is ready. Refresh and Reimagine are not IE-ready — craft review is in progress and neither is ready to show. Three-tier email stays blocked until those shells are IE-ready and FormSubmit to <code>chris@gograybeard.com</code> is proven. See <a href="HANDOFF.md">HANDOFF.md</a>.</span>
+    <aside class="gate">
+      <strong>DEMO / Second Shift proposal review.</strong>
+      <span> Not affiliated as official Interim Execs production. Review only. Do not email Interim Execs.</span>
     </aside>
-    <aside class="ok" data-send-ok hidden>
-      <strong>Send-gate open.</strong> Destinations, custom domain, and FormSubmit are marked proven in <code>destinations.js</code>. Still verify the live links before any email.
+    <aside class="gate" data-compliance>
+      <strong>Webflow Clone compliance.</strong>
+      <span> The clone preserves legal pages, trademarks, and accurate contact from the live site. The $750/mo SEO desk does not invent claims — it works from published Interim Execs copy only.</span>
+    </aside>
+    <aside class="win" data-opt-out>
+      <strong>Under the hood: cookie and privacy pages stay as published.</strong>
+      <span> The live footer already links <em>Privacy Policy</em> and <em>Terms</em>, and the site shows a cookie notice. The Webflow Clone keeps those legal pages — SEO/compliance hygiene, not a visual change. This is site hygiene, not legal advice.</span>
     </aside>
 
-    <div class="trio">
-      <article class="choice is-ready" data-choice="clone">
-        <p class="label">Clone</p>
-        <p class="status js-status">Ready to show</p>
-        <h2>Same site, lower bill.</h2>
-        <p class="price">$750 / month</p>
-        <p class="price-note">No redesign fee. Growth desk begins after cutover/acceptance unless otherwise agreed.</p>
-        <p>Keep current WordPress. Pure cost-savings versus the current incumbent.</p>
-        <ul class="benefits">
-          <li>Keep the current WordPress site and public copy</li>
-          <li>Lower monthly bill — cost-savings, not a redesign</li>
-          <li>Secure-by-default care on WP Engine</li>
-          <li>Monthly SEO pass as part of the desk</li>
-          <li>We handle takeover, migration, and testing</li>
-        </ul>
-        <p class="tier-sec"><strong>Security:</strong> WP Engine, least-privilege access, managed updates, backups, monitoring, tested restore.</p>
-        <p class="warn js-shell-warn" hidden></p>
-        <div class="actions">
-          <a class="cta js-dest" href="https://interimexecs.com" target="_blank" rel="noopener noreferrer">Preview Clone</a>
-          <a class="cta ghost js-internal" href="wp-clone/index.html">Asset clone</a>
-          <a class="cta buy js-buy" href="https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01" target="_blank" rel="noopener noreferrer">Buy Clone — $750/mo desk</a>
-        </div>
-      </article>
+    <div class="compare" data-compare>
+      <div class="compare-tabs" role="tablist" aria-label="Site comparison">
+        <button type="button" role="tab" id="tab-current" data-tab="current" aria-controls="pane-current" aria-selected="true">Current</button>
+        <button type="button" role="tab" id="tab-webflow" data-tab="webflow" aria-controls="pane-webflow" aria-selected="false">Webflow Clone</button>
+      </div>
 
-      <article class="choice is-shell" data-choice="refresh">
-        <p class="label">Refresh</p>
-        <p class="status js-status">Not IE-ready</p>
-        <h2>Lower friction, owner-editable.</h2>
-        <p class="price">$4,000 once + $750 / month</p>
-        <p class="price-note">$4,000 once. $750/month begins after cutover/acceptance unless otherwise agreed.</p>
-        <p>Webflow restyle. Familiar pages, better look, no tech staff for normal changes.</p>
-        <ul class="benefits">
-          <li>Same familiar pages and copy, cleaner type and navigation</li>
-          <li>Owner-editable in the Webflow Editor</li>
-          <li>Better look without a full rebrand</li>
-          <li>Secure-by-default Webflow hosting</li>
-          <li>We handle migration and testing before cutover</li>
-        </ul>
-        <p class="tier-sec"><strong>Security:</strong> Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, fewer plugins.</p>
-        <p class="warn js-shell-warn">Craft review in progress. Refresh is not ready to show — Christopher found it looks worse than Clone (dark text / craft fail). Do not present it as finished.</p>
-        <div class="actions">
-          <a class="cta js-dest" href="https://interimexecs-refresh.webflow.io" target="_blank" rel="noopener noreferrer">Preview Refresh</a>
-          <a class="cta ghost js-internal" href="webflow-refresh/index.html">Internal IE preview</a>
-          <a class="cta ghost js-buy" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20Refresh%20%E2%80%94%20talk%20first">Talk first</a>
-          <a class="cta ghost js-desk" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20Refresh%20desk%20%E2%80%94%20talk%20first">Ask about the desk</a>
-        </div>
-      </article>
+      <div class="compare-grid">
+        <section class="pane is-active" id="pane-current" data-pane="current" role="tabpanel" aria-labelledby="tab-current">
+          <p class="pane-kicker">Current</p>
+          <h2>Live site</h2>
+          <p class="pane-copy">What customers see today — the look they keep. Opens the public site — we do not invent pages or claims.</p>
+          <div class="frame-wrap">
+            <p class="frame-fallback">This hub does not embed the live site. Open the current site in a new tab, or the local asset clone.</p>
+            <a class="still-card" href="https://www.interimexecs.com/" target="_blank" rel="noopener noreferrer">
+              <img class="frame-still" src="assets/brand/current-still.webp" alt="Public homepage hero still from interimexecs.com. Opens the live site in a new tab." width="1440" height="600" />
+            </a>
+          </div>
+          <div class="actions">
+            <a class="cta js-dest" href="https://www.interimexecs.com/" target="_blank" rel="noopener noreferrer">Open current site</a>
+            <a class="cta ghost js-internal" href="wp-clone/index.html">Local asset clone</a>
+          </div>
+        </section>
 
-      <article class="choice is-shell" data-choice="reimagine">
-        <p class="label">Reimagine</p>
-        <p class="status js-status">Not IE-ready</p>
-        <h2>Modern standard, tuned to taste.</h2>
-        <p class="price">$6,000 once + $750 / month</p>
-        <p class="price-note">$6,000 once. One tuning round is one consolidated feedback set. $750/month begins after cutover/acceptance unless otherwise agreed. Not a full rebrand.</p>
-        <p>Premium modern redesign without pretending this is the best website ever.</p>
-        <ul class="benefits">
-          <li>Modern navigation, imagery, scroll, forms, and conversion patterns</li>
-          <li>One taste-tuning round — modern standard, not awards</li>
-          <li>Owner-editable in the Webflow Editor after launch</li>
-          <li>Secure-by-default Webflow hosting</li>
-          <li>We handle migration and testing before cutover</li>
-        </ul>
-        <p class="tier-sec"><strong>Security:</strong> Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, fewer plugins.</p>
-        <p class="warn js-shell-warn">Craft review in progress. Reimagine is not ready to show — hold until the Grok Heavy redesign brief lands. Do not present it as finished.</p>
-        <div class="actions">
-          <a class="cta js-dest" href="https://interimexecs-reimagine.webflow.io" target="_blank" rel="noopener noreferrer">Preview Reimagine</a>
-          <a class="cta ghost js-internal" href="webflow-demo/index.html">Internal IE preview</a>
-          <a class="cta ghost js-buy" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20Reimagine%20%E2%80%94%20talk%20first">Talk first</a>
-          <a class="cta ghost js-desk" href="mailto:chris@gograybeard.com?subject=Second%20Shift%20Reimagine%20desk%20%E2%80%94%20talk%20first">Ask about the desk</a>
-        </div>
-      </article>
+        <section class="pane" id="pane-webflow" data-pane="webflow" role="tabpanel" aria-labelledby="tab-webflow">
+          <p class="pane-kicker">Webflow Clone</p>
+          <h2>Staging soon</h2>
+          <p class="pane-copy">Same website on no-code Webflow — same look as today. Platform swap only. After cutover they edit it themselves in the Webflow Editor. DEMO / review-only — not production. Privacy Policy, Terms, and the cookie notice stay as published. Not legal advice.</p>
+          <div class="frame-wrap is-pending" data-webflow-stage>
+            <p class="frame-fallback"><strong>Staging soon.</strong> Webflow Clone is wired but not READY yet. This hub does not embed it — Webflow CSP only allows webflow.com / webflow.io to frame staging.</p>
+            <a class="still-card js-webflow-still" hidden href="https://interimexecs-refresh.webflow.io/" target="_blank" rel="noopener noreferrer">
+              <img class="frame-still" src="assets/brand/current-still.webp" alt="Webflow Clone still — placeholder until staging serves Interim Execs content. Opens staging in a new tab." width="1440" height="600" />
+            </a>
+          </div>
+          <div class="actions">
+            <a class="cta js-webflow" href="https://interimexecs-refresh.webflow.io/" target="_blank" rel="noopener noreferrer">Open Webflow Clone (DEMO)</a>
+          </div>
+        </section>
+      </div>
     </div>
 
-    <section class="studio" id="customize" data-customize>
-      <h2>Try an owner edit</h2>
-      <p>Change this page the way an owner would — headline, button, or a section. Customize applies to <strong>Clone</strong>, <strong>Refresh</strong>, or <strong>Reimagine</strong>. Included scope is confirmed in writing. Two or three eligible demo edits, then a person finishes the rest. That demo is not a live or unlimited AI agent — do not send passwords.</p>
-      <p class="chat-banner">Not a live agent. Do not send passwords. This chat cannot take logins, keys, or pricing promises. Two or three demo edits, then a person.</p>
-      <p class="muted" data-editor-note>After purchase, normal Clone changes are supported updates we make with you.</p>
-
-      <div class="studio-grid">
-        <div>
-          <p class="stage-chrome"><span data-tier-label>Clone</span><span>The website itself changes</span></p>
-          <div class="site-stage" data-theme="clone">
-            <p class="demo-watermark" data-demo-watermark aria-hidden="true">DEMO EDIT</p>
-            <article class="mini-site">
-              <div class="mini-top">
-                <span>InterimExecs</span>
-                <span>Approach · About</span>
-              </div>
-              <section class="mini-hero">
-                <h3 data-edit="hero">Who is in your corner?</h3>
-                <p data-edit="deck">The RED Team means action and results. Same site you already have — cared for, not rebuilt.</p>
-                <a class="mini-cta" href="#handoff" data-edit="cta">Contact Us</a>
-              </section>
-              <div class="mini-sections" data-edit="sections">
-                <section class="mini-band" data-section="benefits">
-                  <h4>You are in the right place if</h4>
-                  <p>You own, lead, invest in, or serve on the board of an organization that can achieve more.</p>
-                </section>
-                <section class="mini-band" data-section="quotes">
-                  <h4>Results</h4>
-                  <p>“The investment in an interim has proved to be paid back and then some.” — Chris Caratan</p>
-                </section>
-                <section class="mini-band" data-section="approach">
-                  <h4>Our approach</h4>
-                  <p>Match the situation, put someone in the chair, and take action.</p>
-                </section>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <aside class="chat" aria-label="Customize demo">
-          <div class="chat-head">
-            <strong>Customize</strong>
-            <p>Demo only. Watch the website change. Not a live person. Do not send passwords.</p>
-            <p class="chat-banner">Not a live agent. No passwords. Labeled reset only after the 2–3 turn cap.</p>
-            <div class="tier-switch" role="group" aria-label="Apply edits to which option">
-              <button type="button" data-tier="clone" aria-pressed="true">Clone</button>
-              <button type="button" data-tier="refresh" aria-pressed="false">Refresh</button>
-              <button type="button" data-tier="reimagine" aria-pressed="false">Reimagine</button>
-            </div>
-          </div>
-          <div class="transcript" aria-live="polite"></div>
-          <div class="chips">
-            <button type="button" data-demo="Headline: Who is in your corner this quarter?">New headline</button>
-            <button type="button" data-demo="CTA: Talk to the RED Team">Rename the button</button>
-            <button type="button" data-demo="Hide the quotes">Hide quotes</button>
-          </div>
-          <p class="turns" data-turns>3 of 3 demo edits left.</p>
-          <p class="turns"><button type="button" class="cta ghost" data-demo-reset>Reset demo edits</button> Reload does not add free turns. This labeled reset is the only way to practice again.</p>
-          <form class="composer">
-            <label class="muted" for="chat-input" style="position:absolute;left:-9999px;">Customization request</label>
-            <textarea id="chat-input" data-chat-input maxlength="240" placeholder="Change the headline, the button, or hide a section"></textarea>
-            <button type="submit" data-chat-send>Apply</button>
-          </form>
-        </aside>
-      </div>
-
-      <div class="handoff" id="handoff" data-handoff hidden>
-        <h3>A person takes the rest</h3>
-        <p>The demo chat is done. Send the remaining request to Second Shift — not a bot. Until <code>hello@secondshift.care</code> exists, this goes to <code>chris@gograybeard.com</code>.</p>
-        <form data-handoff-form action="https://formsubmit.co/chris@gograybeard.com" method="POST">
-          <input type="hidden" name="_subject" value="Second Shift IE customize request" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="box" />
-          <input type="hidden" name="_next" value="customize-thanks.html" />
-          <div class="fields">
-            <label>Name<input type="text" name="name" required autocomplete="name"></label>
-            <label>Email<input type="email" name="email" required autocomplete="email"></label>
-            <label>Chosen tier
-              <select name="tier" required>
-                <option value="Clone">Clone</option>
-                <option value="Refresh">Refresh</option>
-                <option value="Reimagine">Reimagine</option>
-              </select>
-            </label>
-            <label>Remaining request<textarea name="request" required placeholder="What else should change after these demo edits?"></textarea></label>
-          </div>
-          <div class="form-actions">
-            <button class="cta buy" type="submit">Send to Second Shift</button>
-            <a class="cta ghost" data-mailto href="mailto:chris@gograybeard.com">Or use email instead</a>
-          </div>
-          <p class="fallback">If the form is not activated yet, the email link still works. Nothing here emails Interim Execs.</p>
-        </form>
-      </div>
-    </section>
-
     <section class="notes">
-      <p class="muted">We do not claim unlimited support, unlimited revisions, guaranteed growth, zero downtime, or that Tiny Frog should be replaced immediately.</p>
-      <p class="muted">Public destinations: Clone preview is the live InterimExecs site (same site, lower bill proof). The Asset clone link is the local <code>wp-clone/</code> mirror for customize / logo reuse — not the Preview Clone CTA. Refresh and Reimagine stay on the live Webflow URLs in <code>destinations.js</code> but are not IE-ready — craft review is in progress and neither is ready to show. Unready tiers use Talk first, not live $4k / $6k deposit buttons. Clone $750/mo desk buy may stay. Three-tier email is still blocked until FormSubmit is proven.</p>
+      <p class="muted">Current preview: <a href="https://www.interimexecs.com/" target="_blank" rel="noopener noreferrer">https://www.interimexecs.com/</a> (canonical <code>https://interimexecs.com</code>). Webflow Clone staging is wired — open in a new tab when READY: <a href="https://interimexecs-refresh.webflow.io/" target="_blank" rel="noopener noreferrer">https://interimexecs-refresh.webflow.io/</a> (DEMO / review-only). Flip <code>choices.clone.webflowPreview.ready</code> when that host shows Interim Execs content (or if a teammate renames it to <code>interimexecs-clone.webflow.io</code>). This hub uses still cards, not iframes. Brand pack: <code>assets/brand/</code>. The $750/mo SEO desk is explained on this hub only, not on the Interim Execs shell. Recrawl later with <code>python3 scripts/refresh-ie-asset-clone.py</code>.</p>
     </section>
+
+    <div hidden>
+      <article class="choice" data-choice="clone">
+        <p class="label">Clone</p>
+        <p class="status js-status"></p>
+        <a class="js-dest" href="https://interimexecs.com">Preview live site</a>
+        <a class="js-webflow" href="https://interimexecs-refresh.webflow.io/">Webflow Clone staging (DEMO)</a>
+        <a class="js-internal" href="wp-clone/index.html">Asset clone</a>
+        <a class="js-buy" href="mailto:hello@secondshift.care?subject=Second%20Shift%20Webflow%20migration%20%E2%80%94%20talk%20first">Talk first</a>
+      </article>
+      <article class="choice" data-choice="refresh">
+        <p class="label">Refresh</p>
+        <p class="status js-status"></p>
+        <p class="warn js-shell-warn"></p>
+        <a class="js-dest" href="https://interimexecs-refresh.webflow.io/">Preview Refresh (DEMO)</a>
+        <a class="js-buy" href="mailto:hello@secondshift.care?subject=Second%20Shift%20Refresh%20%E2%80%94%20talk%20first">Talk first</a>
+      </article>
+      <article class="choice" data-choice="reimagine">
+        <p class="label">Reimagine</p>
+        <p class="status js-status"></p>
+        <p class="warn js-shell-warn"></p>
+        <a class="js-dest" href="https://interimexecs-reimagine.webflow.io/">Preview Reimagine (DEMO)</a>
+        <a class="js-buy" href="mailto:hello@secondshift.care?subject=Second%20Shift%20Reimagine%20%E2%80%94%20talk%20first">Talk first</a>
+      </article>
+    </div>
   </main>
-  <footer>Second Shift · GrayBeard LLC · chris@gograybeard.com</footer>
+  <footer>Second Shift · GrayBeard LLC · hello@secondshift.care · DEMO / proposal review</footer>
   <script src="../../pages-redirect.js"></script>
   <script src="destinations.js"></script>
-  <script src="market-test.js"></script>
-  <script src="customize.js"></script>
+  <script src="../candidate-hub.js"></script>
+  <script src="compare.js"></script>
 </body>
 </html>

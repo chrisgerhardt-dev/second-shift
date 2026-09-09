@@ -46,7 +46,7 @@
     if (buy) {
       if (!choice.ready) {
         var talkHref = (choice.talk && choice.talk.href) ||
-          ("mailto:" + (cfg.contactEmail || "chris@gograybeard.com") +
+          ("mailto:" + (cfg.contactEmail || "hello@secondshift.care") +
             "?subject=" + encodeURIComponent("Second Shift " + (choice.label || key) + " — talk first"));
         buy.setAttribute("href", talkHref);
         buy.removeAttribute("target");
@@ -70,7 +70,7 @@
         desk.hidden = false;
         desk.classList.remove("buy");
         desk.classList.add("ghost");
-        desk.setAttribute("href", "mailto:" + (cfg.contactEmail || "chris@gograybeard.com") +
+        desk.setAttribute("href", "mailto:" + (cfg.contactEmail || "hello@secondshift.care") +
           "?subject=" + encodeURIComponent("Second Shift " + (choice.label || key) + " desk — talk first"));
         desk.removeAttribute("target");
         desk.removeAttribute("rel");

@@ -381,7 +381,7 @@
           "",
           fd.get("request") || ""
         ].join("\n");
-        var email = cfg.contactEmail || "chris@gograybeard.com";
+        var email = cfg.contactEmail || "hello@secondshift.care";
         mailto.setAttribute("href", "mailto:" + email + "?subject=" + encodeURIComponent("Second Shift IE customize request") + "&body=" + encodeURIComponent(body));
       }
       handoffForm.addEventListener("input", syncMailto);

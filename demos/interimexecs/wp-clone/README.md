@@ -5,9 +5,10 @@ demos and asset reuse. Served on GitHub Pages at:
 
 https://secondshift.care/demos/interimexecs/wp-clone/
 
-**Preview Clone** on the market-test hub still opens the live site
-(`https://interimexecs.com`). This folder is the customize / asset-reuse
-mirror (`choices.clone.internalPreview` / `choices.clone.assetMirror`).
+The comparison hub **Current** pane opens the live site
+(`https://www.interimexecs.com/`). This folder is the asset-reuse
+mirror (`choices.clone.internalPreview` / `choices.clone.assetMirror`)
+and the source of the Current still.
 
 ## What is mirrored
 
