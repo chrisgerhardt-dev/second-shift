@@ -1,6 +1,6 @@
 # Market ladders (review only)
 
-Five Clone / Refresh / Reimagine hubs for internal review. No outreach. Do not email prospects. Do not edit `demos/interimexecs/`.
+Five Clone / Refresh / Reimagine hubs for internal review, plus the Interim Execs client hub. No outreach. Do not email prospects.
 
 | Slug | Live | Stack | Clone pages |
 | --- | --- | --- | --- |
@@ -9,10 +9,13 @@ Five Clone / Refresh / Reimagine hubs for internal review. No outreach. Do not e
 | mcihvac | https://www.mcihvac.com | Wix Thunderbolt | Home + Contact |
 | beaconcpa | https://beaconcpa.com | WordPress / Elementor | Home + Contact |
 | anacorp | https://anacorp.com | WordPress / Hello Elementor | Home + Contact |
+| interimexecs | https://interimexecs.com | WordPress / WP Engine | Home + inner pages |
 
 Clone `ready: true` points at the live URL. Western Mechanical, Kaback, MCI, and Beacon CPA have Refresh and Reimagine published (`ready: true` on `*-refresh.webflow.io` and `*-reimagine.webflow.io`).
 
 ANA client hub is a **Current | Webflow Clone** comparison (`demos/anacorp/`). Why migrate: same website, now **no-code Webflow** — WordPress developers are the bottleneck. They keep the look and stop waiting on WP for routine changes. Plus the **$750/mo desk including SEO** on the hub sell side only, not on the ANA shell. Pure platform swap to owner-editable Webflow. Not a redesign. Not “improvements” in the migration; later edits are the client's after cutover in the Webflow Editor. Under-the-hood hygiene only: California **Privacy Choices / Do Not Sell-Share opt-out** (not legal advice). Current opens `https://www.anacorp.com/`. Webflow Clone is live at `anacorp-refresh.webflow.io` (`choices.clone.webflowPreview.ready: true`). Hub uses still cards + new-tab CTAs (do not iframe webflow.io). Redesign ladder is hidden from the comparison. DEMO / Second Shift proposal review — not affiliated as official ANA production. Talk first only — no Stripe.
+
+Interim Execs client hub (`demos/interimexecs/`) uses the **same locked play**. Current opens `https://www.interimexecs.com/` (canonical `https://interimexecs.com`). Webflow Clone stand-in is `interimexecs-refresh.webflow.io` (`choices.clone.webflowPreview.ready: false` — Staging soon; host was a 404 on 2026-09-09). Do not iframe webflow.io. Redesign ladder is hidden. DEMO / review-only. Talk first only — no Stripe. Public pages use `hello@secondshift.care` only.
 
 ## Refresh a mirror
 

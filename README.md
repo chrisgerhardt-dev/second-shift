@@ -4,20 +4,18 @@ GrayBeard LLC DBA Second Shift. Tennessee. Public site: `https://secondshift.car
 
 Public lander: `index.html`, `care.html`, `work.html`, `contact.html` — Message A retainer honesty (“You’re paying a retainer. Nothing ships.”) in `site.css`. Shared tokens in `styles.css` (the Interim Execs hub still depends on those variable names). Contact is form-only on `contact.html`.
 
-## Interim Execs market test — HOLD (2026-09-03)
+## Interim Execs market test — ANA migration play (2026-09-09)
 
-Clone is the only IE-ready public preview: https://interimexecs.com. Refresh and Reimagine are **not IE-ready** — craft review is in progress and neither is ready to show. Hold Reimagine until the Grok Heavy redesign brief lands. The three-tier comparison email is **still blocked** until those shells are IE-ready again **and** FormSubmit is proven.
+Client hub is a **Current | Webflow Clone** comparison (`demos/interimexecs/`), same locked pitch as ANA. Pure WordPress → no-code Webflow — same website, same look, not a redesign. WordPress developers are the bottleneck. Plus the **$750/mo SEO desk**. Do not lead with Refresh $4k / Reimagine $6k. DEMO / review-only. Talk first only — no Stripe. This hub does not send outreach.
 
-- Public Clone preview: https://interimexecs.com (live site; same site, lower bill proof)
-- Asset clone / customize canvas: [`demos/interimexecs/wp-clone/`](demos/interimexecs/wp-clone/) (Pages: https://secondshift.care/demos/interimexecs/wp-clone/)
-- Brand pack (logo + colors + fonts for Refresh and Reimagine): [`demos/interimexecs/assets/brand/`](demos/interimexecs/assets/brand/)
+- Current preview: https://www.interimexecs.com/ (canonical https://interimexecs.com)
+- Asset clone: [`demos/interimexecs/wp-clone/`](demos/interimexecs/wp-clone/) (Pages: https://secondshift.care/demos/interimexecs/wp-clone/)
+- Brand pack: [`demos/interimexecs/assets/brand/`](demos/interimexecs/assets/brand/)
 - Refresh the asset clone from live: `python3 scripts/refresh-ie-asset-clone.py`
-- Hub (internal / not for prospect email): [`demos/interimexecs/index.html`](demos/interimexecs/index.html)
-- Destinations and Stripe paths: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js) — keep `ready: false` on Refresh/Reimagine until craft review passes.
-- Status and blockers: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md)
-- Authorized Clone-only email draft: [`market-test/interimexecs-email.md`](market-test/interimexecs-email.md)
-
-Unready hub cards use Talk first, not live $4k / $6k deposit buttons. Clone $750/mo desk buy may stay.
+- Hub: [`demos/interimexecs/index.html`](demos/interimexecs/index.html) — Pages: https://secondshift.care/demos/interimexecs/
+- Destinations: [`demos/interimexecs/destinations.js`](demos/interimexecs/destinations.js) — keep `choices.clone.webflowPreview.ready` **false** (Staging soon) until `interimexecs-refresh.webflow.io` serves Interim Execs content. Do not iframe webflow.io.
+- Status: [`demos/interimexecs/HANDOFF.md`](demos/interimexecs/HANDOFF.md)
+- Authorized Clone-only email draft (still gated): [`market-test/interimexecs-email.md`](market-test/interimexecs-email.md)
 
 ## Market ladders for review (2026-09-05)
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
  * Static checks for the Interim Execs market-test path.
+ * Hub follows the ANA Current | Webflow Clone play (locked 2026-09-09).
  * No npm install. No Pages build step. Run: node scripts/check-market-test.js
  */
 "use strict";
@@ -27,55 +28,50 @@ function read(rel) {
   }
   return fs.readFileSync(abs, "utf8");
 }
+function sameHref(a, b) {
+  return String(a || "").replace(/\/+$/, "") === String(b || "").replace(/\/+$/, "");
+}
 
 function loadDestinations() {
   const src = read("demos/interimexecs/destinations.js");
   if (!src) return null;
   const sandbox = { window: {} };
   vm.runInNewContext(src, sandbox);
-  return sandbox.window.SECOND_SHIFT_IE_DESTINATIONS || null;
+  return sandbox.window.SECOND_SHIFT_DESTINATIONS || sandbox.window.SECOND_SHIFT_IE_DESTINATIONS || null;
 }
 
+const destSrc = read("demos/interimexecs/destinations.js") || "";
 const cfg = loadDestinations();
 if (!cfg) {
-  fail("destinations.js did not set window.SECOND_SHIFT_IE_DESTINATIONS");
+  fail("destinations.js did not set window.SECOND_SHIFT_DESTINATIONS");
 } else {
   ok("loaded destinations.js");
-  if (cfg.customDomainReady !== true) {
-    fail("customDomainReady should be true now that secondshift.care serves this repo");
+  if (cfg.slug !== "interimexecs") fail("destinations.slug must be interimexecs");
+  if (cfg.liveOrigin !== "https://interimexecs.com") fail("liveOrigin must be https://interimexecs.com");
+  if (cfg.contactEmail !== "hello@secondshift.care") {
+    fail("contact email must be hello@secondshift.care (no personal mailbox on this hub)");
   } else {
-    ok("customDomainReady is true (secondshift.care HTTPS)");
-  }
-  if (cfg.customizeTurns < 2 || cfg.customizeTurns > 3) {
-    fail("customizeTurns must be 2 or 3");
-  } else {
-    ok("customizeTurns capped at " + cfg.customizeTurns);
-  }
-  if (!/migration and testing/i.test(cfg.migrationPromise || "") || !/Tiny Frog/i.test(cfg.migrationPromise || "")) {
-    fail("migration/testing promise must mention Tiny Frog staying active");
-  } else {
-    ok("migration/testing promise present");
-  }
-  if (cfg.contactEmail !== "chris@gograybeard.com") {
-    fail("contact email must be chris@gograybeard.com until hello@ exists");
+    ok("Talk first routes to hello@secondshift.care");
   }
   if (cfg.formSubmitProven !== false) {
-    fail("formSubmitProven must stay false until mailbox delivery is proven");
+    fail("formSubmitProven must stay false — this hub does not send outreach");
   } else {
-    ok("formSubmitProven is false (three-tier email still blocked)");
+    ok("formSubmitProven is false (no outreach send)");
   }
+  if (/gograybeard|christopher/i.test(destSrc)) {
+    fail("destinations must not include Christopher name or gograybeard emails");
+  }
+  if (/buy\.stripe\.com/.test(destSrc)) fail("destinations must not add Stripe links");
+  else ok("destinations have no Stripe links");
 
-  const stripe = cfg.stripe || {};
-  if (stripe.growthDesk !== "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01") {
-    fail("growth desk Payment Link mismatch");
+  const promise = cfg.migrationPromise || "";
+  if (/obvious improvements/i.test(promise)) {
+    fail("destinations must not pitch obvious improvements in the migration");
   }
-  if (stripe.refreshDeposit !== "https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00") {
-    fail("Refresh $4k Payment Link mismatch");
-  }
-  if (stripe.reimagineDeposit !== "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02") {
-    fail("Reimagine must use the $6k Payment Link …q02");
+  if (!/no-code Webflow/i.test(promise) || !/bottleneck/i.test(promise) || !/platform swap/i.test(promise)) {
+    fail("migrationPromise must lock the ANA why-migrate copy");
   } else {
-    ok("Stripe buy links: desk, $4k Refresh, $6k Reimagine");
+    ok("migrationPromise locks WordPress → no-code Webflow");
   }
 
   const order = ["clone", "refresh", "reimagine"];
@@ -92,57 +88,65 @@ if (!cfg) {
     if (clone.ready !== true) fail("clone.ready should be true");
     if (clone.href !== "https://interimexecs.com") fail("clone.href must be the live InterimExecs site");
     else ok("clone points at https://interimexecs.com");
-    if (!/^https?:\/\//i.test(clone.href)) fail("clone preview must be an absolute live-site URL");
     if (clone.internalPreview !== "wp-clone/index.html") fail("clone.internalPreview must be the local asset mirror");
     if (clone.assetMirror !== "wp-clone/index.html") fail("clone.assetMirror must be the local asset mirror");
     else ok("clone assetMirror / internalPreview point at wp-clone/");
-    if (!clone.benefits || clone.benefits.length < 4) fail("clone benefits missing");
-    if (!clone.buy || clone.buy.href !== stripe.growthDesk) fail("clone buy must be the $750/mo desk");
-    else ok("clone $750/mo desk buy may stay");
+    const wf = clone.webflowPreview || {};
+    if (!sameHref(wf.href, "https://interimexecs-refresh.webflow.io/")) {
+      fail("clone.webflowPreview must use interimexecs-refresh.webflow.io as close-Clone stand-in");
+    } else {
+      ok("Webflow Clone staging stand-in is wired");
+    }
+    if (wf.ready !== false) {
+      fail("webflowPreview.ready must be false until the host serves Interim Execs content");
+    } else {
+      ok("webflowPreview.ready is false (Staging soon)");
+    }
+    if (/obvious improvements/i.test(clone.summary || "")) {
+      fail("clone summary must not pitch obvious improvements in the migration");
+    }
   }
 
   const refresh = cfg.choices && cfg.choices.refresh;
   if (!refresh) fail("refresh choice missing");
   else {
-    if (refresh.href !== "https://interimexecs-refresh.webflow.io") fail("refresh.href must be the live Webflow URL");
-    else ok("refresh points at interimexecs-refresh.webflow.io");
-    if (refresh.ready !== false) fail("refresh.ready must be false during Christopher craft review");
-    else ok("refresh is flagged not IE-ready during craft review");
-    if (refresh.cta !== "Preview Refresh") fail("refresh.cta must be Preview Refresh");
-    if (!refresh.shellWarning || !/craft review/i.test(refresh.shellWarning) || !/not ready to show/i.test(refresh.shellWarning)) {
-      fail("refresh shellWarning must say craft review is in progress / not ready to show");
+    if (!sameHref(refresh.href, "https://interimexecs-refresh.webflow.io/")) {
+      fail("refresh.href must be the live Webflow URL");
+    } else {
+      ok("refresh points at interimexecs-refresh.webflow.io");
+    }
+    if (refresh.ready !== false) fail("refresh.ready must stay false (muted step-up)");
+    else ok("refresh is flagged not ready (muted redesign rung)");
+    if (!refresh.shellWarning || !/not READY yet/i.test(refresh.shellWarning)) {
+      fail("refresh shellWarning must say the host is not READY yet");
     }
     if (/blurr|noiceland|notable/i.test(refresh.shellWarning || "")) {
       fail("refresh shellWarning must not mention Blurr / Notable / NOICELAND leftovers");
     }
-    if (!refresh.talk || !/mailto:chris@gograybeard\.com/.test(refresh.talk.href || "")) {
-      fail("refresh must have a Talk first mailto while not IE-ready");
+    if (!refresh.talk || !/mailto:hello@secondshift\.care/.test(refresh.talk.href || "")) {
+      fail("refresh must have a Talk first mailto to hello@secondshift.care");
     }
-    if (!refresh.buy || refresh.buy.href !== stripe.refreshDeposit) fail("refresh stored buy must stay the $4k Payment Link");
-    else ok("refresh stored buy remains the $4k deposit");
-    if (!refresh.desk || refresh.desk.href !== stripe.growthDesk) fail("refresh desk must be the $750/mo desk");
   }
 
   const reimagine = cfg.choices && cfg.choices.reimagine;
   if (!reimagine) fail("reimagine choice missing");
   else {
-    if (reimagine.href !== "https://interimexecs-reimagine.webflow.io") fail("reimagine.href must be the live Webflow URL");
-    else ok("reimagine points at interimexecs-reimagine.webflow.io");
-    if (reimagine.ready !== false) fail("reimagine.ready must be false until the Grok Heavy redesign brief lands");
-    else ok("reimagine is flagged not IE-ready pending Grok Heavy brief");
-    if (reimagine.cta !== "Preview Reimagine") fail("reimagine.cta must be Preview Reimagine");
-    if (!reimagine.shellWarning || !/craft review/i.test(reimagine.shellWarning) || !/not ready to show/i.test(reimagine.shellWarning)) {
-      fail("reimagine shellWarning must say craft review is in progress / not ready to show");
+    if (!sameHref(reimagine.href, "https://interimexecs-reimagine.webflow.io/")) {
+      fail("reimagine.href must be the live Webflow URL");
+    } else {
+      ok("reimagine points at interimexecs-reimagine.webflow.io");
+    }
+    if (reimagine.ready !== false) fail("reimagine.ready must stay false (muted step-up)");
+    else ok("reimagine is flagged not ready (muted redesign rung)");
+    if (!reimagine.shellWarning || !/not READY yet/i.test(reimagine.shellWarning)) {
+      fail("reimagine shellWarning must say the host is not READY yet");
     }
     if (/blurr|noiceland|notable/i.test(reimagine.shellWarning || "")) {
       fail("reimagine shellWarning must not mention Blurr / Notable / NOICELAND leftovers");
     }
-    if (!reimagine.talk || !/mailto:chris@gograybeard\.com/.test(reimagine.talk.href || "")) {
-      fail("reimagine must have a Talk first mailto while not IE-ready");
+    if (!reimagine.talk || !/mailto:hello@secondshift\.care/.test(reimagine.talk.href || "")) {
+      fail("reimagine must have a Talk first mailto to hello@secondshift.care");
     }
-    if (!reimagine.buy || reimagine.buy.href !== stripe.reimagineDeposit) fail("reimagine stored buy must stay the $6k Payment Link");
-    else ok("reimagine stored buy remains the $6k deposit");
-    if (!reimagine.desk || reimagine.desk.href !== stripe.growthDesk) fail("reimagine desk must be the $750/mo desk");
   }
 }
 
@@ -183,123 +187,143 @@ else {
 const hub = read("demos/interimexecs/index.html");
 if (hub) {
   ["Clone", "Refresh", "Reimagine"].forEach((label) => {
-    if (!new RegExp(">" + label + "<").test(hub)) fail("hub missing visible label: " + label);
+    if (!new RegExp(">" + label + "<").test(hub)) fail("hub missing label: " + label);
     else ok("hub labels " + label);
   });
   if (!hub.includes('data-choice="clone"') || !hub.includes('data-choice="refresh"') || !hub.includes('data-choice="reimagine"')) {
     fail("hub must have data-choice hooks for all three options");
   }
-  if (!hub.includes("Do not email Interim Execs yet")) fail("hub must warn not to email yet");
-  else ok("hub send-gate copy present");
-  if (!/migration and testing/i.test(hub)) fail("hub missing migration/testing promise");
-  else ok("hub states we handle migration and testing");
-  function cardHtml(key) {
-    const re = new RegExp('<article[^>]*data-choice="' + key + '"[\\s\\S]*?</article>');
-    const match = hub.match(re);
-    return match ? match[0] : "";
-  }
-  const cloneCard = cardHtml("clone");
-  const refreshCard = cardHtml("refresh");
-  const reimagineCard = cardHtml("reimagine");
-  if (!cloneCard.includes("buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01")) fail("clone card may keep the $750/mo desk buy");
-  else ok("clone card keeps $750/mo desk buy");
-  if (/buy\.stripe\.com/.test(refreshCard)) fail("refresh card must not expose live Stripe while not IE-ready");
-  if (/buy\.stripe\.com/.test(reimagineCard)) fail("reimagine card must not expose live Stripe while not IE-ready");
-  if (!/Talk first/.test(refreshCard) || !/mailto:chris@gograybeard\.com/.test(refreshCard)) {
-    fail("refresh card must use Talk first / mailto while not IE-ready");
-  }
-  if (!/Talk first/.test(reimagineCard) || !/mailto:chris@gograybeard\.com/.test(reimagineCard)) {
-    fail("reimagine card must use Talk first / mailto while not IE-ready");
-  }
-  if (!/Not IE-ready/.test(refreshCard) || !/Not IE-ready/.test(reimagineCard)) {
-    fail("unready Refresh/Reimagine cards must show Not IE-ready");
-  }
-  if (/Blurr|NOICELAND|Notable/.test(refreshCard) || /Blurr|NOICELAND|Notable/.test(reimagineCard)) {
-    fail("hub Refresh/Reimagine cards must not mention Blurr / Notable / NOICELAND leftovers");
-  }
-  if (!/craft review/i.test(refreshCard) || !/not ready to show/i.test(refreshCard)) {
-    fail("unready Refresh card must warn that craft review is in progress / not ready to show");
-  }
-  if (!/craft review/i.test(reimagineCard) || !/not ready to show/i.test(reimagineCard)) {
-    fail("unready Reimagine card must warn that craft review is in progress / not ready to show");
-  }
-  ok("unready tiers use Talk first instead of $4k/$6k deposit buy buttons");
-  if (!hub.includes("js-buy")) fail("hub missing buy/talk CTA hooks");
-  if (hub.includes("Buy Refresh — $4,000 deposit") || hub.includes("Buy Reimagine — $6,000 deposit")) {
-    fail("hub must not show live $4k/$6k deposit buy labels while shells are unready");
-  }
-  if (!/FormSubmit/.test(hub) || !/still blocked/i.test(hub)) {
-    fail("hub send-gate must keep three-tier email blocked until FormSubmit is proven");
+  if (!hub.includes('data-pane="current"') || !hub.includes('data-pane="webflow"')) {
+    fail("hub must show Current | Webflow Clone comparison panes");
   } else {
-    ok("hub send-gate stays closed pending FormSubmit");
+    ok("hub shows Current | Webflow Clone panes");
   }
-  if (!hub.includes('data-tier="clone"') || !hub.includes('data-tier="refresh"') || !hub.includes('data-tier="reimagine"')) {
-    fail("customize tier selector must include all three options");
+  if (/gograybeard|christopher/i.test(hub)) {
+    fail("hub must not include Christopher name or gograybeard emails");
   } else {
-    ok("customize applies to Clone, Refresh, and Reimagine");
+    ok("hub has no Christopher / gograybeard copy");
   }
-  if (!hub.includes("data-edit=\"hero\"") || !hub.includes("data-chat-input") || !hub.includes("data-handoff")) {
-    fail("customize demo / handoff markup missing");
+  if (!/hello@secondshift\.care/.test(hub)) {
+    fail("hub Talk first fallback must use hello@secondshift.care");
   }
-  ["name", "email", "tier", "request"].forEach((field) => {
-    if (!hub.includes('name="' + field + '"')) fail("handoff form missing " + field);
-  });
-  ok("handoff form has name, email, tier, remaining request");
-  if (!hub.includes("chris@gograybeard.com")) fail("handoff must route to chris@gograybeard.com");
-  if (!hub.includes('src="destinations.js"') || !hub.includes('src="customize.js"')) {
-    fail("hub must load destinations.js and customize.js");
+  if (!/DEMO/i.test(hub) || !/review-only/i.test(hub)) {
+    fail("hub must label the proposal as DEMO / review-only");
   }
-  if (!hub.includes('href="../../styles.css"') || !hub.includes('href="market-test.css"')) {
+  if (!/unpaid market test/i.test(hub)) {
+    fail("hub must say unpaid market test");
+  }
+  if (!/proposal review/i.test(hub) || !/not affiliated/i.test(hub)) {
+    fail("hub must say proposal review and not affiliated as official Interim Execs production");
+  }
+  if (!/Do not email/i.test(hub) || !/does not send outreach/i.test(hub)) {
+    fail("hub send-gate must say do not email and this page does not send outreach");
+  } else {
+    ok("hub send-gate is review-only (no outreach implied)");
+  }
+  if (/Send-gate open/i.test(hub) || /email sent/i.test(hub) || /we emailed/i.test(hub)) {
+    fail("hub must not imply outreach was sent");
+  }
+  if (!/Webflow (Clone|migration)/i.test(hub)) {
+    fail("hub must lead with Webflow migration/Clone");
+  }
+  if (/obvious improvements/i.test(hub)) {
+    fail("hub must not pitch obvious improvements in the migration");
+  }
+  if (!/WordPress/i.test(hub) || !/same (site|look|website)/i.test(hub) || !/no-code/i.test(hub)) {
+    fail("hub must lock lead copy to same-site WordPress → no-code Webflow");
+  }
+  if (!/bottleneck/i.test(hub) || !/platform swap/i.test(hub) || !/owner-editable/i.test(hub)) {
+    fail("hub must say why migrate: WP bottleneck, same look, owner-editable platform swap");
+  }
+  if (!/Webflow Editor/i.test(hub) || !/after cutover/i.test(hub) || !/client/i.test(hub)) {
+    fail("hub must say later changes are the client's after cutover in the Webflow Editor");
+  }
+  if (!/\$750\/mo SEO desk/i.test(hub) || !/SEO/i.test(hub)) {
+    fail("hub must lock the desk as $750/mo SEO desk");
+  }
+  if (!/not a (visual )?redesign/i.test(hub)) {
+    fail("hub must say the migration is not a redesign");
+  }
+  if (!hub.includes("www.interimexecs.com") || !hub.includes("https://interimexecs.com")) {
+    fail("hub must link the current live site");
+  } else {
+    ok("hub links the live Interim Execs site");
+  }
+  if (!hub.includes("interimexecs-refresh.webflow.io")) {
+    fail("hub must wire the close-Clone Webflow staging URL");
+  } else {
+    ok("hub wires interimexecs-refresh.webflow.io");
+  }
+  if (/<iframe\b/i.test(hub) || /frame-embed/i.test(hub)) {
+    fail("hub must not iframe webflow.io (CSP frame-ancestors would show a blank box)");
+  } else {
+    ok("hub does not iframe Webflow");
+  }
+  if (!hub.includes("Open Webflow Clone") || !/new tab/i.test(hub)) {
+    fail("hub must open the Webflow Clone in a new tab");
+  }
+  if (!hub.includes("does not embed")) {
+    fail("hub must say it does not embed Webflow staging");
+  }
+  if (!hub.includes("current-still.webp")) {
+    fail("hub must use a still card for Current");
+  } else {
+    ok("hub uses a Current still card");
+  }
+  const stillPath = path.join(root, "demos/interimexecs/assets/brand/current-still.webp");
+  if (!fs.existsSync(stillPath)) fail("brand pack missing current-still.webp");
+  else ok("current-still.webp is present");
+  if (!/Staging soon/i.test(hub)) {
+    fail("hub must say Staging soon while webflowPreview.ready is false");
+  } else {
+    ok("hub shows Staging soon for the Webflow Clone");
+  }
+  if (!/legal pages/i.test(hub) || !/trademarks/i.test(hub) || !/accurate contact/i.test(hub)) {
+    fail("hub must say the Webflow Clone preserves legal pages, trademarks, and accurate contact");
+  }
+  if (!/does not invent claims/i.test(hub)) {
+    fail("hub must say the SEO desk does not invent claims");
+  }
+  if (!/Privacy Policy/i.test(hub) || !/not legal advice/i.test(hub)) {
+    fail("hub must name published privacy pages and say the note is not legal advice");
+  }
+  if (hub.includes("buy.stripe.com")) fail("hub must not expose Stripe");
+  else ok("hub has no Stripe");
+  if (!hub.includes('src="destinations.js"')) fail("hub must load destinations.js");
+  if (!hub.includes("../candidate-hub.js")) fail("hub must load shared candidate-hub.js");
+  if (!hub.includes("compare.js")) fail("hub must load compare.js");
+  if (!hub.includes('href="../../styles.css"') || !hub.includes("../candidate-hub.css") || !hub.includes("compare.css")) {
     fail("hub stylesheets must be relative for GitHub Pages project paths");
   } else {
     ok("hub uses relative stylesheets");
   }
-  if (!hub.includes('href="https://interimexecs.com"')) fail("hub fallback Clone link must be the live InterimExecs site");
-  const destHref = (cloneCard.match(/<a[^>]*class="[^"]*js-dest[^"]*"[^>]*href="([^"]+)"/) ||
-    cloneCard.match(/<a[^>]*href="([^"]+)"[^>]*class="[^"]*js-dest[^"]*"/) ||
-    [])[1];
-  if (destHref !== "https://interimexecs.com") {
-    fail("hub Preview Clone CTA (js-dest) must be the live InterimExecs site, not wp-clone");
-  } else {
-    ok("hub Preview Clone CTA stays on the live site");
-  }
-  if (!cloneCard.includes('js-internal') || !cloneCard.includes('href="wp-clone/index.html"')) {
-    fail("hub clone card must expose the local asset clone as js-internal, not as Preview Clone");
-  } else {
-    ok("hub clone card links the local asset mirror separately");
-  }
-  if (!/Clone preview is the live InterimExecs site/i.test(hub)) {
-    fail("hub public destinations note must say Clone preview is the live InterimExecs site");
-  } else {
-    ok("hub destinations note: Clone preview is the live site");
-  }
-  if (!hub.includes("https://interimexecs-refresh.webflow.io")) fail("hub fallback Refresh URL missing");
-  if (!hub.includes("https://interimexecs-reimagine.webflow.io")) fail("hub fallback Reimagine URL missing");
-  if (hub.includes("https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02")) {
-    fail("hub HTML must not expose the Reimagine $6k Payment Link while not IE-ready");
-  }
-  if (hub.includes("https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00")) {
-    fail("hub HTML must not expose the Refresh $4k Payment Link while not IE-ready");
-  }
-  if (!hub.includes("data-demo-reset") || !/Reload does not add free turns/i.test(hub)) {
-    fail("hub must persist demo turns and only reset when labeled");
-  }
-  if (!/DEMO EDIT/.test(hub) || !hub.includes("data-demo-watermark")) {
-    fail("customize canvas must have a persistent DEMO EDIT watermark");
-  } else {
-    ok("customize canvas has DEMO EDIT watermark");
-  }
-  if (!/Not a live agent/i.test(hub) || !/Do not send passwords/i.test(hub)) {
-    fail("hub must keep the not-a-live-agent / no-passwords banner");
-  } else {
-    ok("hub keeps not-a-live-agent / no-passwords banner");
-  }
-  if (/parked/i.test(hub)) fail("hub still claims the domain is parked");
-  if (!/We do not claim unlimited support/i.test(hub)) {
-    fail("hub should explicitly refuse unlimited-support / zero-downtime overclaims");
-  }
   if (hub.includes('href="/') || hub.includes('src="/')) fail("hub has root-absolute href/src (breaks GitHub Pages project paths)");
   else ok("hub has no root-absolute asset paths");
+  if (/parked/i.test(hub)) fail("hub still claims the domain is parked");
+  if (/Three choices: Clone, Refresh, Reimagine/i.test(hub)) {
+    fail("hub must not lead with the Refresh $4k / Reimagine $6k ladder");
+  }
+  if (hub.includes("Buy Refresh — $4,000 deposit") || hub.includes("Buy Reimagine — $6,000 deposit")) {
+    fail("hub must not show live $4k/$6k deposit buy labels");
+  }
+  if (/<div class="trio">/.test(hub)) {
+    fail("hub must mute the redesign trio as the lead (ANA comparison, not three-tier cards)");
+  }
+
+  const compareJs = read("demos/interimexecs/compare.js") || "";
+  if (/fetch\s*\(/.test(compareJs)) {
+    fail("compare.js must not fetch the Webflow host (404 must not break the hub)");
+  } else {
+    ok("compare.js does not probe Webflow");
+  }
+  if (/frame-embed|createElement\s*\(\s*['"]iframe|querySelector[^;]*iframe/i.test(compareJs)) {
+    fail("compare.js must not set an iframe src for Webflow");
+  } else {
+    ok("compare.js does not iframe Webflow");
+  }
+  if (!/Staging soon/.test(compareJs)) {
+    fail("compare.js must render Staging soon when webflowPreview.ready is false");
+  }
 }
 
 const clonePages = [
@@ -365,7 +389,7 @@ if (overlayJs && !/gform_wrapper/.test(overlayJs)) {
 }
 
 const brandDir = path.join(root, "demos/interimexecs/assets/brand");
-["ie-logo.svg", "ie-logo.png", "COLORS.md", "FONTS.md", "brand.json"].forEach((name) => {
+["ie-logo.svg", "ie-logo.png", "COLORS.md", "FONTS.md", "brand.json", "current-still.webp"].forEach((name) => {
   if (!fs.existsSync(path.join(brandDir, name))) fail("brand pack missing " + name);
 });
 if (!fs.existsSync(path.join(brandDir, "fonts/ie-fonts.css"))) {
@@ -388,7 +412,7 @@ if (brandJson) {
     if (!fonts.cdn && !(fonts.files && fonts.files.length)) {
       fail("brand.json must give a Google Fonts CDN and/or self-hosted font files");
     }
-    else ok("brand pack has logo + color tokens + fonts for Refresh and Reimagine");
+    else ok("brand pack has logo + color tokens + fonts");
   }
 }
 const colorsMd = read("demos/interimexecs/assets/brand/COLORS.md");
@@ -417,16 +441,16 @@ if (redirect && /secondshift\.care/.test(redirect) && /chrisgerhardt-dev\.github
 
 const handoff = read("demos/interimexecs/HANDOFF.md");
 if (handoff) {
-  ["2026-09-03", "secondshift.care", "interimexecs-refresh.webflow.io", "interimexecs-reimagine.webflow.io", "Verify", "chris@gograybeard.com", "IE-ready", "FormSubmit", "Clone-only", "Talk first", "three-tier email is blocked"].forEach((needle) => {
+  ["2026-09-09", "secondshift.care", "interimexecs-refresh.webflow.io", "Staging soon", "webflowPreview.ready", "DEMO / review-only", "Talk first", "does not send outreach"].forEach((needle) => {
     if (!handoff.toLowerCase().includes(needle.toLowerCase())) fail("HANDOFF.md missing required note: " + needle);
   });
   if (/still Blurr/i.test(handoff) || /still Notable/i.test(handoff) || /NOICELAND/i.test(handoff)) {
     fail("HANDOFF.md must not still claim Blurr / Notable / NOICELAND shells");
   }
-  if (!/craft review/i.test(handoff) || !/not ready to show/i.test(handoff)) {
-    fail("HANDOFF.md must document the craft review hold / not ready to show");
+  if (!/WordPress/i.test(handoff) || !/no-code/i.test(handoff) || !/\$750\/mo/i.test(handoff)) {
+    fail("HANDOFF.md must document the locked WordPress → Webflow + $750/mo SEO desk play");
   }
-  ok("HANDOFF.md documents Clone IE-ready, Refresh/Reimagine craft hold, FormSubmit blocker, and Clone-only email");
+  ok("HANDOFF.md documents the ANA-style migration hub and Staging soon");
 }
 
 const email = read("market-test/interimexecs-email.md");
@@ -438,23 +462,10 @@ if (email) {
   if (/secondshift\.care\/ie\//.test(email)) fail("authorized email must not link /ie/");
   if (/https?:\/\/\S*webflow\.io/i.test(email)) fail("authorized email must not link webflow.io");
   if (/secondshift\.care\/demos\/interimexecs\/(?!wp-clone\/)/.test(email)) {
-    fail("authorized email must not link the three-tier hub");
+    fail("authorized email must not link the comparison hub");
   }
   if (!/Tiny Frog/.test(email) || !/\$750\/month/.test(email)) fail("authorized email must mention Clone pricing and Tiny Frog");
   if (/\$4,000/.test(email) || /\$6,000/.test(email)) fail("authorized Clone-only email must not pitch Refresh/Reimagine prices");
-  [
-    "No redesign fee",
-    "$4,000 once + $750 / month",
-    "$6,000 once + $750 / month",
-    "begins after cutover/acceptance",
-    "standard security baseline",
-    "Included scope is confirmed in writing",
-    "one consolidated feedback set",
-    "not a live or unlimited AI agent",
-    "We do not claim unlimited support"
-  ].forEach(function (needle) {
-    if (hub && hub.indexOf(needle) === -1) fail("hub missing required conversion copy: " + needle);
-  });
   ok("authorized email is Clone-only and avoids hub /ie/ webflow.io links");
 }
 
@@ -472,8 +483,11 @@ if (blockedEmail) {
 const thanks = read("demos/interimexecs/customize-thanks.html");
 if (thanks) {
   if (/Received by Second Shift/i.test(thanks)) fail("thanks page must not claim a proven receipt");
-  if (!/form submission request/i.test(thanks) || !/one business day/i.test(thanks) || !/chris@gograybeard\.com/.test(thanks)) {
-    fail("thanks page must soften to a form-submission request plus one-business-day mailto");
+  if (/gograybeard|christopher/i.test(thanks)) {
+    fail("thanks page must not include Christopher name or gograybeard emails");
+  }
+  if (!/form submission request/i.test(thanks) || !/one business day/i.test(thanks) || !/hello@secondshift\.care/.test(thanks)) {
+    fail("thanks page must soften to a form-submission request plus one-business-day mailto to hello@secondshift.care");
   } else {
     ok("thanks page does not claim an unproven receipt");
   }

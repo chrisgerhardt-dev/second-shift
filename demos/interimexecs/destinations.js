@@ -1,143 +1,99 @@
 /**
  * Interim Execs market-test destinations — edit this file only.
  *
- * Hub, customize demo, and scripts/check-market-test.js read this object.
- * No build step. Works on GitHub Pages project paths.
+ * Hub and scripts/check-market-test.js read this object.
  *
- * Flip choice.ready when that public URL is actually Interim Execs content.
- * Ready choices restore stored Stripe buy/desk CTAs. Unready choices stay Talk first.
- * Flip formSubmitProven only after mailbox delivery is proven.
- * Flip customDomainReady only after secondshift.care serves this repo.
+ * IE play (locked 2026-09-09, same as ANA): lead package is WordPress →
+ * Webflow — same site, platform only, same look — plus the $750/mo desk
+ * including SEO (monthly on-page/content SEO pass). Not a redesign. Do
+ * not pitch “obvious improvements” or any improvements in the migration.
+ * Later changes are the client's, after cutover, in the Webflow Editor
+ * (no-code). WordPress developers are the bottleneck; they keep the look
+ * and stop waiting on WP.
+ * Do not lead with Refresh $4k / Reimagine $6k. Those stay muted step-ups.
  *
- * Clone preview (choices.clone.href) is the live site — identical proof.
- * choices.clone.internalPreview / assetMirror is the local wp-clone/ asset
- * mirror for customize-canvas reuse and logo/color extraction. Do not point
- * the public Preview Clone CTA at wp-clone/. Refresh the mirror with:
+ * Clone preview (js-dest) is the live site. Asset clone is wp-clone/.
+ * Primary buy-path preview is Webflow Clone staging (choices.clone.webflowPreview).
+ * Close-Clone stand-in is interimexecs-refresh.webflow.io (or
+ * interimexecs-clone.webflow.io if a teammate renames). Hosts returned
+ * HTTP 404 on 2026-09-09 — keep webflowPreview.ready false until the
+ * host shows Interim Execs content. Do not iframe webflow.io (CSP).
+ * Keep choices.refresh.ready false so the hidden redesign rung stays muted.
+ *
+ * Staging URLs (DEMO / review-only, not a live cutover):
+ *   https://interimexecs-refresh.webflow.io/   (close-Clone stand-in + Refresh)
+ *   https://interimexecs-reimagine.webflow.io/
+ *
+ * Compliance (hub sell side): Webflow Clone preserves legal pages,
+ * trademarks, and accurate contact. The SEO desk does not invent claims.
+ * Under the hood only: published Privacy Policy, Terms, and cookie-consent
+ * path stay. Site hygiene — not legal advice.
+ *
+ * No Stripe on this ladder — ready choices still use Talk first.
+ * Talk first goes to hello@secondshift.care (no personal mailbox on this hub).
+ *
+ * Refresh the mirror later:
  *   python3 scripts/refresh-ie-asset-clone.py
  */
-window.SECOND_SHIFT_IE_DESTINATIONS = {
+window.SECOND_SHIFT_DESTINATIONS = {
+  slug: "interimexecs",
+  name: "Interim Execs",
+  liveOrigin: "https://interimexecs.com",
   customDomainReady: true,
   formSubmitProven: false,
-  intendedPublicOrigin: "https://secondshift.care",
-  githubPagesOrigin: "https://chrisgerhardt-dev.github.io",
-  githubPagesPath: "/second-shift/",
-  contactEmail: "chris@gograybeard.com",
-  formSubmit: "https://formsubmit.co/chris@gograybeard.com",
-  customizeTurns: 3,
+  contactEmail: "hello@secondshift.care",
   talkFirstLabel: "Talk first",
-  migrationPromise: "If you purchase Clone, Refresh, or Reimagine, we handle migration and testing before cutover. Keep Tiny Frog active until you accept the new site. Their contract and fees stay theirs.",
-
-  stripe: {
-    growthDesk: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
-    refreshDeposit: "https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00",
-    reimagineDeposit: "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02"
-  },
+  migrationPromise: "Webflow migration is the lead package: same website, now no-code Webflow. WordPress developers are the bottleneck. Same look. Owner-editable after cutover. Then the $750/mo desk including a monthly SEO pass. Pure platform swap — not a visual redesign.",
 
   choices: {
     clone: {
       label: "Clone",
       href: "https://interimexecs.com",
       ready: true,
-      cta: "Preview Clone",
+      cta: "Preview live site",
       price: "$750 / month",
-      priceNote: "No redesign fee. Growth desk begins after cutover/acceptance unless otherwise agreed.",
-      summary: "Same WordPress site, lower bill versus the current incumbent (Tiny Frog). Pure cost-savings.",
-      security: "WP Engine, least-privilege access, managed updates, backups, uptime and security monitoring, and tested restore as part of care.",
-      benefits: [
-        "Keep the current WordPress site and public copy",
-        "Lower monthly bill — cost-savings, not a redesign",
-        "Secure-by-default care on WP Engine",
-        "Monthly SEO pass as part of the desk",
-        "We handle takeover, migration, and testing"
-      ],
-      buy: {
-        href: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
-        label: "Buy Clone — $750/mo desk"
-      },
-      editorNote: "After purchase, normal changes are supported updates we make with you.",
+      priceNote: "$750/mo desk after cutover, including SEO optimization — a monthly on-page/content SEO pass. No redesign fee.",
+      summary: "Same website, now no-code Webflow. Pure platform swap. Same look. $750/mo desk includes SEO. Not a redesign.",
       internalPreview: "wp-clone/index.html",
       assetMirror: "wp-clone/index.html",
-      canvas: {
-        hero: "Who is in your corner?",
-        deck: "The RED Team means action and results. Same site you already have — cared for, not rebuilt.",
-        cta: "Contact Us"
+      webflowPreview: {
+        href: "https://interimexecs-refresh.webflow.io/",
+        cta: "Open Webflow Clone (DEMO)",
+        ready: false,
+        standIn: true,
+        note: "Close-Clone stand-in is wired to interimexecs-refresh.webflow.io. Not READY yet — staging was a 404 on 2026-09-09 (no Interim Execs content). Flip choices.clone.webflowPreview.ready to true when that host shows Interim Execs content."
       }
     },
     refresh: {
       label: "Refresh",
-      href: "https://interimexecs-refresh.webflow.io",
+      href: "https://interimexecs-refresh.webflow.io/",
       ready: false,
-      cta: "Preview Refresh",
+      cta: "Preview Refresh (DEMO)",
       price: "$4,000 once + $750 / month",
       priceNote: "$4,000 once. $750/month growth desk begins after cutover/acceptance unless otherwise agreed.",
-      summary: "Webflow restyle. Modernized but familiar, and owner-editable.",
-      security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
-      shellName: "",
-      shellWarning: "Craft review in progress. Refresh is not ready to show — Christopher found it looks worse than Clone (dark text / craft fail). Do not present it as finished.",
+      summary: "Optional step-up. Webflow restyle. Familiar pages, cleaner look.",
+      shellWarning: "Optional step-up. DEMO / review-only. URL is wired to interimexecs-refresh.webflow.io. Not READY yet — pending teammate craft (staging was a 404 on 2026-09-09). Flip choices.refresh.ready to true when that host shows Interim Execs content.",
       internalPreview: "webflow-refresh/index.html",
-      benefits: [
-        "Same familiar pages and copy, cleaner type and navigation",
-        "Owner-editable in the Webflow Editor — no tech staff for normal changes",
-        "Better look without a full rebrand",
-        "Secure-by-default Webflow hosting",
-        "We handle migration and testing before cutover"
-      ],
-      buy: {
-        href: "https://buy.stripe.com/3cI8wQ4Wc0gH4fhgRU6Vq00",
-        label: "Buy Refresh — $4,000 deposit"
-      },
       talk: {
-        href: "mailto:chris@gograybeard.com?subject=Second%20Shift%20Refresh%20%E2%80%94%20talk%20first",
+        href: "mailto:hello@secondshift.care?subject=Second%20Shift%20Refresh%20%E2%80%94%20talk%20first",
         label: "Talk first"
-      },
-      desk: {
-        href: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
-        label: "$750/mo desk, ongoing after cutover"
-      },
-      editorNote: "After purchase, you edit in the Webflow Editor. This demo shows how that feels.",
-      canvas: {
-        hero: "Who is in your corner?",
-        deck: "Familiar InterimExecs pages, easier to change, and a cleaner look.",
-        cta: "See How it Works"
       }
     },
     reimagine: {
       label: "Reimagine",
-      href: "https://interimexecs-reimagine.webflow.io",
+      href: "https://interimexecs-reimagine.webflow.io/",
       ready: false,
-      cta: "Preview Reimagine",
+      cta: "Preview Reimagine (DEMO)",
       price: "$6,000 once + $750 / month",
       priceNote: "$6,000 once. One tuning round means one consolidated feedback set. $750/month begins after cutover/acceptance unless otherwise agreed. Not a full rebrand (separate, $10,000+).",
-      summary: "Premium modern redesign without a full rebrand. One collaborative tuning round.",
-      security: "Managed Webflow hosting, SSL, CDN/DDoS protection, platform updates, and far fewer plugins to patch.",
-      shellName: "",
-      shellWarning: "Craft review in progress. Reimagine is not ready to show — hold until the Grok Heavy redesign brief lands. Do not present it as finished.",
+      summary: "Optional step-up. Modern redesign without a full rebrand.",
+      shellWarning: "Optional step-up. DEMO / review-only. URL is wired to interimexecs-reimagine.webflow.io. Not READY yet — pending teammate craft (staging was a 404 on 2026-09-09). Flip choices.reimagine.ready to true when that host shows Interim Execs content.",
       internalPreview: "webflow-demo/index.html",
-      benefits: [
-        "Modern navigation, imagery, scroll, forms, and conversion patterns",
-        "One taste-tuning round — modern standard, not awards",
-        "Owner-editable in the Webflow Editor after launch",
-        "Secure-by-default Webflow hosting",
-        "We handle migration and testing before cutover"
-      ],
-      buy: {
-        href: "https://buy.stripe.com/28E5kEbkAd3t2796dg6Vq02",
-        label: "Buy Reimagine — $6,000 deposit"
-      },
       talk: {
-        href: "mailto:chris@gograybeard.com?subject=Second%20Shift%20Reimagine%20%E2%80%94%20talk%20first",
+        href: "mailto:hello@secondshift.care?subject=Second%20Shift%20Reimagine%20%E2%80%94%20talk%20first",
         label: "Talk first"
-      },
-      desk: {
-        href: "https://buy.stripe.com/fZu9AUgEU8Nd3bdatw6Vq01",
-        label: "$750/mo desk, ongoing after cutover"
-      },
-      editorNote: "After purchase, you edit in the Webflow Editor. This demo shows how that feels.",
-      canvas: {
-        hero: "Who is in your corner?",
-        deck: "The RED Team means action and results. A modern standard, tuned to taste.",
-        cta: "Engage an Executive"
       }
     }
   }
 };
+window.SECOND_SHIFT_IE_DESTINATIONS = window.SECOND_SHIFT_DESTINATIONS;
